@@ -1,0 +1,6 @@
+<!--作为module而不是单独运行时使用此文件-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.crystal.mytoolslibrary" >
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>
