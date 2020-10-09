@@ -1,3 +1,4 @@
+
 if (asModule_notAloneApp.toBoolean()) {
     //作为组件被app依赖
     apply plugin: 'com.android.library'
@@ -48,6 +49,11 @@ android {
     }
     //开启dataBinding
     dataBinding {
+        enabled true
+    }
+
+    //开启视图绑定
+    viewBinding{
         enabled true
     }
 

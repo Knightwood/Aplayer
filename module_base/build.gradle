@@ -1,0 +1,60 @@
+apply from: "../module.build.gradle"
+android {
+    //统一资源前缀，规范资源引用
+    resourcePrefix "module_base_"
+
+    dependencies{
+        //default
+        api fileTree(dir: 'libs', include: ['*.jar'])
+        api 'androidx.appcompat:appcompat:1.2.0'
+        testImplementation 'junit:junit:4.12'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+        //android x
+        api rootProject.ext.androidx["androidx.preference"]
+        api rootProject.ext.androidx["androidx.paging"]
+        api rootProject.ext.androidx["androidx.room:room-runtime"]
+        annotationProcessor rootProject.ext.androidx["androidx.room:room-compiler"]
+        //注解
+        api 'androidx.annotation:annotation:1.1.0'
+        //view
+        api rootProject.ext.androidx["androidx.cardview"]
+        api rootProject.ext.androidx["android.material"]
+        api rootProject.ext.androidx["androidx.constraintlayout"]
+        api rootProject.ext.androidx["androidx.recyclerview"]
+        //lifecycle
+        api rootProject.ext.androidx["androidx.lifecycle"]
+        //api rootProject.ext.androidx["androidx.lifecycle-runtime"]
+        //导航
+        api rootProject.ext.androidx["androidx.navigation-fragment"]
+        api rootProject.ext.androidx["androidx.navigation-ui"]
+        //网络
+        api rootProject.ext.dependencies["okhttp3"]
+        api rootProject.ext.dependencies["gson"]
+        api 'org.conscrypt:conscrypt-android:2.2.1'
+        api rootProject.ext.dependencies["Retrofit"]
+        api rootProject.ext.dependencies["Retrofit-converter"]
+        api rootProject.ext.dependencies["Retrofit-callAdapter"]
+        //rxjava
+        api rootProject.ext.dependencies["rxAndroid"]
+        api rootProject.ext.dependencies["rxjava2"]
+        //权限
+        api rootProject.ext.dependencies["easypermissions"]
+        //eventbus
+        //api rootProject.ext.dependencies["eventbus"]
+        //glide
+        api rootProject.ext.dependencies["glide"]
+        annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+        //adapter
+        api   rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+        //loadsir
+        api rootProject.ext.dependencies["loadsir"]
+        //沉浸
+        api  rootProject.ext.dependencies["immersionbar"]
+        //reflesh
+        api  'com.scwang.smart:refresh-layout-kernel:2.0.1'
+        api  'com.scwang.smart:refresh-header-material:2.0.1'
+    }
+
+}

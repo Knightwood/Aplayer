@@ -1,6 +1,4 @@
 rootProject.name='Aplayer'
 include ':app'
-include ':mytoolslibrary'
-include ':module_main'
-include ':module_home'
 include ':module_player'
+include ':module_base'

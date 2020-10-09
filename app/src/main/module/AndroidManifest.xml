@@ -1,0 +1,4 @@
+<!--单独运行而不是被app依赖时使用此文件-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.crystal.aplayer" >
+</manifest>
