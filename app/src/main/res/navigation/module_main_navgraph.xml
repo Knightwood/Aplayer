@@ -3,17 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/module_main_navgraph"
-    app:startDestination="@id/module_main_homefragment">
-
-    <activity
-        android:id="@+id/module_main_modulemainactivitymainactivity"
-        android:name="com.crystal.aplayer.all_module.main.ModuleMain_MainActivity"
-        android:label="module_main_activity_main"
-        tools:layout="@layout/module_main_activity_main" />
+    app:startDestination="@id/app_homefragment"
+    tools:ignore="ResourceName">
 
     <fragment
-        android:id="@+id/module_main_homefragment"
+        android:id="@+id/app_homefragment"
         android:name="com.crystal.aplayer.all_module.home.main_page.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="module_home_fragment_home"
+        tools:layout="@layout/module_home_fragment_home" >
+        <action
+            android:id="@+id/app_action_app_homefragment_to_app_communityfragment"
+            app:destination="@id/app_communityfragment" />
+        <action
+            android:id="@+id/app_action_app_homefragment_to_app_messagefragment"
+            app:destination="@id/app_messagefragment" />
+        <action
+            android:id="@+id/app_action_app_homefragment_to_app_minefragment"
+            app:destination="@id/app_minefragment" />
+        <action
+            android:id="@+id/app_action_app_homefragment_to_app_addfragment"
+            app:destination="@id/app_addfragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/app_communityfragment"
+        android:name="com.crystal.aplayer.all_module.community.Community_Fragment"
+        tools:layout="@layout/fragment_moudle_community" />
+    <fragment android:id="@+id/app_addfragment" />
+    <fragment
+        android:id="@+id/app_messagefragment"
+        android:name="com.crystal.aplayer.all_module.notification.NotificationFragment"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/app_minefragment"
+        android:name="com.crystal.aplayer.all_module.mine.MineFragment"
+        tools:layout="@layout/fragment_mine" />
 
 </navigation>

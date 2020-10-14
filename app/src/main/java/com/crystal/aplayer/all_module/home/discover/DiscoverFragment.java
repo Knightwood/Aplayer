@@ -12,10 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.crystal.aplayer.databinding.ModuleHomeFragmentDiscoverBinding;
+import com.crystal.module_base.databinding.RecyclerviewFreshLayoutBinding;
 import com.crystal.module_base.tools.LogUtil;
 
 public class DiscoverFragment extends Fragment {
-    private ModuleHomeFragmentDiscoverBinding discoverBinding;
+    private RecyclerviewFreshLayoutBinding discoverBinding;
     private static final String tag="DiscoverFragment";
     private DiscoverViewModel viewModel;
 
@@ -51,7 +52,7 @@ public class DiscoverFragment extends Fragment {
             }
         });
         //监听数据获取状态
-        viewModel.stateModel.loadStateLiveData.observe(this, loadState -> {
+        viewModel.stateModel.loadDataState.observe(this, loadState -> {
             LogUtil.d(tag, loadState.toString());
         });
     }
@@ -59,7 +60,7 @@ public class DiscoverFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        discoverBinding=ModuleHomeFragmentDiscoverBinding.inflate(getLayoutInflater());
+        discoverBinding= RecyclerviewFreshLayoutBinding.inflate(getLayoutInflater());
         return discoverBinding.getRoot();
     }
 
@@ -67,11 +68,11 @@ public class DiscoverFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        discoverBinding.appButton.setOnClickListener(new View.OnClickListener() {
+       /* discoverBinding.appButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 viewModel.freshData();
             }
-        });
+        });*/
     }
 }

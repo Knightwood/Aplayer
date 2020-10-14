@@ -1,7 +1,7 @@
 apply from: "../module.build.gradle"
 android {
     //统一资源前缀，规范资源引用
-    resourcePrefix "module_base_"
+    //resourcePrefix "module_base_"
 
     dependencies{
         //default
@@ -55,6 +55,8 @@ android {
         //reflesh
         api  'com.scwang.smart:refresh-layout-kernel:2.0.1'
         api  'com.scwang.smart:refresh-header-material:2.0.1'
+
+
     }
 
 }

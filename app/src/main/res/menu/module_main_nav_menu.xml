@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/module_main_home"
-        android:icon="@drawable/main_home"
+        android:id="@+id/app_homefragment"
+        android:icon="@drawable/bottom_nav_main_sel"
         android:title="首页" />
     <item
-        android:id="@+id/module_main_community"
-        android:icon="@drawable/main_community"
+        android:id="@+id/app_communityfragment"
+        android:icon="@drawable/bottom_nav_community_sel"
         android:title="社区" />
     <item
-        android:id="@+id/module_main_notify"
-        android:icon="@drawable/main_notify"
+        android:id="@+id/app_addbutton"
+        android:icon="@drawable/bottom_nav_add_sel"
+        android:title=" "
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/app_messagefragment"
+        android:icon="@drawable/bottom_nav_message_sel"
         android:title="通知" />
     <item
-        android:id="@+id/module_main_user"
-        android:icon="@drawable/main_user"
+        android:id="@+id/app_minefragment"
+        android:icon="@drawable/bottom_nav_mine_sel"
         android:title="我的" />
 </menu>

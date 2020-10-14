@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.crystal.aplayer.all_module.home.repo.HomeDataProvider;
 import com.crystal.module_base.base.http.retrofit.ResponseMes;
+import com.crystal.module_base.base.mvvm.contract.LoadDataState;
 import com.crystal.module_base.base.mvvm.contract.LoadState;
 import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel;
 import com.crystal.module_base.common.http.AllApiConfig;
@@ -52,7 +53,7 @@ public class RecommendViewModel extends BaseViewModel<HomeDataProvider> {
     @Override
     protected void loadFailed(ResponseMes mes) {
         LogUtil.d(tag,"viewmodel中loadFailed方法被调用");
-        stateModel.loadStateLiveData.postValue(LoadState.LOAD_FAILED);
+        stateModel.loadDataState.postValue(LoadDataState.LOAD_FAILED);
     }
 
 

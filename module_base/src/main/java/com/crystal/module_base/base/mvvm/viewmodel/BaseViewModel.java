@@ -3,6 +3,7 @@ package com.crystal.module_base.base.mvvm.viewmodel;
 import androidx.lifecycle.ViewModel;
 
 import com.crystal.module_base.base.http.retrofit.ResponseMes;
+import com.crystal.module_base.base.mvvm.contract.LoadDataState;
 import com.crystal.module_base.base.mvvm.contract.LoadState;
 import com.crystal.module_base.base.mvvm.model.StateModel;
 import com.crystal.module_base.base.mvvm.repo.BaseDataProvider;
@@ -14,7 +15,14 @@ import com.crystal.module_base.tools.observable.Observer;
  * 创建者 kiylx
  * 创建时间 9/22/2020 11:09 PM
  * packageName：com.crystal.aplayer.base.mvvm.viewmodel
- * 描述：
+ * 描述：初始化时state：
+ * 开始准备数据显示在界面上wait_load_data->成功：LOAD_FINISHED->数据显示在界面上表示加载完成done;
+ *                                失败：LOAD_FAILED;
+ * 刷新界面，刷新数据：
+ * state：start_refresh->成功：load_finished->成功后置为初始状态nothing
+ *                       失败：load_failed
+ *                       初始化，没有在刷新状态为nothing
+ *
  */
 public abstract class BaseViewModel<D extends BaseDataProvider> extends ViewModel implements Observer {
     private static final String tag="BaseViewModel";
@@ -28,7 +36,7 @@ public abstract class BaseViewModel<D extends BaseDataProvider> extends ViewMode
         }
         if (stateModel == null) {
             stateModel = new StateModel();
-            stateModel.loadStateLiveData.setValue(LoadState.READY_LOAD);
+            stateModel.loadDataState.setValue(LoadDataState.WAIT_LOAD_DATA);
         }
     }
 

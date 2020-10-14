@@ -62,4 +62,5 @@ dependencies {
 //引入module
     implementation project(path: ':module_player')
     implementation project(path: ':module_base')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

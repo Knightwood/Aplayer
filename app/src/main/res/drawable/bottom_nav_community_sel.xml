@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:top="5dp">
+        <selector>
+            <!-- 选中时图片-->
+            <item
+                android:drawable="@drawable/btn_community_selected"
+                android:state_checked="true" />
+            <!-- 未选中时 图片 -->
+            <item
+                android:drawable="@drawable/btn_community_normal"
+                android:state_checked="false" />
+        </selector>
+    </item>
+</layer-list>

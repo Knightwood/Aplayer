@@ -15,7 +15,7 @@ import com.crystal.aplayer.all_module.home.daily.DailyFragment;
 import com.crystal.aplayer.all_module.home.discover.DiscoverFragment;
 import com.crystal.aplayer.all_module.home.recommend.RecommendFragment;
 import com.crystal.aplayer.databinding.ModuleHomeFragmentHomeBinding;
-import com.crystal.module_base.base.ui.fragments.BaseFragmnet;
+import com.crystal.module_base.base.ui.fragments.BaseFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -23,12 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HomeFragment extends BaseFragmnet {
+public class HomeFragment extends BaseFragment {
     private ModuleHomeFragmentHomeBinding homeBinding;
     private HomeFragmnetAdapter homeFragmnetAdapter;
     TabLayout tablayout;
@@ -37,10 +32,6 @@ public class HomeFragment extends BaseFragmnet {
 
     public HomeFragment() {
     }
-
-    /**
-     * @return A new instance of fragment HomeFragment.
-     */
     public static HomeFragment newInstance() {
         return new HomeFragment();
     }
@@ -84,21 +75,20 @@ public class HomeFragment extends BaseFragmnet {
     }
 
     private void linkedTabLayout() {
-        new TabLayoutMediator(tablayout, fragmentViewPager, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                switch (position) {
-                    case 0:
-                        tab.setText("发现");
-                        break;
-                    case 1:
-                        tab.setText("推荐");
-                        break;
-                    case 2:
-                        tab.setText("日报");
-                        break;
-                }
+        new TabLayoutMediator(tablayout, fragmentViewPager, (tab, position) -> {
+            switch (position) {
+                case 0:
+                    tab.setText("发现");
+                    break;
+                case 1:
+                    tab.setText("推荐");
+                    break;
+                case 2:
+                    tab.setText("日报");
+                    break;
             }
         }).attach();
+        //默认选中中间位置
+        tablayout.selectTab(tablayout.getTabAt(1));
     }
 }

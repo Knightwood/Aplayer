@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
  * packageName：com.crystal.aplayer.base.fragment
  * 描述：
  */
-public class BaseFragmnet extends Fragment {
+public class BaseFragment extends Fragment {
 
 
 }
