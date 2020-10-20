@@ -1,15 +1,12 @@
 package com.crystal.aplayer.all_module.home.discover;
 
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.SavedStateHandle;
 
 import com.crystal.aplayer.all_module.home.repo.HomeDataProvider;
 import com.crystal.module_base.base.http.retrofit.ResponseMes;
-import com.crystal.module_base.base.mvvm.contract.LoadDataState;
-import com.crystal.module_base.base.mvvm.contract.LoadState;
-import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel;
 import com.crystal.module_base.common.http.AllApiConfig;
 import com.crystal.module_base.common.http.bean.mainpage.DiscoveryBean;
+import com.crystal.module_base.common.mvvm.CommonViewModel;
 import com.crystal.module_base.tools.LogUtil;
 
 import java.util.List;
@@ -20,7 +17,7 @@ import java.util.List;
  * packageName：com.crystal.aplayer.all_module.home.discover.mvvm
  * 描述：
  */
-public class DiscoverViewModel extends BaseViewModel<HomeDataProvider> {
+public class DiscoverViewModel extends CommonViewModel<HomeDataProvider> {
     private static final String tag="DiscoverFragment";
 
     public MutableLiveData<DiscoveryBean> discoveryBeanMutableLiveData;
@@ -40,8 +37,9 @@ public class DiscoverViewModel extends BaseViewModel<HomeDataProvider> {
     }
 
     @Override
-    protected void whenUpdate(Object[] arg) {
-        LogUtil.d(tag,"viewmodel中whenUpdate方法被调用");
+    protected void getRemoteDataSuccess(Object[] arg) {
+        super.getRemoteDataSuccess(arg);
+        LogUtil.d(tag, "viewmodel中whenUpdate方法被调用");
         if (arg[0] instanceof DiscoveryBean) {
             discoveryBeanMutableLiveData.postValue((DiscoveryBean) arg[0]);
         }
@@ -52,9 +50,9 @@ public class DiscoverViewModel extends BaseViewModel<HomeDataProvider> {
      * @param mes
      */
     @Override
-    protected void loadFailed(ResponseMes mes) {
-        LogUtil.d(tag,"viewmodel中loadFailed方法被调用");
-        stateModel.loadDataState.postValue(LoadDataState.LOAD_FAILED);
+    protected void getRemoteDataFailed(ResponseMes mes) {
+        super.getRemoteDataFailed(mes);
+        LogUtil.d(tag, "viewmodel中loadFailed方法被调用");
     }
 
 

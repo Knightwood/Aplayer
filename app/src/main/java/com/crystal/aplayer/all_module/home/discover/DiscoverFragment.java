@@ -4,21 +4,22 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.crystal.aplayer.R;
 import com.crystal.aplayer.databinding.ModuleHomeFragmentDiscoverBinding;
-import com.crystal.module_base.databinding.RecyclerviewFreshLayoutBinding;
+import com.crystal.module_base.base.mvvm.contract.LoadDataState;
+import com.crystal.module_base.base.ui.fragments.BaseFragment;
+import com.crystal.module_base.base.ui.fragments.RefreshFragment;
 import com.crystal.module_base.tools.LogUtil;
+import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
-public class DiscoverFragment extends Fragment {
-    private RecyclerviewFreshLayoutBinding discoverBinding;
+public class DiscoverFragment extends BaseFragment<DiscoverViewModel> {
     private static final String tag="DiscoverFragment";
-    private DiscoverViewModel viewModel;
 
     public DiscoverFragment() {
 
@@ -32,15 +33,10 @@ public class DiscoverFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initData();
     }
 
-    private void initData() {
-        viewModel = new ViewModelProvider(this).get(DiscoverViewModel.class);
-        observeData();
-    }
-
-    private void observeData() {
+    @Override
+    protected void observeData(DiscoverViewModel viewModel) {
         //监听网络数据
         viewModel.discoveryBeanMutableLiveData.observe(this, discoveryBean -> {
             if (discoveryBean != null) {
@@ -52,27 +48,45 @@ public class DiscoverFragment extends Fragment {
             }
         });
         //监听数据获取状态
-        viewModel.stateModel.loadDataState.observe(this, loadState -> {
-            LogUtil.d(tag, loadState.toString());
+        viewModel.stateModel.getDataFreshState().observe(this, dataRefreshState -> {
+
         });
     }
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        discoverBinding= RecyclerviewFreshLayoutBinding.inflate(getLayoutInflater());
-        return discoverBinding.getRoot();
+    protected DiscoverViewModel setViewModel() {
+        return new ViewModelProvider(this).get(DiscoverViewModel.class);
+    }
+
+    @Override
+    protected View setChildLayout() {
+        return ModuleHomeFragmentDiscoverBinding.inflate(getLayoutInflater()).getRoot();
+    }
+
+    @Override
+    protected OnRefreshListener setOnRefreshListener() {
+        return refreshLayout -> {
+            viewModel.stateModel.setLoadDataState(LoadDataState.LOADING,false);
+        };
+    }
+
+    @Override
+    protected OnLoadMoreListener setOnLoadMoreListener() {
+        return refreshLayout -> {
+            viewModel.stateModel.setLoadDataState(LoadDataState.LOAD_FINISHED,false);
+        };
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-       /* discoverBinding.appButton.setOnClickListener(new View.OnClickListener() {
+        Button button= rootViewBinding.getRoot().findViewById(R.id.app_button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                viewModel.freshData();
+            public void onClick(View v) {
+                viewModel.stateModel.setLoadDataState(LoadDataState.LOAD_FAILED,false);
             }
-        });*/
+        });
     }
 }

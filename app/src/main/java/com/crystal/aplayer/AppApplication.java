@@ -2,8 +2,8 @@ package com.crystal.aplayer;
 
 import android.content.Context;
 
+
 import com.crystal.module_base.base.BaseApplication;
-import com.crystal.module_base.base.moduleinitpack.ModuleInitManager;
 import com.crystal.module_base.tools.threadpool.SimpleThreadPool;
 
 
@@ -36,6 +36,8 @@ public class AppApplication extends BaseApplication {
         //ModuleInitManager.getInstance().initModule(this);
         threadPool=SimpleThreadPool.getInstance();
     }
+
+
 
     public static Context getInstance() {
         return mContext;

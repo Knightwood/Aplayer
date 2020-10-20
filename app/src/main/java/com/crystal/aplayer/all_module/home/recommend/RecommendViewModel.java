@@ -9,6 +9,7 @@ import com.crystal.module_base.base.mvvm.contract.LoadState;
 import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel;
 import com.crystal.module_base.common.http.AllApiConfig;
 import com.crystal.module_base.common.http.bean.mainpage.RecommendBean;
+import com.crystal.module_base.common.mvvm.CommonViewModel;
 import com.crystal.module_base.tools.LogUtil;
 
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
  * packageName：com.crystal.aplayer.all_module.home.nominate
  * 描述：首页-推荐
  */
-public class RecommendViewModel extends BaseViewModel<HomeDataProvider> {
+public class RecommendViewModel extends CommonViewModel<HomeDataProvider> {
     private static final String tag="RecommendFragment";
 
     public MutableLiveData<RecommendBean> recommendBeanMutableLiveData;
@@ -38,9 +39,11 @@ public class RecommendViewModel extends BaseViewModel<HomeDataProvider> {
         return HomeDataProvider.getInstance();
     }
 
+
     @Override
-    protected void whenUpdate(Object[] arg) {
-        LogUtil.d(tag,"viewmodel中whenUpdate方法被调用");
+    protected void getRemoteDataSuccess(Object[] arg) {
+        super.getRemoteDataSuccess(arg);
+        LogUtil.d(tag, "viewmodel中whenUpdate方法被调用");
         if (arg[0] instanceof RecommendBean) {
             recommendBeanMutableLiveData.postValue((RecommendBean) arg[0]);
         }
@@ -51,9 +54,9 @@ public class RecommendViewModel extends BaseViewModel<HomeDataProvider> {
      * @param mes
      */
     @Override
-    protected void loadFailed(ResponseMes mes) {
-        LogUtil.d(tag,"viewmodel中loadFailed方法被调用");
-        stateModel.loadDataState.postValue(LoadDataState.LOAD_FAILED);
+    protected void getRemoteDataFailed(ResponseMes mes) {
+        super.getRemoteDataFailed(mes);
+        LogUtil.d(tag, "viewmodel中loadFailed方法被调用");
     }
 
 

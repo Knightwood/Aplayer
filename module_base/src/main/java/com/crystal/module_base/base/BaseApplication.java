@@ -1,8 +1,11 @@
 package com.crystal.module_base.base;
 
+import android.app.Application;
 
-import com.crystal.module_base.tools.Xapplication;
-
+import com.crystal.module_base.R;
+import com.crystal.module_base.common.ui.JustTextFooter;
+import com.scwang.smart.refresh.header.MaterialHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
 
 /**
@@ -11,16 +14,32 @@ import com.crystal.module_base.tools.Xapplication;
  * packageName：com.crystal.aplayer.base
  * 描述：
  */
-public class BaseApplication extends Xapplication {
-    @Override
-    protected void initData() throws ClassNotFoundException {
-        super.initData();
-        /*LoadSir.beginBuilder()
-                .addCallback(new ErrorCallback())//添加各种状态页
-                .addCallback(new EmptyCallback())
-                .addCallback(new LoadingCallback())
-                .addCallback(new TimeoutCallback())
-                .setDefaultCallback(LoadingCallback.class)//设置默认状态页
-                .commit();*/
+public class BaseApplication extends Application {
+
+    static {
+        SmartRefreshLayout.setDefaultRefreshInitializer((context, layout) -> {
+            layout.setEnableLoadMore(true);
+            layout.setEnableLoadMoreWhenContentNotFull(true);
+        });
+
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator  ((context, layout) -> {
+            layout.setEnableHeaderTranslationContent(true);
+            return new MaterialHeader(context)
+                    .setColorSchemeColors(R.color.blue, R.color.blue, R.color.blue);
+        });
+
+        SmartRefreshLayout.setDefaultRefreshFooterCreator ((context, layout)->{
+            layout.setEnableFooterFollowWhenNoMoreData(true);
+            layout.setEnableFooterTranslationContent(true);
+            layout.setFooterHeight(153f);
+            layout.setFooterTriggerRate(0.6f);
+
+
+            JustTextFooter.REFRESH_FOOTER_NOTHING = "- The End -";
+            return new JustTextFooter(context)
+                    .setAccentColorId(R.color.colorTextPrimary)
+                    .setTextTitleSize(16f);
+        });
     }
+
 }

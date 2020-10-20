@@ -9,6 +9,7 @@ import com.crystal.module_base.base.mvvm.contract.LoadState;
 import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel;
 import com.crystal.module_base.common.http.AllApiConfig;
 import com.crystal.module_base.common.http.bean.mainpage.DailyFeedBean;
+import com.crystal.module_base.common.mvvm.CommonViewModel;
 import com.crystal.module_base.tools.LogUtil;
 
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
  * packageName：com.crystal.aplayer.all_module.home.daily
  * 描述：首页-日报
  */
-public class DailyViewModel extends BaseViewModel<HomeDataProvider> {
+public class DailyViewModel extends CommonViewModel<HomeDataProvider> {
     private static final String tag="DailyFragment";
 
     public MutableLiveData<DailyFeedBean> dailyFeedBeanMutableLiveData;
@@ -38,18 +39,20 @@ public class DailyViewModel extends BaseViewModel<HomeDataProvider> {
         return HomeDataProvider.getInstance();
     }
 
+
     @Override
-    protected void whenUpdate(Object[] arg) {
-        LogUtil.d(tag,"viewmodel中whenUpdate方法被调用");
+    protected void getRemoteDataSuccess(Object[] arg) {
+        super.getRemoteDataSuccess(arg);
+        LogUtil.d(tag, "viewmodel中whenUpdate方法被调用");
         if (arg[0] instanceof DailyFeedBean) {
             dailyFeedBeanMutableLiveData.postValue((DailyFeedBean) arg[0]);
         }
     }
 
     @Override
-    protected void loadFailed(ResponseMes mes) {
-        LogUtil.d(tag,"viewmodel中loadFailed方法被调用");
-        stateModel.loadDataState.postValue(LoadDataState.LOAD_FAILED);
+    protected void getRemoteDataFailed(ResponseMes mes) {
+        super.getRemoteDataFailed(mes);
+        LogUtil.d(tag, "viewmodel中loadFailed方法被调用");
     }
 
     public void getNextPage() {

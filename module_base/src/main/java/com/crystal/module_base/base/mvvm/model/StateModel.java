@@ -15,15 +15,58 @@ import com.crystal.module_base.tools.networkpack.NetworkLiveData;
  */
 public class StateModel {
     //数据载入后，获取新数据刷新界面时的状态
-    public MutableLiveData<DataRefreshState> dataFreshState;
+    private MutableLiveData<DataRefreshState> dataFreshState;
     //网络状况
-    public MutableLiveData<NetworkLiveData> networkStateLiveData;
+    private MutableLiveData<NetworkLiveData> networkStateLiveData;
     //数据载入状态
-    public MutableLiveData<LoadDataState> loadDataState;
+    private MutableLiveData<LoadDataState> loadDataState;
 
     public StateModel() {
-        networkStateLiveData=new MutableLiveData<>();
-        dataFreshState=new MutableLiveData<>();
-        loadDataState=new MutableLiveData<>();
+        networkStateLiveData = new MutableLiveData<>();
+        dataFreshState = new MutableLiveData<>();
+        loadDataState = new MutableLiveData<>();
+        init();
+    }
+
+    private void init() {
+        dataFreshState.setValue(DataRefreshState.NOTHING);
+        loadDataState.setValue(LoadDataState.NOTHING);
+    }
+
+    /**
+     * @param state  状态
+     * @param isPost 是否使用postValue
+     */
+    public void setDataFreshState(DataRefreshState state, boolean isPost) {
+        if (isPost) {
+            this.dataFreshState.postValue(state);
+        } else {
+            this.dataFreshState.setValue(state);
+        }
+
+    }
+
+    /**
+     * @param state  状态
+     * @param isPost 是否使用postValue
+     */
+    public void setLoadDataState(LoadDataState state, boolean isPost) {
+        if (isPost) {
+            this.loadDataState.postValue(state);
+        } else {
+            this.loadDataState.setValue(state);
+        }
+    }
+
+    public MutableLiveData<DataRefreshState> getDataFreshState() {
+        return dataFreshState;
+    }
+
+    public MutableLiveData<NetworkLiveData> getNetworkStateLiveData() {
+        return networkStateLiveData;
+    }
+
+    public MutableLiveData<LoadDataState> getLoadDataState() {
+        return loadDataState;
     }
 }

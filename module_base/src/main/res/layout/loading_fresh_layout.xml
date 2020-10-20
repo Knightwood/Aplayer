@@ -6,25 +6,21 @@
     android:background="#FFFFFF"
     tools:ignore="ResourceName">
 
-    <com.scwang.smart.refresh.layout.SmartRefreshLayout
-        android:id="@+id/refreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
-
     <ViewStub
-        android:id="@+id/viewStub3"
+        android:id="@+id/default_RefreshLayout_stub"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout="@layout/refresh_rv"/>
+
+    <ViewStub
+        android:id="@+id/loading_view_stub3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
         android:layout="@layout/loading_layout" />
 
     <ViewStub
-        android:id="@+id/viewStub"
+        android:id="@+id/error_view_stub"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout="@layout/load_err_layout" />

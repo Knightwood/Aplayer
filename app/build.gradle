@@ -63,4 +63,6 @@ dependencies {
     implementation project(path: ':module_player')
     implementation project(path: ':module_base')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
 }

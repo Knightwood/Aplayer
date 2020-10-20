@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends Fragment {
     private ModuleHomeFragmentHomeBinding homeBinding;
     private HomeFragmnetAdapter homeFragmnetAdapter;
     TabLayout tablayout;
@@ -54,6 +54,7 @@ public class HomeFragment extends BaseFragment {
         tablayout = homeBinding.moduleHomeTablayout;
         fragmentViewPager = homeBinding.moduleHomeFragmentViewpager;
         fragmentViewPager.setAdapter(homeFragmnetAdapter);
+        fragmentViewPager.setCurrentItem(1);//默认选中第二个
         linkedTabLayout();
     }
 
@@ -88,7 +89,6 @@ public class HomeFragment extends BaseFragment {
                     break;
             }
         }).attach();
-        //默认选中中间位置
-        tablayout.selectTab(tablayout.getTabAt(1));
+
     }
 }

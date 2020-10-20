@@ -1,5 +1,6 @@
 package com.crystal.aplayer.all_module.main;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -26,7 +27,7 @@ public class MainActivity extends BaseActivity {
     private ModuleMainActivityMainBinding mainBinding;
     private BottomNavigationView bottomNavigationView;
 
-    private SparseArray<BaseFragment> fragments;
+    private  SparseArray<Fragment> fragments;
     private FragmentManager fragmentManager;
 
     @Override
@@ -114,7 +115,7 @@ public class MainActivity extends BaseActivity {
      * @param transaction
      * @return 返回传入的transaction
      */
-    private FragmentTransaction addFragment(int key, BaseFragment fragment, FragmentTransaction transaction) {
+    private <F extends Fragment> FragmentTransaction addFragment(int key, F fragment, FragmentTransaction transaction) {
         fragments.put(key, fragment);
         transaction.add(R.id.fragment_container_view, fragment);
         return transaction;
@@ -123,7 +124,7 @@ public class MainActivity extends BaseActivity {
     private FragmentTransaction hideAllFragment(FragmentTransaction transaction) {
         if (fragments != null) {
             for (int i = 0; i < KeyRes.fragmentsKeys.length; i++) {
-                BaseFragment f = fragments.get(KeyRes.fragmentsKeys[i]);
+                Fragment f = fragments.get(KeyRes.fragmentsKeys[i]);
                 if (f != null) {
                     transaction.hide(f);
                 }

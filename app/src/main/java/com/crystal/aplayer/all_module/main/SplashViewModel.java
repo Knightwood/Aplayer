@@ -18,7 +18,7 @@ public class SplashViewModel extends ViewModel {
 
     public SplashViewModel() {
         stateModel=new StateModel();
-        stateModel.loadDataState.setValue(LoadDataState.WAIT_LOAD_DATA);
+        stateModel.setLoadDataState(LoadDataState.WAIT_LOAD_DATA,false);
     }
 
     public StateModel getStateModel() {
@@ -26,6 +26,6 @@ public class SplashViewModel extends ViewModel {
     }
 
     public void setStateModel(LoadDataState state) {
-        this.stateModel.loadDataState.setValue(state);
+        this.stateModel.setLoadDataState(state,false);
     }
 }

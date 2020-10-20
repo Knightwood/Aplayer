@@ -49,14 +49,15 @@ android {
         //adapter
         api   rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
         //loadsir
-        api rootProject.ext.dependencies["loadsir"]
+        //api rootProject.ext.dependencies["loadsir"]
         //沉浸
         api  rootProject.ext.dependencies["immersionbar"]
-        //reflesh
+        //refresh
         api  'com.scwang.smart:refresh-layout-kernel:2.0.1'
         api  'com.scwang.smart:refresh-header-material:2.0.1'
+        api  'com.scwang.smart:refresh-footer-classics:2.0.1'
 
-
+        debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
     }
 
 }

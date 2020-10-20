@@ -43,7 +43,7 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
 
     private void init() {
         splashVM = new ViewModelProvider(this).get(SplashViewModel.class);
-        splashVM.getStateModel().loadDataState.observe(this, loadState -> {
+        splashVM.getStateModel().getLoadDataState().observe(this, loadState -> {
             switch (loadState) {
                 case WAIT_LOAD_DATA:
                    anim();
