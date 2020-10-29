@@ -55,6 +55,7 @@ public class HomeFragment extends Fragment {
         fragmentViewPager = homeBinding.moduleHomeFragmentViewpager;
         fragmentViewPager.setAdapter(homeFragmnetAdapter);
         fragmentViewPager.setCurrentItem(1);//默认选中第二个
+        fragmentViewPager.setOffscreenPageLimit(1);
         linkedTabLayout();
     }
 

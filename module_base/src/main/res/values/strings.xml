@@ -26,7 +26,7 @@
         <string name="plus_follow">+关注</string>
         <string name="unknown_error">发生未知错误</string>
         <string name="show_conversation">查看对话</string>
-        <string name="srl_footer_nothing">没有更多数据了</string>
+        <string name="jst_footer_nothing">没有更多数据了</string>
         <string name="press_again_to_exit">再按一次退出%1$s</string>
         <string name="build_type">build_type:%1$s</string>
         <string name="currently_not_supported">该功能即将开放，敬请期待</string>

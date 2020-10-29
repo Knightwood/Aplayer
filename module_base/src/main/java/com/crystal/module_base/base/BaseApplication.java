@@ -1,9 +1,10 @@
 package com.crystal.module_base.base;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.crystal.module_base.R;
-import com.crystal.module_base.common.ui.JustTextFooter;
+import com.crystal.module_base.common.view.JustTextFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
@@ -16,6 +17,8 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout;
  */
 public class BaseApplication extends Application {
 
+    private static Context mContext;
+
     static {
         SmartRefreshLayout.setDefaultRefreshInitializer((context, layout) -> {
             layout.setEnableLoadMore(true);
@@ -25,7 +28,7 @@ public class BaseApplication extends Application {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator  ((context, layout) -> {
             layout.setEnableHeaderTranslationContent(true);
             return new MaterialHeader(context)
-                    .setColorSchemeColors(R.color.blue, R.color.blue, R.color.blue);
+                    .setColorSchemeColors(context.getResources().getColor(R.color.blue),context.getResources().getColor(R.color.blue), context.getResources().getColor(R.color.blue));
         });
 
         SmartRefreshLayout.setDefaultRefreshFooterCreator ((context, layout)->{
@@ -41,5 +44,12 @@ public class BaseApplication extends Application {
                     .setTextTitleSize(16f);
         });
     }
-
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mContext = this;
+    }
+    public static Context getContext() {
+        return mContext;
+    }
 }
