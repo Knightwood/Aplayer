@@ -85,6 +85,15 @@ public class Observable {
             clearChanged();
     }
 
+        execUpdate(arrLocal,arg);
+    }
+
+    /**
+     * 执行更新，把数据变化通知给各个观察者
+     * @param arrLocal 存储观察者的数组
+     * @param arg 变化的数据
+     */
+    protected void execUpdate(Object[] arrLocal,Object...arg){
         for (int i = arrLocal.length-1; i>=0; i--)
             ((Observer)arrLocal[i]).update(this, arg);
     }

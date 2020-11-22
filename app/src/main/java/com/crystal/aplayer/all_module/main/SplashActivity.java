@@ -12,8 +12,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Toast;
 
 import com.crystal.aplayer.databinding.ModuleMainSplashActivityBinding;
-import com.crystal.module_base.base.mvvm.contract.LoadDataState;
-import com.crystal.module_base.base.mvvm.contract.LoadState;
+import com.crystal.module_base.base.mvvm.state.LoadDataState;
 import com.crystal.module_base.base.ui.activity.BaseActivity;
 import com.gyf.immersionbar.BarHide;
 import com.gyf.immersionbar.ImmersionBar;

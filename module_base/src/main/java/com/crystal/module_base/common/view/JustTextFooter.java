@@ -15,8 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import com.crystal.module_base.R;
-import com.crystal.module_base.common.util.TextKinds;
-import com.crystal.module_base.common.util.TypefaceKind;
+import com.crystal.module_base.common.util.typefaces.TextKinds;
+import com.crystal.module_base.common.util.typefaces.TypefaceKind;
 import com.scwang.smart.refresh.layout.api.RefreshKernel;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.constant.RefreshState;
@@ -82,7 +82,7 @@ public class JustTextFooter extends SimpleComponent implements RefreshFooter {
         }
 
         //字体
-        int typeFaceKind = typedArray.getInt(R.styleable.JustTextFooter_typeface1, TypefaceKind.LOBSTER_TYPEFACE.getKindCode());
+        int typeFaceKind = typedArray.getInt(R.styleable.JustTextFooter_typeface, TypefaceKind.LOBSTER_TYPEFACE.getKindCode());
         mTitleText.setTypeface(TextKinds.getInstance().parseTypeface(typeFaceKind));
 
         typedArray.recycle();

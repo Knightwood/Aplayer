@@ -14,7 +14,7 @@ import com.crystal.module_base.tools.threadpool.SimpleThreadPool;
  * 描述：
  */
 public class AppApplication extends BaseApplication {
-    private static Context mContext;
+
     private SimpleThreadPool threadPool;
 
     @Override
@@ -36,8 +36,6 @@ public class AppApplication extends BaseApplication {
         //ModuleInitManager.getInstance().initModule(this);
         threadPool=SimpleThreadPool.getInstance();
     }
-
-
 
     public static Context getInstance() {
         return mContext;

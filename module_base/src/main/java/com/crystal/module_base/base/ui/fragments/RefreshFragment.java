@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.crystal.module_base.R;
 import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel;
+import com.crystal.module_base.common.vm.CommonViewModel;
 import com.crystal.module_base.databinding.RefreshRvBinding;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -25,11 +26,11 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
  * packageName：com.crystal.module_base.base.ui.fragments
  * 描述：
  */
-public abstract class RefreshFragment<VM1 extends BaseViewModel> extends BaseFragment<VM1> {
+public abstract class RefreshFragment<VM1 extends CommonViewModel> extends LoadingRefreshFragment<VM1> {
     private SmartRefreshLayout smartRefreshLayout;
 
     @Override
-    protected View setChildLayout() {
+    protected View setContentLayout() {
         return setSmartRefreshLayout();
     }
 

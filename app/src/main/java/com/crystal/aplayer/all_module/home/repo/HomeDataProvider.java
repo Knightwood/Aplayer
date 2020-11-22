@@ -6,11 +6,11 @@ import com.crystal.module_base.base.http.retrofit.RetrofitConfig;
 import com.crystal.module_base.base.mvvm.repo.BaseDataProvider;
 import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel;
 import com.crystal.module_base.common.http.AllApiConfig;
-import com.crystal.module_base.common.http.bean.communitypage.CommunityFollowBean;
-import com.crystal.module_base.common.http.bean.communitypage.CommunityRecBean;
-import com.crystal.module_base.common.http.bean.mainpage.DiscoveryBean;
-import com.crystal.module_base.common.http.bean.mainpage.DailyFeedBean;
-import com.crystal.module_base.common.http.bean.mainpage.RecommendBean;
+import com.crystal.module_base.common.http.bean2.CommunityRecommend;
+import com.crystal.module_base.common.http.bean2.Daily;
+import com.crystal.module_base.common.http.bean2.Discovery;
+import com.crystal.module_base.common.http.bean2.Follow;
+import com.crystal.module_base.common.http.bean2.HomePageRecommend;
 import com.crystal.module_base.tools.LogUtil;
 
 import java.util.List;
@@ -60,22 +60,22 @@ public class HomeDataProvider extends BaseDataProvider<MainPageApiService, BaseV
     public void getDiscovery(@Url String url) {
         // DataBase.parsingCallgetData( DiscoveryBean.class);
         LogUtil.d(tag, "获取Discovery方法被调用");
-        retrofitConfig.parsingCallgetData(apiService.getDiscovery(url), DiscoveryBean.class, this);
+        retrofitConfig.parsingCallgetData(apiService.getDiscovery(url), Discovery.class, this);
     }
 
     public void getRecommend(@Url String url) {
-        retrofitConfig.parsingCallgetData(apiService.getRecommend(url), RecommendBean.class, this);
+        retrofitConfig.parsingCallgetData(apiService.getRecommend(url), HomePageRecommend.class, this);
     }
 
     public void getDailyFeed(@Url String url) {
-        retrofitConfig.parsingCallgetData(apiService.getDailyFeed(url), DailyFeedBean.class, this);
+        retrofitConfig.parsingCallgetData(apiService.getDailyFeed(url), Daily.class, this);
     }
 
     public void getCommunityRec() {
-        retrofitConfig.parsingCallgetData(apiService.getCommunityRec(), CommunityRecBean.class, this);
+        retrofitConfig.parsingCallgetData(apiService.getCommunityRec(), CommunityRecommend.class, this);
     }
 
     public void getCommunityFollow() {
-        retrofitConfig.parsingCallgetData(apiService.getCommunityFollow(), CommunityFollowBean.class, this);
+        retrofitConfig.parsingCallgetData(apiService.getCommunityFollow(), Follow.class, this);
     }
 }

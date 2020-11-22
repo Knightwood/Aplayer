@@ -13,4 +13,5 @@ public class KeyRes {
     public static final int notification_fragment=2023;
     public static final int mine_fragment=2024;
     public static final int[] fragmentsKeys=new int[]{home_fragment,community_fragment,notification_fragment,mine_fragment};
+    public static final String firstLoad= "FirstLoad";
 }

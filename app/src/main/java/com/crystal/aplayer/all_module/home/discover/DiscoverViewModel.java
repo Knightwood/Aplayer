@@ -1,14 +1,23 @@
 package com.crystal.aplayer.all_module.home.discover;
 
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.OnLifecycleEvent;
+import androidx.lifecycle.SavedStateHandle;
 
+import com.crystal.aplayer.all_module.KeyRes;
 import com.crystal.aplayer.all_module.home.repo.HomeDataProvider;
 import com.crystal.module_base.base.http.retrofit.ResponseMes;
+import com.crystal.module_base.base.mvvm.model.StateModel;
+import com.crystal.module_base.base.mvvm.repo.BaseLocateDB;
+import com.crystal.module_base.base.mvvm.state.LoadDataState;
 import com.crystal.module_base.common.http.AllApiConfig;
-import com.crystal.module_base.common.http.bean.mainpage.DiscoveryBean;
-import com.crystal.module_base.common.mvvm.CommonViewModel;
+import com.crystal.module_base.common.http.bean2.Discovery;
+import com.crystal.module_base.common.vm.CommonViewModel;
 import com.crystal.module_base.tools.LogUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,17 +27,15 @@ import java.util.List;
  * 描述：
  */
 public class DiscoverViewModel extends CommonViewModel<HomeDataProvider> {
-    private static final String tag="DiscoverFragment";
-
-    public MutableLiveData<DiscoveryBean> discoveryBeanMutableLiveData;
-    public MutableLiveData<List<DiscoveryBean.ItemListBeanX>> dataList;
-    public MutableLiveData<String> nextPage;
+    private static final String tag = "DiscoverFragment";
+    private MutableLiveData<Discovery> discoveryBeanMutableLiveData;
+    public MutableLiveData<List<Discovery.Item>> dataLists;
+    public boolean firstLoad = true;
 
     public DiscoverViewModel() {
         super();
-        discoveryBeanMutableLiveData=new MutableLiveData<>();
-        dataList=new MutableLiveData<>();
-        nextPage=new MutableLiveData<>();
+        discoveryBeanMutableLiveData = new MutableLiveData<>();
+        dataLists = new MutableLiveData<>();
     }
 
     @Override
@@ -36,32 +43,76 @@ public class DiscoverViewModel extends CommonViewModel<HomeDataProvider> {
         return HomeDataProvider.getInstance();
     }
 
+    /**
+     * @param arg
+     */
     @Override
-    protected void getRemoteDataSuccess(Object[] arg) {
-        super.getRemoteDataSuccess(arg);
-        LogUtil.d(tag, "viewmodel中whenUpdate方法被调用");
-        if (arg[0] instanceof DiscoveryBean) {
-            discoveryBeanMutableLiveData.postValue((DiscoveryBean) arg[0]);
+    protected void whenUpdate(Object[] arg) {
+        Discovery discovery;
+        ResponseMes responseMes;
+        if (arg[0] != null && arg[1] != null) {
+            if (arg[0] instanceof Discovery && arg[1] instanceof ResponseMes) {
+                discovery = (Discovery) arg[0];//拿到数据
+                responseMes = (ResponseMes) arg[1];
+                discoveryBeanMutableLiveData.postValue(discovery);
+            } else {
+                //todo 获得的数据类型不对，可能是其他viewmodel所需的数据，中止处理
+                return;
+            }
+            LogUtil.d(tag, "执行的获取数据的动作" + stateModel.nowBehavior.name());
+            if (!responseMes.hasError()) {
+                // 获取数据没问题，根据不同的动作（nowBehavior）执行不同的数据解析
+                if (stateModel.nowBehavior == StateModel.NowBehavior.Refreshing) {//下拉刷新
+                    dataLists.postValue(discovery.getItemList());
+                } else {//第一次加载或上拉加载更多
+                    List<Discovery.Item> tmp = dataLists.getValue();//旧数据
+                    List<Discovery.Item> tmpList;//存储新数据
+                    if (tmp != null)
+                        tmpList = new ArrayList<>(tmp);
+                    else
+                        tmpList = new ArrayList<>();
+                    tmpList.addAll(discovery.getItemList());
+                    dataLists.postValue(tmpList);
+                }
+                nextPage.postValue(discovery.getNextPageUrl());
+                LogUtil.d(tag, "下一页地址： " + discovery.getNextPageUrl() + "数量： " + discovery.getCount());
+                nowResponseMes.postValue(responseMes);//发送数据后的情况消息
+            } else {
+                // 获取数据不成功，出错
+                if (stateModel.nowBehavior == StateModel.NowBehavior.InitLoad) {
+                    // TODO: 2020/11/16 从数据库拿数据，注意此方法本来就在子线程。
+                    //  获取本地数据得阻塞。
+                    //  要还有可能修改responseMes
+                    if (BaseLocateDB.getData()) {
+                        // TODO: 2020/11/16 从数据库拿数据成功
+                    } else {
+                        // TODO: 2020/11/16 从数据库获取数据失败，标记加载过程失败
+                        stateModel.setLoadDataState(LoadDataState.LOAD_FAILED, true);
+                        return;
+                    }
+                }
+                nowResponseMes.postValue(responseMes);
+            }
+
         }
     }
 
-    /**
-     * 获取网络数据失败
-     * @param mes
-     */
     @Override
-    protected void getRemoteDataFailed(ResponseMes mes) {
-        super.getRemoteDataFailed(mes);
-        LogUtil.d(tag, "viewmodel中loadFailed方法被调用");
+    public void firstLoadData() {
+        super.firstLoadData();
+        dataProvider.getDiscovery(AllApiConfig.BASE_URL + AllApiConfig.DISCOVERY);
     }
 
+    @Override
+    public void freshData() {
+        super.freshData();
+        LogUtil.d(tag, "viewmodel获取数据更新");
+        dataProvider.getDiscovery(AllApiConfig.BASE_URL + AllApiConfig.DISCOVERY);
+    }
 
-    public void getNextPage() {
+    @Override
+    public void loadMore() {
+        super.loadMore();
         dataProvider.getDiscovery(nextPage.getValue());
-    }
-
-    public void freshData(){
-        LogUtil.d(tag,"viewmodel获取数据更新");
-        dataProvider.getDiscovery(AllApiConfig.BASE_URL+AllApiConfig.DISCOVERY);
     }
 }

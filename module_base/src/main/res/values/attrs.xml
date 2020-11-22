@@ -5,15 +5,15 @@
         <attr name="srlPrimaryColor" />
         <attr name="srlAccentColor" />
         <attr name="srlTextSizeTitle" />
-        <attr name="typeface1"/>
+        <attr name="typeface"/>
         <attr name="srlTextNothing" />
     </declare-styleable>
 
     <declare-styleable name="NTextView">
-        <attr name="typeface1"/>
+        <attr name="typeface"/>
     </declare-styleable>
 
-    <attr name="typeface1">
+    <attr name="typeface">
         <enum name="fzlLTypeface" value="1" />
         <enum name="fzdb1Typeface" value="2" />
         <enum name="futuraTypeface" value="3" />

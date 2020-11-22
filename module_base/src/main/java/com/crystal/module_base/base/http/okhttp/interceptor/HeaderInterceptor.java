@@ -3,6 +3,7 @@ package com.crystal.module_base.base.http.okhttp.interceptor;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.Date;
 
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -18,8 +19,12 @@ public class HeaderInterceptor implements Interceptor {
     @NotNull
     @Override
     public Response intercept(@NotNull Chain chain) throws IOException {
-        Request original=chain.request();
-
-        return null;
+        String userAgent = System.getProperty("http.agent");
+        Request original = chain.request();
+        Request.Builder request = original.newBuilder();
+        request.addHeader("model", "Android")
+                .addHeader("If-Modified-Since", String.valueOf(new Date()))
+                .addHeader("User-Agent", userAgent != null ? userAgent : "unknown");
+        return chain.proceed(request.build());
     }
 }

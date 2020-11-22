@@ -16,8 +16,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout;
  * 描述：
  */
 public class BaseApplication extends Application {
-
-    private static Context mContext;
+    protected static Context mContext;
 
     static {
         SmartRefreshLayout.setDefaultRefreshInitializer((context, layout) -> {
@@ -47,8 +46,8 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = this;
     }
+
     public static Context getContext() {
         return mContext;
     }

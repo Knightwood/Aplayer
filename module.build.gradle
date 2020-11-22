@@ -1,12 +1,14 @@
-
 if (asModule_notAloneApp.toBoolean()) {
     //作为组件被app依赖
     apply plugin: 'com.android.library'
+
 } else {
     //作为独立App应用运行
     apply plugin: 'com.android.application'
 }
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -53,13 +55,28 @@ android {
     }
 
     //开启视图绑定
-    viewBinding{
+    viewBinding {
         enabled true
     }
 
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
+    }
+    dependencies {
+        //按需添加  指定kotlin标准库依赖
+        //相关说明  https://www.kotlincn.net/docs/reference/using-gradle.html
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+        //如果项目中使用了butterknife和glide相关依赖需进行修改（将annotationProcessor），否则会出现兼容问题
+
+        //纯java开发
+        // annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+        // annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+
+        //java+kotlin混合开发
+        //kapt "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+        //kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
     }
 
 }

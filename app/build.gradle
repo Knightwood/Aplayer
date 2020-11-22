@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -60,9 +62,15 @@ android {
 dependencies {
 
 //引入module
-    implementation project(path: ':module_player')
     implementation project(path: ':module_base')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
+
+    //按需添加  指定kotlin标准库依赖
+    //相关说明  https://www.kotlincn.net/docs/reference/using-gradle.html
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
 }

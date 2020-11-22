@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.LayoutRes;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -12,13 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
  * 创建时间 2020/4/6 8:46
  */
 public class BaseHolder<N> extends RecyclerView.ViewHolder {
-    private View itemView;
     private SparseArray<View> views;//缓存一些view
-   // private N mInfo;//N类型的bean
+    // private N mInfo;//N类型的bean
 
     public BaseHolder(View itemView) {
         super(itemView);
-        this.itemView = itemView;
         views = new SparseArray<>();//暂存itemView中的子view的id和view对象，
     }
 
@@ -71,16 +70,18 @@ public class BaseHolder<N> extends RecyclerView.ViewHolder {
     /**
      * 设置条目点击事件
      */
-    public void setOnIntemClickListener(View.OnClickListener listener, N info) {
+    public void setOnItemClickListener(View.OnClickListener listener, N info) {
         itemView.setOnClickListener(listener);
     }
-    public void  setOnIntemClickListener(View.OnClickListener listener) {
+
+    public void setOnItemClickListener(View.OnClickListener listener) {
         itemView.setOnClickListener(listener);
     }
+
     /**
      * 设置条目长按事件
      */
-    public void setOnIntemLongClickListener(View.OnLongClickListener listener) {
+    public void setOnItemLongClickListener(View.OnLongClickListener listener) {
         itemView.setOnLongClickListener(listener);
     }
 

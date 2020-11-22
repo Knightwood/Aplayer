@@ -2,8 +2,7 @@ package com.crystal.aplayer.all_module.main;
 
 import androidx.lifecycle.ViewModel;
 
-import com.crystal.module_base.base.mvvm.contract.LoadDataState;
-import com.crystal.module_base.base.mvvm.contract.LoadState;
+import com.crystal.module_base.base.mvvm.state.LoadDataState;
 import com.crystal.module_base.base.mvvm.model.StateModel;
 
 /**

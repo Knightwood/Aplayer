@@ -1,58 +1,63 @@
 package com.crystal.aplayer.all_module.home.discover;
 
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
-import android.widget.Button;
 
-import com.crystal.aplayer.R;
+import com.crystal.aplayer.all_module.KeyRes;
 import com.crystal.aplayer.databinding.ModuleHomeFragmentDiscoverBinding;
-import com.crystal.module_base.base.mvvm.contract.LoadDataState;
-import com.crystal.module_base.base.ui.fragments.BaseFragment;
-import com.crystal.module_base.base.ui.fragments.RefreshFragment;
+import com.crystal.module_base.base.ui.fragments.LoadingRefreshFragment;
+import com.crystal.module_base.common.http.bean2.Discovery;
 import com.crystal.module_base.tools.LogUtil;
-import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
-public class DiscoverFragment extends BaseFragment<DiscoverViewModel> {
-    private static final String tag="DiscoverFragment";
+import java.util.List;
 
-    public DiscoverFragment() {
+public class DiscoverFragment extends LoadingRefreshFragment<DiscoverViewModel> {
+    private static final String tag = "DiscoverFragment";
+    private DiscoverAdapter adapter = null;
+    private RecyclerView recyclerView;
+    private ModuleHomeFragmentDiscoverBinding binding;
 
-    }
-
-    public static DiscoverFragment newInstance(String param1, String param2) {
-        DiscoverFragment fragment = new DiscoverFragment();
-        return fragment;
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (viewModel.firstLoad) {
+            viewModel.firstLoad = false;
+            viewModel.firstLoadData();
+        }
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    protected void observeData(DiscoverViewModel viewModel) {
+    protected void observeLiveData(DiscoverViewModel viewModel) {
         //监听网络数据
-        viewModel.discoveryBeanMutableLiveData.observe(this, discoveryBean -> {
-            if (discoveryBean != null) {
-                viewModel.dataList.setValue(discoveryBean.getItemList());
-                viewModel.nextPage.setValue((String) discoveryBean.getNextPageUrl());
-                LogUtil.d(tag, "下一页地址："+(String) discoveryBean.getNextPageUrl());
-            }else {
-                LogUtil.d(tag, "response是null");
-            }
-        });
-        //监听数据获取状态
-        viewModel.stateModel.getDataFreshState().observe(this, dataRefreshState -> {
-
+        viewModel.dataLists.observe(getViewLifecycleOwner(), this::initAdapter);
+        viewModel.nowResponseMes.observe(getViewLifecycleOwner(), responseMes -> {
+            // TODO: 2020/11/16 有错误的话展示错误消息，没有错误的话，不进行处理
+            if (responseMes.hasError())
+                showToast("获取数据失败");
+            reSetPageState(false, viewModel.stateModel.nowBehavior);//重置所有视图和状态
         });
     }
 
+    private void initAdapter(List<Discovery.Item> list) {
+        if (adapter == null) {
+            adapter = new DiscoverAdapter(list, getActivity());
+            recyclerView = binding.recyclerviewRoot;
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setAdapter(adapter);
+            LogUtil.d(tag, "获取数据成功-initadapter");
+        } else {
+            if (defaultRefreshLayout.getState().isHeader) {
+                adapter.removeOldData(list);
+            } else {
+                adapter.addMoreData(list);
+            }
+            LogUtil.d(tag, "获取数据成功-addmoredata");
+        }
+        reSetPageState(true, viewModel.stateModel.nowBehavior);
+    }
 
     @Override
     protected DiscoverViewModel setViewModel() {
@@ -60,33 +65,14 @@ public class DiscoverFragment extends BaseFragment<DiscoverViewModel> {
     }
 
     @Override
-    protected View setChildLayout() {
-        return ModuleHomeFragmentDiscoverBinding.inflate(getLayoutInflater()).getRoot();
+    protected View setContentLayout() {
+        this.binding = ModuleHomeFragmentDiscoverBinding.inflate(getLayoutInflater());
+        return binding.getRoot();
     }
 
     @Override
-    protected OnRefreshListener setOnRefreshListener() {
-        return refreshLayout -> {
-            viewModel.stateModel.setLoadDataState(LoadDataState.LOADING,false);
-        };
-    }
-
-    @Override
-    protected OnLoadMoreListener setOnLoadMoreListener() {
-        return refreshLayout -> {
-            viewModel.stateModel.setLoadDataState(LoadDataState.LOAD_FINISHED,false);
-        };
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Button button= rootViewBinding.getRoot().findViewById(R.id.app_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewModel.stateModel.setLoadDataState(LoadDataState.LOAD_FAILED,false);
-            }
-        });
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

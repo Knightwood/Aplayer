@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.annotation.Nullable;
 
 import com.crystal.module_base.R;
-import com.crystal.module_base.common.util.TextKinds;
+import com.crystal.module_base.common.util.typefaces.TextKinds;
 
 /**
  * 创建者 kiylx
@@ -31,7 +31,7 @@ public class NTextView extends  AppCompatTextView{
     public NTextView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray a =context.obtainStyledAttributes(attrs, R.styleable.NTextView);
-        int TypeFaceCode=a.getInt(R.styleable.NTextView_typeface1,0);
+        int TypeFaceCode=a.getInt(R.styleable.NTextView_typeface,0);
         setTypeface(TextKinds.getInstance().parseTypeface(TypeFaceCode));
         a.recycle();
     }

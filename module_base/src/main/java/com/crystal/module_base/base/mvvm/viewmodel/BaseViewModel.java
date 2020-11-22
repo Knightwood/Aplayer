@@ -2,12 +2,8 @@ package com.crystal.module_base.base.mvvm.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 
-import com.crystal.module_base.base.http.retrofit.ResponseMes;
-import com.crystal.module_base.base.mvvm.contract.LoadDataState;
-import com.crystal.module_base.base.mvvm.contract.LoadState;
 import com.crystal.module_base.base.mvvm.model.StateModel;
 import com.crystal.module_base.base.mvvm.repo.BaseDataProvider;
-import com.crystal.module_base.tools.LogUtil;
 import com.crystal.module_base.tools.observable.Observable;
 import com.crystal.module_base.tools.observable.Observer;
 

@@ -16,14 +16,19 @@ import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
 import android.webkit.WebView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.load.Transformation;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.crystal.module_base.R;
 import com.crystal.module_base.tools.dateProcess.TimeProcess;
 import com.crystal.module_base.tools.networkpack.NetState;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,6 +42,10 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.scwang.smart.refresh.layout.util.SmartUtil.dp2px;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
  * 创建者 kiylx
@@ -86,6 +95,40 @@ public enum SomeTools {
 
                     }
                 });
+    }
+
+    /**
+     * Glide加载图片，可以指定圆角弧度。
+     *
+     * @param imageView  imageView
+     * @param url        图片地址
+     * @param round      圆角，单位dp
+     * @param cornerType 圆角角度
+     */
+    public void loadImg(ImageView imageView, String url, float round, RoundedCornersTransformation.CornerType cornerType) {
+        if (round == 0f) {
+            Glide.with(imageView.getContext()).load(url).into(imageView);
+        } else {
+            if (cornerType == null) {
+                cornerType = RoundedCornersTransformation.CornerType.ALL;
+            }
+            RequestOptions option = RequestOptions.bitmapTransform(new RoundedCornersTransformation(dp2px(round), 0, cornerType)).placeholder(R.drawable.shape_album_loading_bg);
+            Glide.with(imageView.getContext()).load(url).apply(option).into(imageView);
+        }
+    }
+
+
+    /**
+     * Glide加载图片，可以定义配置参数。
+     *
+     * @param url     图片地址
+     * @param options 配置参数
+     */
+    public void loadImg(ImageView imageView, String url, RequestOptions options) {
+        if (options==null)
+            Glide.with(imageView.getContext()).load(url).into(imageView);
+        else
+            Glide.with(imageView.getContext()).load(url).apply(options).into(imageView);
     }
 
     /**

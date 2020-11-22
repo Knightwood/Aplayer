@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.crystal.aplayer">
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".AppApplication"
@@ -16,9 +18,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".all_module.main.SplashActivity">
-</activity>
-        <activity android:name=".all_module.main.MainActivity"
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5ee21dfcdbc2ec078743b1f3" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="opensource" />
+        <!-- 关于全面屏与刘海，状态栏配置相关 -->
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.4" />
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
+        <activity android:name=".all_module.main.LoginActivity"></activity>
+        <activity android:name=".all_module.main.SplashActivity"></activity>
+        <activity
+            android:name=".all_module.main.MainActivity"
             android:theme="@style/MaterialThemes">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".all_module.newdetail.NewDetailActivity" />
     </application>
 
 </manifest>

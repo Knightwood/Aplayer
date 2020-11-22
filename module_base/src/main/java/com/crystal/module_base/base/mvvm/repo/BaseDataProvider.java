@@ -10,8 +10,6 @@ import com.crystal.module_base.tools.observable.Observable;
 
 import java.util.List;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 
 
 /**
@@ -22,7 +20,7 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class BaseDataProvider<T extends Api, VM extends BaseViewModel> extends Observable {
     protected T apiService;//网络接口
-    protected CompositeDisposable compositeDisposable;//管理rxjava订阅，防止内存泄漏
+//    protected CompositeDisposable compositeDisposable;//管理rxjava订阅，防止内存泄漏
     protected RetrofitConfig retrofitConfig;
 
     public BaseDataProvider() {
@@ -60,7 +58,7 @@ public abstract class BaseDataProvider<T extends Api, VM extends BaseViewModel> 
         }
     }
 
-    public void cleanRxObservable(Disposable disposable) {
+  /*  public void cleanRxObservable(Disposable disposable) {
         if (compositeDisposable != null) {
             if (disposable != null) {
                 compositeDisposable.remove(disposable);
@@ -68,6 +66,6 @@ public abstract class BaseDataProvider<T extends Api, VM extends BaseViewModel> 
                 compositeDisposable.clear();
             }
         }
-    }
+    }*/
 
 }

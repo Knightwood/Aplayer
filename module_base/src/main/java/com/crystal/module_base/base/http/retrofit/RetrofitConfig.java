@@ -1,6 +1,8 @@
 package com.crystal.module_base.base.http.retrofit;
 
 
+import com.crystal.module_base.base.http.okhttp.interceptor.BasicParamsInterceptor;
+import com.crystal.module_base.base.http.okhttp.interceptor.HeaderInterceptor;
 import com.crystal.module_base.base.http.okhttp.interceptor.LoggingInterceptor;
 import com.crystal.module_base.tools.LogUtil;
 import com.crystal.module_base.tools.observable.Observable;
@@ -33,6 +35,7 @@ public class RetrofitConfig {
 
     /**
      * 非第一次获取此类，可以调用此方法
+     *
      * @return 返回此类的实例
      */
     public static RetrofitConfig getInstance() {
@@ -41,6 +44,7 @@ public class RetrofitConfig {
 
     /**
      * 第一次获取此类时可以调用此方法，以及传入线程池。
+     *
      * @param executorService 线程池
      * @return
      */
@@ -72,6 +76,8 @@ public class RetrofitConfig {
         okHttpClient = new OkHttpClient
                 .Builder()
                 .addInterceptor(new LoggingInterceptor())
+                .addInterceptor(new HeaderInterceptor())
+                .addInterceptor(new BasicParamsInterceptor())
                 .build();
         retrofitHashMap = new HashMap<>();
     }
@@ -90,13 +96,11 @@ public class RetrofitConfig {
 
     /**
      * @param baseUrl
-     * @return
-     * 根据baseurl初始化一个retrofit并返回
+     * @return 根据baseurl初始化一个retrofit并返回
      */
     private Retrofit initRetrofit(String baseUrl) {
         if (!retrofitHashMap.containsKey(baseUrl)) {
-            retrofitHashMap.put(baseUrl, new Retrofit
-                    .Builder()
+            retrofitHashMap.put(baseUrl, new Retrofit.Builder()
                     .client(okHttpClient)
                     .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -140,15 +144,16 @@ public class RetrofitConfig {
                 }
                 executorService.execute(() -> {
                     LogUtil.d(tag, "解析response:  ");
+                    ResponseMes mes = new ResponseMes(response.code(), response.message());
                     host.setChanged();
                     if (response.isSuccessful()) {
-                        LogUtil.d(tag, "解析response: 成功 "+host.countObservers());
-                        host.notifyObservers(beanClazz.cast(response.body()));
+                        LogUtil.d(tag, "解析response: 成功 " + host.countObservers());
+                        host.notifyObservers(beanClazz.cast(response.body()), mes);
                     } else {
                         LogUtil.d(tag, "解析response: 失败 ");
-                        ResponseMes mes = new ResponseMes(response.code(), response.message());
                         host.notifyObservers(null, mes);
                     }
+
                 });
             }
 

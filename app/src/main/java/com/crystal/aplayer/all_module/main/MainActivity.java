@@ -1,7 +1,6 @@
 package com.crystal.aplayer.all_module.main;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -17,7 +16,6 @@ import com.crystal.aplayer.all_module.mine.MineFragment;
 import com.crystal.aplayer.all_module.notification.NotificationFragment;
 import com.crystal.aplayer.databinding.ModuleMainActivityMainBinding;
 import com.crystal.module_base.base.ui.activity.BaseActivity;
-import com.crystal.module_base.base.ui.fragments.BaseFragment;
 import com.crystal.module_base.tools.LogUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
