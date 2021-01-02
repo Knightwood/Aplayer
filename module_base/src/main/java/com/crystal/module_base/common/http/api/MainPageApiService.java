@@ -1,11 +1,6 @@
 package com.crystal.module_base.common.http.api;
 
 import com.crystal.module_base.base.http.retrofit.Api;
-import com.crystal.module_base.common.http.bean.communitypage.CommunityFollowBean;
-import com.crystal.module_base.common.http.bean.communitypage.CommunityRecBean;
-import com.crystal.module_base.common.http.bean.mainpage.DiscoveryBean;
-import com.crystal.module_base.common.http.bean.mainpage.DailyFeedBean;
-import com.crystal.module_base.common.http.bean.mainpage.RecommendBean;
 import com.crystal.module_base.common.http.bean2.CommunityRecommend;
 import com.crystal.module_base.common.http.bean2.Daily;
 import com.crystal.module_base.common.http.bean2.Discovery;
@@ -38,10 +33,10 @@ public interface MainPageApiService extends Api {
 
     //社区
 // 1.推荐 请求地址： http://baobab.kaiyanapp.com/api/v7/community/tab/rec
-    @GET("v7/community/tab/rec")
-    Call<CommunityRecommend> getCommunityRec();
+    @GET
+    Call<CommunityRecommend> getCommunityRec(@Url String url);
 
     //2.关注 请求地址： http://baobab.kaiyanapp.com/api/v6/community/tab/follow
-    @GET("v6/community/tab/follow")
-    Call<Follow> getCommunityFollow();
+    @GET
+    Call<Follow> getCommunityFollow(@Url String url);
 }

@@ -51,5 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity {
        ImmersionBar.with(this).autoStatusBarDarkModeEnable(true,0.2f)
        .statusBarColor(color)
        .fitsSystemWindows(true)
-       .init(); }
+       .init();
+   }
+
 }

@@ -1,13 +1,8 @@
 package com.crystal.aplayer.all_module.home.discover;
 
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.OnLifecycleEvent;
-import androidx.lifecycle.SavedStateHandle;
 
-import com.crystal.aplayer.all_module.KeyRes;
-import com.crystal.aplayer.all_module.home.repo.HomeDataProvider;
+import com.crystal.aplayer.all_module.repo.HomeDataProvider;
 import com.crystal.module_base.base.http.retrofit.ResponseMes;
 import com.crystal.module_base.base.mvvm.model.StateModel;
 import com.crystal.module_base.base.mvvm.repo.BaseLocateDB;
@@ -30,7 +25,6 @@ public class DiscoverViewModel extends CommonViewModel<HomeDataProvider> {
     private static final String tag = "DiscoverFragment";
     private MutableLiveData<Discovery> discoveryBeanMutableLiveData;
     public MutableLiveData<List<Discovery.Item>> dataLists;
-    public boolean firstLoad = true;
 
     public DiscoverViewModel() {
         super();
@@ -66,13 +60,11 @@ public class DiscoverViewModel extends CommonViewModel<HomeDataProvider> {
                     dataLists.postValue(discovery.getItemList());
                 } else {//第一次加载或上拉加载更多
                     List<Discovery.Item> tmp = dataLists.getValue();//旧数据
-                    List<Discovery.Item> tmpList;//存储新数据
-                    if (tmp != null)
-                        tmpList = new ArrayList<>(tmp);
+                    if (tmp != null && tmp.size() != 0)
+                        tmp.addAll(discovery.getItemList());
                     else
-                        tmpList = new ArrayList<>();
-                    tmpList.addAll(discovery.getItemList());
-                    dataLists.postValue(tmpList);
+                        tmp=new ArrayList<>(discovery.getItemList());
+                    dataLists.postValue(tmp);
                 }
                 nextPage.postValue(discovery.getNextPageUrl());
                 LogUtil.d(tag, "下一页地址： " + discovery.getNextPageUrl() + "数量： " + discovery.getCount());

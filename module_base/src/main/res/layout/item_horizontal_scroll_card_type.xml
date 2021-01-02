@@ -8,8 +8,7 @@
     android:orientation="vertical">
     <!--tools:context=".ui.home.discovery.DiscoveryFragment">-->
 
-    <!--<com.zhpan.bannerview.BannerViewPager-->
-    <com.crystal.module_base.tools.liteviewpager.LiteViewPager
+    <com.zhpan.bannerview.BannerViewPager
         android:id="@+id/bannerViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

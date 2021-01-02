@@ -1,4 +1,3 @@
 rootProject.name='Aplayer'
 include ':app'
-include ':module_player'
 include ':module_base'

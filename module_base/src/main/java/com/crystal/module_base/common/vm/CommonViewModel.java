@@ -1,18 +1,18 @@
 package com.crystal.module_base.common.vm;
 
+import android.os.SystemClock;
+
 import androidx.annotation.CallSuper;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.SavedStateHandle;
 
 import com.crystal.module_base.base.http.retrofit.ResponseMes;
 import com.crystal.module_base.base.mvvm.model.StateModel;
-import com.crystal.module_base.base.mvvm.state.DataRefreshState;
 import com.crystal.module_base.base.mvvm.state.LoadDataState;
 import com.crystal.module_base.base.mvvm.repo.BaseDataProvider;
 import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel;
 import com.crystal.module_base.tools.LogUtil;
-import com.scwang.smart.refresh.layout.constant.RefreshState;
+import com.google.common.util.concurrent.RateLimiter;
 
 /**
  * 创建者 kiylx
@@ -30,17 +30,20 @@ public abstract class CommonViewModel<D extends BaseDataProvider> extends BaseVi
     private static final String tag = "CommonViewModel";
     public MutableLiveData<ResponseMes> nowResponseMes;//记录当前执行动作完成后（刷新，加载更多）的结果
     public MutableLiveData<String> nextPage;//下一页的数据地址
+    public boolean firstLoad = true;
+    private long lastLoadMoreTime = 0;//上次上拉刷新时间
 
     public CommonViewModel() {
         super();
         nowResponseMes = new MutableLiveData<>();
         nextPage = new MutableLiveData<>();
+        lastLoadMoreTime=System.currentTimeMillis();
     }
 
     @CallSuper
     public void firstLoadData() {
         stateModel.nowBehavior = StateModel.NowBehavior.InitLoad;//标记当前执行的动作
-        stateModel.setLoadDataState(LoadDataState.LOADING,false);//置为loading状态，显示圆圈进度条
+        stateModel.setLoadDataState(LoadDataState.LOADING, false);//置为loading状态，显示圆圈进度条
     }
 
     @CallSuper
@@ -56,6 +59,8 @@ public abstract class CommonViewModel<D extends BaseDataProvider> extends BaseVi
         if (stateModel.nowBehavior != StateModel.NowBehavior.AllDone) {
             return;
         }
+        if (!canLoadMore())
+            return;
         String url = nextPage.getValue();
         if (url == null) {
             // TODO: 2020/11/17 发送responsemes，声明没有更多数据
@@ -63,5 +68,16 @@ public abstract class CommonViewModel<D extends BaseDataProvider> extends BaseVi
             return;
         }
         stateModel.nowBehavior = StateModel.NowBehavior.LoadMoreData;
+    }
+
+    private boolean canLoadMore() {
+        long now = System.currentTimeMillis();
+        if (lastLoadMoreTime - now > 1000) {
+            lastLoadMoreTime = now;
+            return true;
+        } else {
+            lastLoadMoreTime = now;
+            return false;
+        }
     }
 }

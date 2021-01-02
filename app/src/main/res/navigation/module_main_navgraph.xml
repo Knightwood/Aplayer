@@ -8,9 +8,9 @@
 
     <fragment
         android:id="@+id/app_homefragment"
-        android:name="com.crystal.aplayer.all_module.home.main_page.HomeFragment"
+        android:name="com.crystal.aplayer.all_module.home.HomeFragment"
         android:label="module_home_fragment_home"
-        tools:layout="@layout/module_home_fragment_home" >
+        tools:layout="@layout/simple_fragment_continer" >
         <action
             android:id="@+id/app_action_app_homefragment_to_app_communityfragment"
             app:destination="@id/app_communityfragment" />
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/app_communityfragment"
-        android:name="com.crystal.aplayer.all_module.community.Community_Fragment"
+        android:name="com.crystal.aplayer.all_module.community.commend.CommendFragment"
         tools:layout="@layout/fragment_moudle_community" />
     <fragment android:id="@+id/app_addfragment" />
     <fragment

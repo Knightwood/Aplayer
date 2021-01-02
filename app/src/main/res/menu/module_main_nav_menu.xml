@@ -13,6 +13,7 @@
     <item
         android:id="@+id/app_addbutton"
         android:icon="@drawable/bottom_nav_add_sel"
+        android:visible="false"
         android:title=" "
         app:showAsAction="collapseActionView" />
     <item

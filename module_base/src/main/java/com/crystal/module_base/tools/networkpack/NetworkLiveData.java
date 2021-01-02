@@ -1,6 +1,5 @@
 package com.crystal.module_base.tools.networkpack;
 
-import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.LinkProperties;
@@ -12,8 +11,8 @@ import android.os.Build;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 
+import com.crystal.module_base.base.BaseApplication;
 import com.crystal.module_base.tools.LogUtil;
-import com.crystal.module_base.tools.Xapplication;
 
 import java.util.Map;
 
@@ -46,7 +45,7 @@ public class NetworkLiveData extends LiveData<NetState> {
     private NetworkLiveData() {
         LogUtil.d(TAG, "NetworkLiveData: 初始化");
         request = new NetworkRequest.Builder().build();
-        connectivityManager = (ConnectivityManager) Xapplication.getInstance().getSystemService(Context.CONNECTIVITY_SERVICE);
+        connectivityManager = (ConnectivityManager) BaseApplication.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         networkCallback = new NetWorkCallbackImpl();
 
     }

@@ -1,16 +1,19 @@
 package com.crystal.aplayer.all_module.home.discover;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 
-import com.crystal.aplayer.all_module.KeyRes;
 import com.crystal.aplayer.databinding.ModuleHomeFragmentDiscoverBinding;
 import com.crystal.module_base.base.ui.fragments.LoadingRefreshFragment;
 import com.crystal.module_base.common.http.bean2.Discovery;
 import com.crystal.module_base.tools.LogUtil;
+import com.crystal.module_base.tools.live_data_bus.DataBus;
+import com.crystal.module_base.tools.live_data_bus.core.BusCore;
+import com.crystal.module_base.tools.live_data_bus.core.ObserverMod;
 
 import java.util.List;
 

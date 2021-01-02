@@ -16,7 +16,7 @@ public enum ViewHolderTypes implements HolderType {
 
     CUSTOM_HEADER(0, R.layout.item_unknown, "customHeader"),        //自定义头部类型。
 
-    TEXT_CARD_HEADER1(1, R.layout.item_unknown, "textCard_"),
+    TEXT_CARD_HEADER1(1, R.layout.item_text_card_type, "textCard"),
 
     TEXT_CARD_HEADER2(2, R.layout.item_unknown, "textCard_"),
 
@@ -82,24 +82,24 @@ public enum ViewHolderTypes implements HolderType {
     }
 
     /**
-     * @param type
-     * @param dataType
-     * @return
-     * 除了textcard之外，其余的没有进行进一步的判断，目前不需要。
+     * @param dataType  data.getType()
+     * @param type      data.getData().getDataType()
+     * @param data_type data.getData().getType()
+     * @return 除了textcard之外，其余的没有进行进一步的判断，目前不需要。
      */
-   static ViewHolderTypes getTypeEnum(String type, String dataType) {
+    static ViewHolderTypes getTypeEnum(String type, String dataType, String data_type) {
         if (type.equals("textCard")) {
-            return getTextCard(dataType);
+            return getTextCard(dataType, data_type);
         }
         if (type.equals("briefCard")) {
-            switch (dataType){
-                case "TagBriefCard" :
+            switch (dataType) {
+                case "TagBriefCard":
                     return TAG_BRIEFCARD;
-                case "TopicBriefCard" :
-                   return TOPIC_BRIEFCARD;
+                case "TopicBriefCard":
+                    return TOPIC_BRIEFCARD;
             }
-           return UNKNOWN;
-       } else {
+            return UNKNOWN;
+        } else {
             for (ViewHolderTypes t : enums) {
                 if (t.firstTypeKind.equals(type))
                     return t;
@@ -108,11 +108,15 @@ public enum ViewHolderTypes implements HolderType {
         return UNKNOWN;
     }
 
-    static ViewHolderTypes getTextCard(String type) {
-        switch (type) {
+    static ViewHolderTypes getTextCard(String type, String data_type) {
+        if (data_type == null)
+            return UNKNOWN;
+        switch (data_type) {
             case "header4":
                 return TEXT_CARD_HEADER4;
             case "header5":
+                return TEXT_CARD_HEADER5;
+            case "header7":
                 return TEXT_CARD_HEADER7;
             case "header8":
                 return TEXT_CARD_HEADER8;

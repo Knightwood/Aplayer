@@ -16,6 +16,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!--启动页主题-->
+    <style name="startingWindow" parent="Theme.MaterialComponents.Light.NoActionBar" tools:ignore="ResourceName">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/black</item>
+    </style>
 
     <!-- Base application theme. -->
     <style name="Eyepetizer" parent="Theme.AppCompat.Light.NoActionBar">

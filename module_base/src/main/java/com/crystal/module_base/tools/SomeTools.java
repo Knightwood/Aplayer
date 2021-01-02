@@ -15,17 +15,18 @@ import android.os.Environment;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.MultiTransformation;
-import com.bumptech.glide.load.Transformation;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.crystal.module_base.R;
+import com.crystal.module_base.base.BaseApplication;
 import com.crystal.module_base.tools.dateProcess.TimeProcess;
 import com.crystal.module_base.tools.networkpack.NetState;
 
@@ -125,7 +126,7 @@ public enum SomeTools {
      * @param options 配置参数
      */
     public void loadImg(ImageView imageView, String url, RequestOptions options) {
-        if (options==null)
+        if (options == null)
             Glide.with(imageView.getContext()).load(url).into(imageView);
         else
             Glide.with(imageView.getContext()).load(url).apply(options).into(imageView);
@@ -271,6 +272,22 @@ public enum SomeTools {
         if (networkInfo != null && networkInfo.isConnected())
             return true;
         return false;
+    }
+
+    public DisplayMetrics getDisplayMetrics(@NonNull Context context) {
+        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics metrics = new DisplayMetrics();
+        if (windowManager.getDefaultDisplay() != null)
+            windowManager.getDefaultDisplay().getMetrics(metrics);
+        return metrics;
+    }
+
+    public void showToast(Context context,String msg,Object... args){
+        if (args == null||args.length==0)
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(context, String.format(msg, args), Toast.LENGTH_SHORT).show();
+
     }
 
 }

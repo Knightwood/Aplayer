@@ -44,10 +44,8 @@ public abstract class BaseViewPagerFragment extends Fragment {
             viewPager.setOffscreenPageLimit(offScreenPageLimit);
             viewPager.setAdapter(adapter);
         }
-        if (tabLayout != null) {
-            new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-                tabMediator(tab, position);
-            }).attach();
+        if (tabLayout != null&&viewPager != null) {
+            new TabLayoutMediator(tabLayout, viewPager, this::tabMediator).attach();
         }
     }
 
@@ -59,7 +57,7 @@ public abstract class BaseViewPagerFragment extends Fragment {
 
     protected abstract void tabMediator(TabLayout.Tab tab, int position);
 
-    public class FragmentAdapter extends FragmentStateAdapter {
+    public static class FragmentAdapter extends FragmentStateAdapter {
         private List<Fragment> fragmentList;
 
         public FragmentAdapter(@NonNull Fragment fragment, @NonNull List<Fragment> fragments) {

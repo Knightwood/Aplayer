@@ -9,17 +9,19 @@ import android.os.Bundle;
 import android.util.SparseArray;
 
 import com.crystal.aplayer.R;
-import com.crystal.aplayer.all_module.KeyRes;
-import com.crystal.aplayer.all_module.community.Community_Fragment;
-import com.crystal.aplayer.all_module.home.main_page.HomeFragment;
+import com.crystal.aplayer.all_module.community.CommunityFragment;
+import com.crystal.aplayer.all_module.util.KeyRes;
+import com.crystal.aplayer.all_module.community.commend.CommendFragment;
+import com.crystal.aplayer.all_module.home.HomeFragment;
 import com.crystal.aplayer.all_module.mine.MineFragment;
 import com.crystal.aplayer.all_module.notification.NotificationFragment;
 import com.crystal.aplayer.databinding.ModuleMainActivityMainBinding;
 import com.crystal.module_base.base.ui.activity.BaseActivity;
+import com.crystal.module_base.common.ui.CommonActivity;
 import com.crystal.module_base.tools.LogUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends CommonActivity {
     private static final String tag = "mainActivity";
 
     private ModuleMainActivityMainBinding mainBinding;
@@ -67,7 +69,7 @@ public class MainActivity extends BaseActivity {
                     break;
                 case R.id.app_communityfragment:
                     if (fragments.get(KeyRes.community_fragment) == null) {
-                        addFragment(KeyRes.community_fragment,Community_Fragment.newInstance(),transaction);
+                        addFragment(KeyRes.community_fragment, CommunityFragment.newInstance(),transaction);
                     } else {
                         transaction.show(fragments.get(KeyRes.community_fragment));
                     }

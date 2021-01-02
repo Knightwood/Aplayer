@@ -12,7 +12,7 @@ import com.crystal.module_base.base.mvvm.model.StateModel;
  * 描述：
  */
 public class SplashViewModel extends ViewModel {
-    public final long animateDuration=3000L;
+    public final long animateDuration=2000L;
     private StateModel stateModel;
 
     public SplashViewModel() {

@@ -1,8 +1,8 @@
 package com.crystal.module_base.common.http.api;
 
 import com.crystal.module_base.base.http.retrofit.Api;
-import com.crystal.module_base.common.http.bean.video.VideoRelated;
-import com.crystal.module_base.common.http.bean.video.VideoReplies;
+import com.crystal.module_base.common.http.bean2.VideoDetail;
+import com.crystal.module_base.common.http.bean2.VideoReplies;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -20,7 +20,7 @@ public interface VideoApiService extends Api {
     //视频详情页
 //1.相关推荐请求地址 ：http://baobab.kaiyanapp.com/api/v4/video/related?id=186856
     @GET("v4/video/related?id=186856")
-    Call<Response<VideoRelated>> getVideoRelated();
+    Call<Response<VideoDetail>> getVideoRelated();
 
     /*
     |参数说明 |说明 |是否必须 |默认值 |

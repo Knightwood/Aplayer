@@ -115,4 +115,9 @@ public class BaseHolder2 extends RecyclerView.ViewHolder {
             getView(i).setOnClickListener(listener);
         }
     }
+    public void setOnItemClickListener(View.OnClickListener listener,View... views) {
+        for (View i:views) {
+            i.setOnClickListener(listener);
+        }
+    }
 }

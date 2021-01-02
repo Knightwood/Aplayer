@@ -22,7 +22,7 @@ public class TimeProcess {
      *a：上下午标识
      *
      * */
-    static SimpleDateFormat simpleDateFormat;
+    private static SimpleDateFormat simpleDateFormat;
 
     public TimeProcess() {
     }

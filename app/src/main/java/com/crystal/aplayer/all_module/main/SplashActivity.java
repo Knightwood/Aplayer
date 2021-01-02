@@ -6,14 +6,18 @@ import androidx.lifecycle.ViewModelProvider;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
 import android.widget.Toast;
 
 import com.crystal.aplayer.databinding.ModuleMainSplashActivityBinding;
 import com.crystal.module_base.base.mvvm.state.LoadDataState;
 import com.crystal.module_base.base.ui.activity.BaseActivity;
+import com.crystal.module_base.common.ui.CommonActivity;
+import com.crystal.module_base.tools.LogUtil;
 import com.gyf.immersionbar.BarHide;
 import com.gyf.immersionbar.ImmersionBar;
 
@@ -22,9 +26,10 @@ import java.util.List;
 import pub.devrel.easypermissions.AppSettingsDialog;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class SplashActivity extends BaseActivity implements EasyPermissions.PermissionCallbacks {
+public class SplashActivity extends CommonActivity implements EasyPermissions.PermissionCallbacks {
     private ModuleMainSplashActivityBinding rootView;
     private SplashViewModel splashVM;
+    private static final String tag="启动页";
     //权限
     String[] allperm = {Manifest.permission.INTERNET,
             Manifest.permission.ACCESS_NETWORK_STATE,
@@ -45,8 +50,8 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
         splashVM.getStateModel().getLoadDataState().observe(this, loadState -> {
             switch (loadState) {
                 case WAIT_LOAD_DATA:
-                   anim();
-                   checkPermission();
+                    anim();
+                    checkPermission();
                     break;
                 case LOAD_FINISHED:
                     startActivity(new Intent(this, MainActivity.class));
@@ -57,14 +62,35 @@ public class SplashActivity extends BaseActivity implements EasyPermissions.Perm
 
     @Override
     protected void setStatusBarBackground(int color) {
-        ImmersionBar.with(this).autoStatusBarDarkModeEnable(true,0.2f)
+        ImmersionBar.with(this).autoStatusBarDarkModeEnable(true, 0.2f)
                 .hideBar(BarHide.FLAG_HIDE_BAR)
                 .init();
     }
 
-    private void anim(){
-        scaleAnim();
-        alphaAnim();
+    private void anim() {
+        LogUtil.d(tag,"执行动画");
+        AlphaAnimation alphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+        alphaAnimation.setDuration(950L);
+        alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                rootView.group2.setVisibility(View.GONE);
+                rootView.group1.setVisibility(View.VISIBLE);
+                scaleAnim();
+                alphaAnim();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+       rootView.appImageview.startAnimation(alphaAnimation);
     }
 
     private void scaleAnim() {

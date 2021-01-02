@@ -16,7 +16,7 @@ android {
         api rootProject.ext.androidx["androidx.paging"]
         api rootProject.ext.androidx["androidx.room:room-runtime"]
         annotationProcessor rootProject.ext.androidx["androidx.room:room-compiler"]
-        //注解
+
         api 'androidx.annotation:annotation:1.1.0'
         //view
         api rootProject.ext.androidx["androidx.cardview"]
@@ -60,8 +60,8 @@ android {
         api  'com.scwang.smart:refresh-header-material:2.0.1'
         api  'com.scwang.smart:refresh-footer-classics:2.0.1'
         //视频
-        implementation 'com.shuyu:GSYVideoPlayer:7.1.8'
-
+        api 'com.shuyu:GSYVideoPlayer:7.1.8'
+        api 'com.github.zhpanvip:BannerViewPager:3.2.0'
         debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
     }
 

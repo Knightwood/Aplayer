@@ -18,6 +18,15 @@ import okhttp3.Response;
  * 创建时间 2020/10/7 16:43
  * packageName：com.crystal.module_base.base.http.okhttp
  * 描述：
+ *
+ * 拼接参数：
+ * - `udid`：用户唯一标识。该参数可为空也可去除
+ * - `vc`：???，固定值`168`。该参数可为空也可去除
+ * - `vn`：客户端版本。该参数可为空也可去除
+ * - `deviceModel`：手机信息。该参数可为空也可去除
+ * - `first_channel`：???，固定值 `eyepetizer_baidu_market`。该参数可为空也可去除
+ * - `last_channel`：???，固定值 `eyepetizer_baidu_market`。该参数可为空也可去除
+ * - `system_version_code`：手机系统版本。该参数可为空也可去除
  */
 public class BasicParamsInterceptor implements Interceptor {
     @NotNull

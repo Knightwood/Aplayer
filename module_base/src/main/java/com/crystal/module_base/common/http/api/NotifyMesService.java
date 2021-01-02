@@ -1,6 +1,11 @@
 package com.crystal.module_base.common.http.api;
 
 import com.crystal.module_base.base.http.retrofit.Api;
+import com.crystal.module_base.common.http.bean2.PushMessage;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Url;
 
 /**
  * 创建者 kiylx
@@ -9,11 +14,12 @@ import com.crystal.module_base.base.http.retrofit.Api;
  * 描述：
  */
 public interface NotifyMesService extends Api {
+    //2.通知请求地址 ：  http://baobab.kaiyanapp.com/api/v3/messages
+    @GET
+    Call<PushMessage> getPushMes(@Url String url);
 
     //通知
 // 1.主题请求地址： http://baobab.kaiyanapp.com/api/v7/tag/tabList
-
-//2.通知请求地址 ：  http://baobab.kaiyanapp.com/api/v3/messages
 
     //3.互动请求地址 ：  http://baobab.kaiyanapp.com/api/v7/topic/list
 }

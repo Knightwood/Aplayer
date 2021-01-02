@@ -38,7 +38,7 @@ data class HomePageRecommend(val itemList: List<Item>, val count: Int, val total
             val category: String,
             val collected: Boolean,
             val consumption: Consumption,
-            val content: CommunityRecommend.Content,
+            val content: Content,
             val count: Int,
             val cover: Cover,
             val dataType: String,

@@ -13,6 +13,7 @@ import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.crystal.module_base.R;
 import com.crystal.module_base.base.mvvm.model.StateModel;
@@ -88,10 +89,11 @@ public abstract class LoadingRefreshFragment<VM extends CommonViewModel> extends
             if (reFreshLayoutStub != null) {
                 defaultRefreshLayout = (SmartRefreshLayout) reFreshLayoutStub.inflate();
             }
-            defaultRefreshLayout.addView(setContentLayout());//把内容视图放进刷新布局里
+            SmartRefreshLayout.LayoutParams params = new SmartRefreshLayout.LayoutParams(SmartRefreshLayout.LayoutParams.MATCH_PARENT, SmartRefreshLayout.LayoutParams.MATCH_PARENT);
+            defaultRefreshLayout.addView(setContentLayout(), params);//把内容视图放进刷新布局里
             views[2] = defaultRefreshLayout;
         } else {//子类使用自定义刷新控件
-            rootView.addView(setContentLayout(), rootView.getChildCount() - 1);//把内容视图放进根布局里，而不是默认的刷新布局里
+            rootView.addView(setContentLayout(), rootView.getChildCount() - 1,setParams());//把内容视图放进根布局里，而不是默认的刷新布局里
             defaultRefreshLayout = (SmartRefreshLayout) setContentLayout();
             views[2] = setContentLayout();
         }
@@ -99,6 +101,13 @@ public abstract class LoadingRefreshFragment<VM extends CommonViewModel> extends
         observeLiveData(viewModel);
         initData(savedInstanceState);
         return rootView;
+    }
+
+    /**
+     * @return 给添加的内容视图设置参数
+     */
+    public SmartRefreshLayout.LayoutParams setParams() {
+        return new SmartRefreshLayout.LayoutParams(SmartRefreshLayout.LayoutParams.MATCH_PARENT, SmartRefreshLayout.LayoutParams.MATCH_PARENT);
     }
 
     @Override
@@ -201,13 +210,13 @@ public abstract class LoadingRefreshFragment<VM extends CommonViewModel> extends
         defaultRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
             LogUtil.d(tag, "触发上拉刷新");
             viewModel.loadMore();
-            defaultRefreshLayout.finishRefresh(2000, true, true);
+            defaultRefreshLayout.finishRefresh(2000, true, false);
         });
     }
 
     /**
-     * @param b 下拉/上拉刷新成功或是加载成功传入true，否则传入false
-     *                改变加载或刷新状态，从而重置视图状态，在获取数据并处理后，无论成功与否都要调用此方法重置视图状态
+     * @param b           下拉/上拉刷新成功或是加载成功传入true，否则传入false
+     *                    改变加载或刷新状态，从而重置视图状态，在获取数据并处理后，无论成功与否都要调用此方法重置视图状态
      * @param nowBehavior 当前执行的获取数据的动作
      */
     public void reSetPageState(boolean b, StateModel.NowBehavior nowBehavior) {
@@ -228,7 +237,7 @@ public abstract class LoadingRefreshFragment<VM extends CommonViewModel> extends
      * 通知上拉刷新控件没有更多数据
      */
     public void notifyNoMoreData() {
-        defaultRefreshLayout.finishLoadMore(2000, true, true);
+        defaultRefreshLayout.finishLoadMoreWithNoMoreData();
     }
 
     /**

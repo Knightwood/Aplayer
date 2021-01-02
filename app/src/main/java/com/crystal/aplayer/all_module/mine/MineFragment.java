@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.crystal.aplayer.R;
-import com.crystal.module_base.base.ui.fragments.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
