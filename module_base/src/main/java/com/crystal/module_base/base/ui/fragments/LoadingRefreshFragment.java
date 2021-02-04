@@ -13,13 +13,12 @@ import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.crystal.module_base.R;
 import com.crystal.module_base.base.mvvm.model.StateModel;
 import com.crystal.module_base.base.mvvm.state.DataRefreshState;
 import com.crystal.module_base.base.mvvm.state.LoadDataState;
-import com.crystal.module_base.common.vm.CommonViewModel;
+import com.crystal.module_base.base.mvvm.viewmodel.CommonStateViewModel;
 import com.crystal.module_base.databinding.LoadingFreshLayoutBinding;
 import com.crystal.module_base.tools.LogUtil;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -30,7 +29,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout;
  * packageName：com.crystal.aplayer.base.fragment
  * 描述：含有加载状态，刷新状态的fragment的base类
  */
-public abstract class LoadingRefreshFragment<VM extends CommonViewModel> extends Fragment {
+public abstract class LoadingRefreshFragment<VM extends CommonStateViewModel> extends Fragment {
     private static final String tag = "BaseFragment";
 
     protected VM viewModel;

@@ -9,7 +9,7 @@ import com.crystal.module_base.base.mvvm.state.LoadDataState
 import com.crystal.module_base.common.http.AllApiConfig
 
 import com.crystal.module_base.common.http.bean2.PushMessage
-import com.crystal.module_base.common.vm.CommonViewModel
+import com.crystal.module_base.base.mvvm.viewmodel.CommonStateViewModel
 import com.crystal.module_base.tools.LogUtil
 
 
@@ -19,7 +19,7 @@ import com.crystal.module_base.tools.LogUtil
  *packageName：com.crystal.aplayer.all_module.notification.push
  *描述：
  */
-class PushViewModel() : CommonViewModel<PushDataProvider>() {
+class PushViewModel() : CommonStateViewModel<PushDataProvider>() {
 
     private var pushBeanMutableLiveData: MutableLiveData<PushMessage> = MutableLiveData()
     var dataLists: MutableLiveData<List<PushMessage.Message>> = MutableLiveData()

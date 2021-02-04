@@ -5,7 +5,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
@@ -13,13 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.crystal.aplayer.R;
 import com.crystal.aplayer.all_module.home.daily.DailyAdapter;
 import com.crystal.aplayer.all_module.home.daily.InformationCardFollowCardAdapter;
 import com.crystal.aplayer.all_module.login.LoginActivity;
-import com.crystal.aplayer.all_module.newdetail.NewDetailActivity;
-import com.crystal.aplayer.all_module.newdetail.VideoInfo;
+import com.crystal.aplayer.all_module.video_detail.NewDetailActivity;
+import com.crystal.aplayer.all_module.video_detail.VideoInfo;
 import com.crystal.aplayer.all_module.util.CommonActionUrlUtil;
 import com.crystal.aplayer.all_module.util.ToolsKt;
 import com.crystal.module_base.common.http.bean2.Discovery;

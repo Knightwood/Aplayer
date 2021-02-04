@@ -1,4 +1,4 @@
-package com.crystal.module_base.base.mvvm.viewmodel;
+package com.crystal.module_base.base.mvvm.viewmodel.base;
 
 import androidx.lifecycle.ViewModel;
 

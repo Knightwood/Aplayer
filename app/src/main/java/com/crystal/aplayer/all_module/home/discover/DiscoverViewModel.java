@@ -9,7 +9,7 @@ import com.crystal.module_base.base.mvvm.repo.BaseLocateDB;
 import com.crystal.module_base.base.mvvm.state.LoadDataState;
 import com.crystal.module_base.common.http.AllApiConfig;
 import com.crystal.module_base.common.http.bean2.Discovery;
-import com.crystal.module_base.common.vm.CommonViewModel;
+import com.crystal.module_base.base.mvvm.viewmodel.CommonStateViewModel;
 import com.crystal.module_base.tools.LogUtil;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import java.util.List;
  * packageName：com.crystal.aplayer.all_module.home.discover.mvvm
  * 描述：
  */
-public class DiscoverViewModel extends CommonViewModel<HomeDataProvider> {
+public class DiscoverViewModel extends CommonStateViewModel<HomeDataProvider> {
     private static final String tag = "DiscoverFragment";
     private MutableLiveData<Discovery> discoveryBeanMutableLiveData;
     public MutableLiveData<List<Discovery.Item>> dataLists;

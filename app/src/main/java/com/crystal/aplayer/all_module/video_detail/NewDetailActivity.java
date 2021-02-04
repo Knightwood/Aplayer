@@ -1,13 +1,8 @@
-package com.crystal.aplayer.all_module.newdetail;
+package com.crystal.aplayer.all_module.video_detail;
 
 import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.crystal.module_base.common.http.bean2.Author;
-import com.crystal.module_base.common.http.bean2.Consumption;
-import com.crystal.module_base.common.http.bean2.Cover;
-import com.crystal.module_base.common.http.bean2.WebUrl;
 
 /**
  * 创建者 kiylx

@@ -4,7 +4,7 @@ import com.crystal.aplayer.AppApplication;
 import com.crystal.module_base.common.http.api.MainPageApiService;
 import com.crystal.module_base.base.http.retrofit.RetrofitConfig;
 import com.crystal.module_base.base.mvvm.repo.BaseDataProvider;
-import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel;
+import com.crystal.module_base.base.mvvm.viewmodel.base.BaseViewModel;
 import com.crystal.module_base.common.http.AllApiConfig;
 import com.crystal.module_base.common.http.bean2.CommunityRecommend;
 import com.crystal.module_base.common.http.bean2.Daily;

@@ -53,7 +53,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
-        <activity android:name=".all_module.newdetail.NewDetailActivity" />
+        <activity android:name=".all_module.video_detail.NewDetailActivity" />
     </application>
 
 </manifest>

@@ -12,7 +12,12 @@
     <declare-styleable name="NTextView">
         <attr name="typeface"/>
     </declare-styleable>
-
+    <declare-styleable name="NEditText">
+        <attr name="typeface"/>
+    </declare-styleable>
+<declare-styleable name="CollapseTextView">
+    <attr name="typeface"/>
+</declare-styleable>
     <attr name="typeface">
         <enum name="fzlLTypeface" value="1" />
         <enum name="fzdb1Typeface" value="2" />

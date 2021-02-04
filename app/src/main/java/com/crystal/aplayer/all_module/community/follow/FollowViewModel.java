@@ -9,7 +9,7 @@ import com.crystal.module_base.base.mvvm.repo.BaseLocateDB;
 import com.crystal.module_base.base.mvvm.state.LoadDataState;
 import com.crystal.module_base.common.http.AllApiConfig;
 import com.crystal.module_base.common.http.bean2.Follow;
-import com.crystal.module_base.common.vm.CommonViewModel;
+import com.crystal.module_base.base.mvvm.viewmodel.CommonStateViewModel;
 import com.crystal.module_base.tools.LogUtil;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import java.util.List;
  * packageName：com.crystal.aplayer.all_module.follow
  * 描述：
  */
-public class FollowViewModel extends CommonViewModel<HomeDataProvider> {
+public class FollowViewModel extends CommonStateViewModel<HomeDataProvider> {
     private static final String tag = "FollowViewModel";
 
     public MutableLiveData<Follow> followBeanMutableLiveData;

@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 
 import com.crystal.module_base.base.http.retrofit.Api;
 import com.crystal.module_base.base.http.retrofit.RetrofitConfig;
-import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel;
+import com.crystal.module_base.base.mvvm.viewmodel.base.BaseViewModel;
 import com.crystal.module_base.tools.observable.Observable;
 
 import java.util.List;

@@ -9,8 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.crystal.aplayer.R
 import com.crystal.aplayer.all_module.login.LoginActivity
-import com.crystal.aplayer.all_module.newdetail.NewDetailActivity
-import com.crystal.aplayer.all_module.newdetail.VideoInfo
+import com.crystal.aplayer.all_module.video_detail.NewDetailActivity
+import com.crystal.aplayer.all_module.video_detail.VideoInfo
 import com.crystal.aplayer.all_module.util.*
 import com.crystal.module_base.common.http.bean2.Follow
 import com.crystal.module_base.common.util.GlobalUtil

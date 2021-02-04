@@ -1,17 +1,7 @@
 package com.crystal.module_base.common.ui;
 
-import android.view.View;
-
-import androidx.lifecycle.Observer;
-
-import com.crystal.module_base.base.mvvm.state.LoadDataState;
 import com.crystal.module_base.base.ui.fragments.LoadingRefreshFragment;
-import com.crystal.module_base.common.http.bean2.Discovery;
-import com.crystal.module_base.common.vm.CommonViewModel;
-import com.crystal.module_base.tools.LogUtil;
-
-import static com.crystal.module_base.base.mvvm.state.DataRefreshState.LOAD_FAILED;
-import static com.crystal.module_base.base.mvvm.state.DataRefreshState.LOAD_FINISHED;
+import com.crystal.module_base.base.mvvm.viewmodel.CommonStateViewModel;
 
 /**
  * 创建者 kiylx
@@ -19,7 +9,7 @@ import static com.crystal.module_base.base.mvvm.state.DataRefreshState.LOAD_FINI
  * packageName：com.crystal.module_base.common.ui
  * 描述：
  */
-public abstract class CommonReFreshFragment<VM extends CommonViewModel> extends LoadingRefreshFragment<VM> {
+public abstract class CommonReFreshFragment<VM extends CommonStateViewModel> extends LoadingRefreshFragment<VM> {
 
     /*@Override
     protected VM setViewModel() {

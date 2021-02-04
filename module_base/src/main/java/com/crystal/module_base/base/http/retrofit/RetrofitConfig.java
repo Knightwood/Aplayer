@@ -165,5 +165,42 @@ public class RetrofitConfig {
 
 
     }
+    /**
+     * @param call      api实例中网络调用得到的call
+     * @param beanClazz 网络返回的数据类型，即定义的网络返回的json对应的bean类
+     * @param <T>       网络返回的数据类型
+     * @param intercept   viewmodel实现此接口, parsingCallgetData会在解析数据后回调此接口
+     * @return 返回call得到的responsebody
+     */
+    public <T> void parsingCallgetData(@NotNull Call<T> call, @NotNull Class beanClazz, final ParseIntercept intercept) {
+        call.enqueue(new Callback<T>() {
+            @Override
+            public void onResponse(Call<T> call, Response<T> response) {
+                if (executorService == null) {
+                    LogUtil.d(tag, "解析response所需线程池不存在");
+                    return;
+                }
+                executorService.execute(() -> {
+                    LogUtil.d(tag, "解析response:  ");
+                    ResponseMes mes = new ResponseMes(response.code(), response.message());
+                    if (response.isSuccessful()) {
+                        LogUtil.d(RetrofitConfig.tag, "解析response: 成功 ");
+                        intercept.intercept(beanClazz.cast(response.body()), mes);
+                        return;
+                    }
+                    LogUtil.d(RetrofitConfig.tag, "解析response: 失败 ");
+                    intercept.intercept(null, mes);
 
+
+                });
+            }
+
+            @Override
+            public void onFailure(Call<T> call, Throwable t) {
+                LogUtil.d("Error", t.getMessage());
+            }
+        });
+
+
+    }
 }

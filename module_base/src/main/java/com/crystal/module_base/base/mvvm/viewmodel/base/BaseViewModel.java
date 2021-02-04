@@ -1,4 +1,4 @@
-package com.crystal.module_base.base.mvvm.viewmodel;
+package com.crystal.module_base.base.mvvm.viewmodel.base;
 
 import androidx.lifecycle.ViewModel;
 
@@ -17,15 +17,11 @@ import com.crystal.module_base.tools.observable.Observer;
 public abstract class BaseViewModel<D extends BaseDataProvider> extends ViewModel implements Observer {
     private static final String tag="BaseViewModel";
     protected D dataProvider = null;
-    public StateModel stateModel;//持有页面状态，改变页面状态时可被各个activity或fragment监听到，以改变各自页面
 
     public BaseViewModel() {
         this.dataProvider = setDataProvider();
         if (null != dataProvider) {
             dataProvider.register(this);
-        }
-        if (stateModel == null) {
-            stateModel = new StateModel();
         }
     }
 

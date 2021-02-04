@@ -1,18 +1,16 @@
-package com.crystal.module_base.common.vm;
-
-import android.os.SystemClock;
+package com.crystal.module_base.base.mvvm.viewmodel;
 
 import androidx.annotation.CallSuper;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.SavedStateHandle;
 
 import com.crystal.module_base.base.http.retrofit.ResponseMes;
 import com.crystal.module_base.base.mvvm.model.StateModel;
 import com.crystal.module_base.base.mvvm.state.LoadDataState;
 import com.crystal.module_base.base.mvvm.repo.BaseDataProvider;
-import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel;
+import com.crystal.module_base.base.mvvm.state.LoadMethod;
+import com.crystal.module_base.base.mvvm.viewmodel.StateViewModel;
+import com.crystal.module_base.base.mvvm.viewmodel.base.BaseViewModel;
 import com.crystal.module_base.tools.LogUtil;
-import com.google.common.util.concurrent.RateLimiter;
 
 /**
  * 创建者 kiylx
@@ -26,35 +24,40 @@ import com.google.common.util.concurrent.RateLimiter;
  * 初始化时state：NOTHING->开始准备数据显示在界面上wait_load_data->成功：LOAD_FINISHED->数据显示在界面上显示完成加载，重置为done;
  * 失败：LOAD_FAILED;
  */
-public abstract class CommonViewModel<D extends BaseDataProvider> extends BaseViewModel<D> {
+public abstract class CommonStateViewModel<D extends BaseDataProvider> extends StateViewModel<D> implements LoadMethod {
     private static final String tag = "CommonViewModel";
     public MutableLiveData<ResponseMes> nowResponseMes;//记录当前执行动作完成后（刷新，加载更多）的结果
     public MutableLiveData<String> nextPage;//下一页的数据地址
     public boolean firstLoad = true;
     private long lastLoadMoreTime = 0;//上次上拉刷新时间
 
-    public CommonViewModel() {
+    public CommonStateViewModel() {
         super();
         nowResponseMes = new MutableLiveData<>();
         nextPage = new MutableLiveData<>();
         lastLoadMoreTime=System.currentTimeMillis();
     }
-
+    @Override
     @CallSuper
     public void firstLoadData() {
         stateModel.nowBehavior = StateModel.NowBehavior.InitLoad;//标记当前执行的动作
         stateModel.setLoadDataState(LoadDataState.LOADING, false);//置为loading状态，显示圆圈进度条
     }
-
+    @Override
     @CallSuper
     public void freshData() {
-        if (stateModel.nowBehavior != StateModel.NowBehavior.AllDone) {//其他刷新动作都已经完成
+   /*     if (stateModel.nowBehavior != StateModel.NowBehavior.AllDone) {//其他刷新动作都已经完成
             return;
         }
         stateModel.nowBehavior = StateModel.NowBehavior.Refreshing;
+   */
+
+        if (this.stateModel.nowBehavior == StateModel.NowBehavior.AllDone) {
+            this.stateModel.nowBehavior = StateModel.NowBehavior.Refreshing;
+        }
     }
 
-
+@Override
     public void loadMore() {
         if (stateModel.nowBehavior != StateModel.NowBehavior.AllDone) {
             return;
@@ -69,8 +72,8 @@ public abstract class CommonViewModel<D extends BaseDataProvider> extends BaseVi
         }
         stateModel.nowBehavior = StateModel.NowBehavior.LoadMoreData;
     }
-
-    private boolean canLoadMore() {
+    @Override
+    public boolean canLoadMore() {
         long now = System.currentTimeMillis();
         if (lastLoadMoreTime - now > 1000) {
             lastLoadMoreTime = now;

@@ -1,4 +1,4 @@
-package com.crystal.aplayer.all_module.newdetail
+package com.crystal.aplayer.all_module.video_detail
 
 import android.os.Parcelable
 import com.crystal.module_base.common.http.bean2.Author

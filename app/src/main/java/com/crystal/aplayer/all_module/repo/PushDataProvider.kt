@@ -3,7 +3,7 @@ package com.crystal.aplayer.all_module.repo
 import com.crystal.aplayer.AppApplication
 import com.crystal.module_base.base.http.retrofit.RetrofitConfig
 import com.crystal.module_base.base.mvvm.repo.BaseDataProvider
-import com.crystal.module_base.base.mvvm.viewmodel.BaseViewModel
+import com.crystal.module_base.base.mvvm.viewmodel.base.BaseViewModel
 import com.crystal.module_base.common.http.AllApiConfig
 import com.crystal.module_base.common.http.api.NotifyMesService
 import com.crystal.module_base.common.http.bean2.PushMessage

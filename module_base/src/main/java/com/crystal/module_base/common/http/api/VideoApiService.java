@@ -1,12 +1,17 @@
 package com.crystal.module_base.common.http.api;
 
 import com.crystal.module_base.base.http.retrofit.Api;
+import com.crystal.module_base.common.http.bean2.VideoBeanForClient;
 import com.crystal.module_base.common.http.bean2.VideoDetail;
+import com.crystal.module_base.common.http.bean2.VideoRelated;
 import com.crystal.module_base.common.http.bean2.VideoReplies;
 
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 /**
  * 创建者 kiylx
@@ -15,19 +20,19 @@ import retrofit2.http.GET;
  * 描述：
  */
 public interface VideoApiService extends Api {
-    //@GET("api/v2/video/{id}")
+    //获取视频详情
+    @GET("v2/video/{id}")
+    Call<VideoBeanForClient> getVideoBeanForClient(@Path("id") Long l);
 
-    //视频详情页
-//1.相关推荐请求地址 ：http://baobab.kaiyanapp.com/api/v4/video/related?id=186856
-    @GET("v4/video/related?id=186856")
-    Call<Response<VideoDetail>> getVideoRelated();
+    //相关推荐请求地址 ：http://baobab.kaiyanapp.com/api/v4/video/related?id=186856
+    @GET("v4/video/related")
+    Call<VideoRelated> getVideoRelated(@Query("id") Long l);
 
-    /*
-    |参数说明 |说明 |是否必须 |默认值 |
-    |-|-|-|-|
-    |id|当前播放视频的id，从跳转页面视频item中获取|是|无|
-    */
-//2. 评论 请求地址 ：http://baobab.kaiyanapp.com/api/v2/replies/video?videoId=186856
-    @GET("v2/replies/video?videoId=186856")
-    Call<Response<VideoReplies>> getVideoReplies();
+    // 评论 请求地址 ：http://baobab.kaiyanapp.com/api/v2/replies/video?videoId=186856
+    //@GET("v2/replies/video?videoId=186856")
+    @GET
+    Call<VideoReplies> getVideoReplies(@Url String str);
+
+    public static final String VIDEO_REPLIES_URL = "http://baobab.kaiyanapp.com/api/v2/replies/video?videoId=";
+
 }

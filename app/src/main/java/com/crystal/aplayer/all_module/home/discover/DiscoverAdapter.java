@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.crystal.aplayer.R;
 import com.crystal.aplayer.all_module.home.daily.DailyAdapter;
-import com.crystal.aplayer.all_module.newdetail.NewDetailActivity;
+import com.crystal.aplayer.all_module.video_detail.NewDetailActivity;
 import com.crystal.aplayer.all_module.login.LoginActivity;
-import com.crystal.aplayer.all_module.newdetail.VideoInfo;
+import com.crystal.aplayer.all_module.video_detail.VideoInfo;
 import com.crystal.aplayer.all_module.util.CommonActionUrlUtil;
 import com.crystal.aplayer.all_module.util.ToolsKt;
 import com.crystal.module_base.common.http.bean2.Discovery;
