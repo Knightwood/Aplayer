@@ -9,7 +9,7 @@
 
     tools:visibility="visible">
 <!--tools:context=".ui.home.discovery.DiscoveryFragment"-->
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvTitle7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         app:typeface="fzdb1Typeface"
         tools:text="开眼专栏" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvRightText7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

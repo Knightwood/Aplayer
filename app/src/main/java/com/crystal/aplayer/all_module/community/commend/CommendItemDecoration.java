@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.crystal.aplayer.all_module.util.ToolsKt;
+import com.crystal.module_base.common.util.ToolsKt;
 
 /**
  * 创建者 kiylx

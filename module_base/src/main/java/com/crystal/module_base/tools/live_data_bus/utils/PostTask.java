@@ -1,12 +1,10 @@
 package com.crystal.module_base.tools.live_data_bus.utils;
 
-import com.crystal.module_base.tools.live_data_bus.core.ObserverWrapperMod;
-
 /**
  * 创建者 kiylx
  * 创建时间 2021/1/1 20:44
  * packageName：com.crystal.module_base.tools.live_data_bus.utils
- * 描述：
+ * 描述：给handler的runnable的类,接受Method实例和用于Method执行的参数
  */
 public class PostTask implements Runnable {
     private Object[] newValue;

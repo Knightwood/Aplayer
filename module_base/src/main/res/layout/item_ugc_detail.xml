@@ -5,10 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black">
-    <!--tools:context=".ui.ugcdetail.UgcDetailActivity">-->
 
-    <!--<com.eyepetizer.android.ui.ugcdetail.UgcDetailVideoPlayer-->
-    <com.crystal.module_base.common.view.AutoPlayerVideoPlayer
+    <com.crystal.module_base.common.view.videoplayer.AutoPlayerVideoPlayer
     android:id="@+id/videoPlayer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,7 +23,7 @@
         tools:visibility="visible" />
 
     <FrameLayout
-        android:id="@+id/flHeader"
+        android:id="@+id/headerGroup"
         android:layout_width="match_parent"
         android:layout_height="60dp">
 
@@ -40,7 +38,7 @@
             app:civ_border_width="4dp"
             app:civ_circle_background_color="#dedede" />
 
-        <com.crystal.module_base.common.view.NTextView
+        <com.crystal.module_base.common.view.textview.NTextView
             android:id="@+id/tvPhotoCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,7 +93,7 @@
                 app:civ_circle_background_color="@color/blue"
                 tools:visibility="visible" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvNickName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,7 +108,7 @@
                 app:typeface="fzdb1Typeface"
                 tools:text="vipyinzhiwei" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvFollow"
                 style="@style/Eyepetizer.FollowTextView"
                 android:layout_alignParentEnd="true"
@@ -119,7 +117,7 @@
                 android:background="@drawable/shape_follow_radius_white_4dp_bg"
                 android:textColor="@color/white" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvPrivateLetter"
                 android:layout_width="44dp"
                 android:layout_height="22dp"
@@ -134,7 +132,7 @@
                 app:typeface="fzdb1Typeface" />
         </RelativeLayout>
 
-        <com.crystal.module_base.common.view.NTextView
+        <com.crystal.module_base.common.view.textview.NTextView
             android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -146,7 +144,7 @@
             app:typeface="fzlLTypeface"
             tools:text="洞察人间" />
 
-        <com.crystal.module_base.common.view.NTextView
+        <com.crystal.module_base.common.view.textview.NTextView
             android:id="@+id/tvTagName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -185,7 +183,7 @@
                 android:layout_height="20dp"
                 android:src="@drawable/ic_favorite_border_white_20dp" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvCollectionCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -206,7 +204,7 @@
                 android:layout_height="20dp"
                 android:src="@drawable/ic_reply_white_20dp" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvReplyCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -224,7 +222,7 @@
                 android:layout_height="20dp"
                 android:src="@drawable/ic_star_white_20dp" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvFavorites"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

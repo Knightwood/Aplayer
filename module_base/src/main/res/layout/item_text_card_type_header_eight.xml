@@ -8,7 +8,7 @@
     android:paddingEnd="@dimen/listSpaceSize"
     tools:visibility="visible">
 <!--tools:context=".ui.home.discovery.DiscoveryFragment"-->
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvTitle8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         app:typeface="fzdb1Typeface"
         tools:text="本周榜单" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvRightText8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -9,7 +9,7 @@
     android:paddingEnd="@dimen/listSpaceSize">
    <!-- tools:context=".ui.home.discovery.DiscoveryFragment">-->
 
-    <com.crystal.module_base.common.view.AutoPlayerVideoPlayer
+    <com.crystal.module_base.common.view.videoplayer.AutoPlayerVideoPlayer
         android:id="@+id/videoPlayer"
         android:layout_width="match_parent"
         android:layout_height="185dp"

@@ -10,13 +10,11 @@ import android.util.SparseArray;
 
 import com.crystal.aplayer.R;
 import com.crystal.aplayer.all_module.community.CommunityFragment;
-import com.crystal.aplayer.all_module.util.KeyRes;
-import com.crystal.aplayer.all_module.community.commend.CommendFragment;
+import com.crystal.module_base.common.util.KeyRes;
 import com.crystal.aplayer.all_module.home.HomeFragment;
 import com.crystal.aplayer.all_module.mine.MineFragment;
 import com.crystal.aplayer.all_module.notification.NotificationFragment;
 import com.crystal.aplayer.databinding.ModuleMainActivityMainBinding;
-import com.crystal.module_base.base.ui.activity.BaseActivity;
 import com.crystal.module_base.common.ui.CommonActivity;
 import com.crystal.module_base.tools.LogUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

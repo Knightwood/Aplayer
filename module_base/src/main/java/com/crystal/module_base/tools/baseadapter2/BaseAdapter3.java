@@ -7,9 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.crystal.module_base.base.BaseApplication;
 import com.crystal.module_base.tools.LogUtil;
-import com.crystal.module_base.tools.SomeTools;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -23,31 +20,31 @@ import java.util.List;
  */
 public abstract class BaseAdapter3<T, H extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<H> {
     private static final  String tag="BaseAdapter3";
-    protected List<T> list = null;//T类型的bean的list集合
+    protected List<T> dataList = null;//T类型的bean的list集合
     protected WeakReference<Context> contextWeakReference;
     private int lastListSize = 0;//记录list的size
 
-    public BaseAdapter3(@NonNull List<T> list) {
-        this(list,null);
+    public BaseAdapter3(@NonNull List<T> dataList) {
+        this(dataList,null);
     }
 
-    public BaseAdapter3( @NonNull List<T> list, Context context) {
-        this.list =list;
+    public BaseAdapter3(@NonNull List<T> dataList, Context context) {
+        this.dataList = dataList;
         this.contextWeakReference = new WeakReference<>(context==null? BaseApplication.getContext():context);
-        recordListSize(list);
+        recordListSize(dataList);
     }
 
     @Override
     public int getItemCount() {
-        if (list == null)
+        if (dataList == null)
             return 0;
         else
-            return list.size();
+            return dataList.size();
     }
 
     public void removeOldData(@NonNull List<T> list) {
-        this.list.clear();
-        this.list.addAll(list);
+        this.dataList.clear();
+        this.dataList.addAll(list);
         recordListSize(list);
         notifyDataSetChanged();
     }
@@ -56,8 +53,8 @@ public abstract class BaseAdapter3<T, H extends RecyclerView.ViewHolder> extends
      * @param newList 不仅包含旧数据还包含新数据
      */
     public void addMoreData(@NonNull List<T> newList) {
-        if (this.list == null) {
-            this.list = newList;
+        if (this.dataList == null) {
+            this.dataList = newList;
             recordListSize(newList);
             notifyDataSetChanged();
         } else {
@@ -73,18 +70,18 @@ public abstract class BaseAdapter3<T, H extends RecyclerView.ViewHolder> extends
      * @param newList 只包含新数据但不包含旧数据
      */
     public void addMoreData2(@NonNull List<T> newList) {
-        if (this.list == null) {
-            this.list = new ArrayList<>(newList);
+        if (this.dataList == null) {
+            this.dataList = new ArrayList<>(newList);
             notifyDataSetChanged();
         } else {
-            this.list.addAll(newList);
+            this.dataList.addAll(newList);
             notifyItemRangeInserted(this.lastListSize , newList.size());
         }
         recordListSize(newList);
     }
 
     private void recordListSize(@NonNull List<T> list) {
-        this.lastListSize = this.list == null ? 0 : list.size();
+        this.lastListSize = this.dataList == null ? 0 : list.size();
     }
 
     private void recordListSize(int size) {

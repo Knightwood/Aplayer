@@ -14,7 +14,7 @@
         android:scaleType="fitXY"
         tools:src="@drawable/ic_launcher_background" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

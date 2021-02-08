@@ -18,9 +18,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".all_module.ugcdetail.UgcDetailActivity" />
-        <activity android:name=".all_module.mine.setting.SettingActivity" />
-
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5ee21dfcdbc2ec078743b1f3" />
@@ -36,7 +33,8 @@
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
-
+        <activity android:name=".all_module.ugcdetail.UgcDetailActivity" />
+        <activity android:name=".all_module.mine.setting.SettingActivity" />
         <activity android:name=".all_module.login.LoginActivity" />
         <activity android:name=".all_module.main.SplashActivity"
             android:theme="@style/startingWindow">
@@ -53,7 +51,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>-->
         </activity>
-        <activity android:name=".all_module.video_detail.NewDetailActivity" />
+        <activity android:name=".all_module.video_detail.VideoDetailActivity" />
     </application>
 
 </manifest>

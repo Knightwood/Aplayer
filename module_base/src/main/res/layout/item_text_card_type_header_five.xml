@@ -8,7 +8,7 @@
     android:paddingEnd="@dimen/listSpaceSize"
     tools:visibility="visible">
     <!--tools:context=".ui.home.discovery.DiscoveryFragment"-->
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvTitle5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="@id/tvTitle5"
         tools:visibility="visible" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvFollow"
         style="@style/Eyepetizer.FollowTextView"
         android:visibility="gone"

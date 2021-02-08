@@ -40,7 +40,7 @@ android {
         }
     }
     //统一资源前缀,规范资源引用
-    resourcePrefix "app_"
+    //resourcePrefix "app_"
     //开启dataBinding
     dataBinding {
         enabled true
@@ -73,4 +73,6 @@ dependencies {
     //相关说明  https://www.kotlincn.net/docs/reference/using-gradle.html
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     testImplementation 'junit:junit:4.12'
+
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 }

@@ -75,36 +75,38 @@ public interface Action<T> {
      * @param owner    LifecycleOwner
      * @param observer 观察者
      */
-    void observe(@NonNull LifecycleOwner owner, @NonNull ObserverMod<T> observerMod);
+    void observe(@NonNull LifecycleOwner owner, @NonNull OstensibleObserver<T> ostensibleObserver);
 
     /**
      * 注册一个Observer，生命周期感知，自动取消订阅
      * 如果之前有消息发送，可以在注册时收到消息（消息同步）
      *
      * @param owner    LifecycleOwner
-     * @param observerMod 观察者
+     * @param ostensibleObserver 观察者
      */
-    void observeSticky(@NonNull LifecycleOwner owner, @NonNull ObserverMod<T> observerMod);
+    void observeSticky(@NonNull LifecycleOwner owner, @NonNull OstensibleObserver<T> ostensibleObserver);
 
     /**
      * 注册一个Observer，需手动解除绑定
      *
-     * @param observerMod 观察者
+     * @param ostensibleObserver 观察者
      */
-    void observeForever(@NonNull ObserverMod<T> observerMod);
+    void observeForever(@NonNull OstensibleObserver<T> ostensibleObserver);
 
     /**
      * 注册一个Observer，需手动解除绑定
      * 如果之前有消息发送，可以在注册时收到消息（消息同步）
      *
-     * @param observerMod 观察者
+     * @param ostensibleObserver 观察者
      */
-    void observeStickyForever(@NonNull ObserverMod<T> observerMod);
+    void observeStickyForever(@NonNull OstensibleObserver<T> ostensibleObserver);
 
     /**
      * 通过observeForever或observeStickyForever注册的，需要调用该方法取消订阅
      *
-     * @param observerMod 观察者
+     * @param ostensibleObserver 观察者
      */
-    void removeObserver(@NonNull ObserverMod<T> observerMod);
+    void removeObserver(@NonNull OstensibleObserver<T> ostensibleObserver);
+
+    void removeObservers(@NonNull LifecycleOwner lifecycleOwner);
 }

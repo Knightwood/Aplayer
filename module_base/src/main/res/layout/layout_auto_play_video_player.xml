@@ -41,7 +41,7 @@
         android:orientation="horizontal"
         android:visibility="invisible">
 
-        <com.crystal.module_base.common.view.NTextView
+        <com.crystal.module_base.common.view.textview.NTextView
             android:id="@+id/current"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
             android:progressDrawable="@drawable/video_seek_progress"
             android:thumb="@drawable/video_seek_thumb" />
 
-        <com.crystal.module_base.common.view.NTextView
+        <com.crystal.module_base.common.view.textview.NTextView
             android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

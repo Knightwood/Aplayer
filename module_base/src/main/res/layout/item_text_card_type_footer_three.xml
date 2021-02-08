@@ -23,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="11dp">
 
-        <com.crystal.module_base.common.view.NTextView
+        <com.crystal.module_base.common.view.textview.NTextView
             android:id="@+id/tvRefresh"
             android:layout_width="wrap_content"
             android:layout_height="34dp"
@@ -40,7 +40,7 @@
 
     </FrameLayout>
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvFooterRightText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

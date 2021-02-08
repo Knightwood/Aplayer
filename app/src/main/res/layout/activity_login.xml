@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleBar" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvLoginTips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@id/ivLogoText"
         app:typeface="fzlLTypeface" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/etPhoneNumberOrEmail"
         android:layout_width="0dp"
         android:layout_height="44dp"
@@ -65,7 +65,7 @@
         app:layout_constraintStart_toStartOf="@id/etPhoneNumberOrEmail"
         app:layout_constraintTop_toBottomOf="@id/etPhoneNumberOrEmail" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/etPassWord"
         android:layout_width="0dp"
         android:layout_height="44dp"
@@ -94,7 +94,7 @@
         app:layout_constraintStart_toStartOf="@id/etPassWord"
         app:layout_constraintTop_toBottomOf="@id/etPassWord" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvUserLogin"
         android:layout_width="0dp"
         android:layout_height="40dp"
@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@id/etPassWord"
         app:typeface="fzdb1Typeface" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvUserRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvUserLogin"
         app:typeface="fzdb1Typeface" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvAuthorLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
         app:layout_constraintGuide_end="50dp"/>
 
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
         app:layout_constraintTop_toTopOf="@id/guideLine"
         app:typeface="fzlLTypeface" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvUserAgreement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

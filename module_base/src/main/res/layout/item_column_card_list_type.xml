@@ -9,7 +9,7 @@
     android:paddingEnd="@dimen/listSpaceSize"
     >
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="53dp"
@@ -19,7 +19,7 @@
         app:typeface="fzdb1Typeface"
         tools:text="专题策划" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvRightText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

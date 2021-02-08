@@ -33,7 +33,7 @@
         app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
         app:layout_constraintEnd_toEndOf="@id/ivAvatar" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvReleaseTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
         app:typeface="fzlLTypeface"
         tools:text="14:50" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvRelease"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toTopOf="@id/tvReleaseTime"
         app:typeface="fzlLTypeface" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         app:typeface="fzdb1Typeface"
         tools:text="手机是如何检测你的睡眠质量，手机是如何检测你的睡眠质量。" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvNickname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
         app:typeface="fzdb1Typeface"
         tools:text="广告裁判" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvContent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
         app:typeface="fzlLTypeface"
         tools:text="根据微软披露的最新数据，每月有 1.5 亿用户在使用免密登录。相比之下，去年 Ignite 2019 大会上公布的数据还只是 1 亿人左右。短短六个月时间，这一数字就增长了近 5000 万 ... " />
 
-    <com.crystal.module_base.common.view.AutoPlayerVideoPlayer
+    <com.crystal.module_base.common.view.videoplayer.AutoPlayerVideoPlayer
         android:id="@+id/videoPlayer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/coverSize"
@@ -116,7 +116,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvContent" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvVideoDuration"
         style="@style/Eyepetizer.VideoDurationTextView"
         app:layout_constraintBottom_toBottomOf="@id/videoPlayer"
@@ -134,7 +134,7 @@
         app:layout_constraintStart_toStartOf="@id/videoPlayer"
         app:layout_constraintTop_toTopOf="@id/tvCollectionCount" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvCollectionCount"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
@@ -158,7 +158,7 @@
         app:layout_constraintStart_toEndOf="@id/ivCollectionCount"
         app:layout_constraintTop_toTopOf="@id/tvReplyCount" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvReplyCount"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -182,7 +182,7 @@
         app:layout_constraintStart_toEndOf="@id/ivReply"
         app:layout_constraintTop_toTopOf="@id/tvFavorites" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvFavorites"
         android:layout_width="wrap_content"
         android:layout_height="0dp"

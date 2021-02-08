@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".ui.home.discovery.DiscoveryFragment">
 
-        <com.crystal.module_base.common.view.NTextView
+        <com.crystal.module_base.common.view.textview.NTextView
          
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
             app:typeface="fzdb1Typeface"
             tools:text="社区精选" />
 
-        <com.crystal.module_base.common.view.NTextView
+        <com.crystal.module_base.common.view.textview.NTextView
             android:id="@+id/tvRightText"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toStartOf="@id/tvNicknameLeft"
         tools:src="@drawable/ic_avatar_gray_76dp" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvNicknameLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
         app:layout_constraintEnd_toStartOf="@id/tvNicknameRightTop"
         tools:src="@drawable/ic_avatar_gray_76dp" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvNicknameRightTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -199,7 +199,7 @@
         app:layout_constraintEnd_toStartOf="@id/tvNicknameRightBottom"
         tools:src="@drawable/ic_avatar_gray_76dp" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvNicknameRightBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

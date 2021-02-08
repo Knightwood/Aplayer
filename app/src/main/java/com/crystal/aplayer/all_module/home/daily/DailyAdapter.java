@@ -13,15 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.crystal.aplayer.R;
 import com.crystal.aplayer.all_module.login.LoginActivity;
-import com.crystal.aplayer.all_module.video_detail.NewDetailActivity;
-import com.crystal.aplayer.all_module.video_detail.VideoInfo;
+import com.crystal.aplayer.all_module.video_detail.VideoDetailActivity;
+import com.crystal.module_base.common.http.bean2.VideoInfo;
 import com.crystal.aplayer.all_module.util.CommonActionUrlUtil;
-import com.crystal.aplayer.all_module.util.ToolsKt;
 import com.crystal.module_base.common.http.bean2.Daily;
 import com.crystal.module_base.common.http.bean2.FollowCard;
 import com.crystal.module_base.common.http.bean2.Label;
 import com.crystal.module_base.common.util.GlobalUtil;
-import com.crystal.module_base.common.util.viewholder.AllViewHolder;
+import com.crystal.module_base.common.util.ToolsKt;
+import com.crystal.module_base.common.util.viewholder.ViewHolderHelper;
 import com.crystal.module_base.common.util.viewholder.ViewHolderTypes;
 import com.crystal.module_base.tools.LogUtil;
 import com.crystal.module_base.tools.SomeTools;
@@ -50,19 +50,19 @@ public class DailyAdapter extends BaseAdapter3<Daily.Item, BaseHolder2> {
 
     @Override
     public int getItemViewType(int position) {
-        Daily.Item data = list.get(position);
-        return AllViewHolder.parseViewHolderType(data.getType(), data.getData().getDataType(), data.getData().getType());
+        Daily.Item data = dataList.get(position);
+        return ViewHolderHelper.parseViewHolderType(data.getType(), data.getData().getDataType(), data.getData().getType());
     }
 
     @NonNull
     @Override
     public BaseHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return AllViewHolder.getViewHolder(viewType, LayoutInflater.from(parent.getContext()), parent);
+        return ViewHolderHelper.getViewHolder(viewType, LayoutInflater.from(parent.getContext()), parent);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BaseHolder2 holder2, int position) {
-        Daily.Item item = list.get(position);
+        Daily.Item item = dataList.get(position);
         LogUtil.d(tag, "item的样式" + item.getType() + "|==|" + item.getData().getDataType() + "|==|" + item.getData().getType());
         switch ((ViewHolderTypes) holder2.getHolderTypeEnum()) {
             case TEXT_CARD_HEADER5:
@@ -141,9 +141,9 @@ public class DailyAdapter extends BaseAdapter3<Daily.Item, BaseHolder2> {
                 holder2.itemView.setOnClickListener(v -> {
                     FollowCard tmp = item.getData().getContent().getData();
                     if (tmp.getAd() || tmp.getAuthor() == null) {
-                        NewDetailActivity.start(contextWeakReference.get(), tmp.getId());
+                        VideoDetailActivity.Companion.start(contextWeakReference.get(), tmp.getId());
                     } else {
-                        NewDetailActivity.start(contextWeakReference.get(), new VideoInfo(tmp.getId(), tmp.getPlayUrl(), tmp.getTitle(), tmp.getDescription(), tmp.getCategory(), tmp.getLibrary(), tmp.getConsumption(), tmp.getCover(), tmp.getAuthor(), tmp.getWebUrl()));
+                        VideoDetailActivity.Companion.start(contextWeakReference.get(), new VideoInfo(tmp.getId(), tmp.getPlayUrl(), tmp.getTitle(), tmp.getDescription(), tmp.getCategory(), tmp.getLibrary(), tmp.getConsumption(), tmp.getCover(), tmp.getAuthor(), tmp.getWebUrl()));
                     }
                 });
                 break;

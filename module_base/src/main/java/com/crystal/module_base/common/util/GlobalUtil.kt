@@ -25,6 +25,8 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.provider.Settings
 import android.text.TextUtils
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.crystal.module_base.base.BaseApplication
 import com.crystal.module_base.tools.LogUtil
 import com.crystal.module_base.tools.preferences.PreferenceTools

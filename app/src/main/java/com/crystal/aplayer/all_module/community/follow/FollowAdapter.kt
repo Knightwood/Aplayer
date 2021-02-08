@@ -9,13 +9,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.crystal.aplayer.R
 import com.crystal.aplayer.all_module.login.LoginActivity
-import com.crystal.aplayer.all_module.video_detail.NewDetailActivity
-import com.crystal.aplayer.all_module.video_detail.VideoInfo
-import com.crystal.aplayer.all_module.util.*
+import com.crystal.module_base.common.http.bean2.VideoInfo
+import com.crystal.aplayer.all_module.video_detail.VideoDetailActivity
 import com.crystal.module_base.common.http.bean2.Follow
-import com.crystal.module_base.common.util.GlobalUtil
-import com.crystal.module_base.common.util.viewholder.AllViewHolder
+import com.crystal.aplayer.all_module.util.CommonActionUrlUtil
+import com.crystal.module_base.common.util.*
+import com.crystal.module_base.common.util.DateUtil.getDate
+import com.crystal.module_base.common.util.viewholder.ViewHolderHelper
 import com.crystal.module_base.common.util.viewholder.CommunityViewHolderTypes
+import com.crystal.module_base.common.view.videoplayer.startAutoPlay
 import com.crystal.module_base.tools.SomeTools
 import com.crystal.module_base.tools.baseadapter2.BaseAdapter3
 import com.crystal.module_base.tools.baseadapter2.BaseHolder2
@@ -31,20 +33,20 @@ import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
  */
 class FollowAdapter(list: List<Follow.Item>, context: Context) : BaseAdapter3<Follow.Item, BaseHolder2>(list, context) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder2 {
-        return AllViewHolder.getCommunityViewHolder(viewType, LayoutInflater.from(parent.context), parent)
+        return ViewHolderHelper.getCommunityViewHolder(viewType, LayoutInflater.from(parent.context), parent)
     }
 
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) CommunityViewHolderTypes.LOGINHEADER.typeInt else {
-            val data = list[position - 1]
-            AllViewHolder.parseCommunityViewHolderType(data.type, data.data.dataType)
+            val data = dataList[position - 1]
+            ViewHolderHelper.parseCommunityViewHolderType(data.type, data.data.dataType)
         }
     }
 
     override fun onBindViewHolder(holder: BaseHolder2, position: Int) {
         when (holder.holderTypeEnum as CommunityViewHolderTypes) {
             CommunityViewHolderTypes.AUTOPLAYFOLLOWCARD -> {
-                val beanItem = list[position - 1]
+                val beanItem = dataList[position - 1]
                 beanItem.data.content.data.run {
                     SomeTools.INSTANCES.loadImg(holder.getView(R.id.ivAvatar), beanItem.data.header.icon
                             ?: author?.icon ?: "", null)
@@ -73,7 +75,7 @@ class FollowAdapter(list: List<Follow.Item>, context: Context) : BaseAdapter3<Fo
                         override fun onClickBlank(url: String?, vararg objects: Any?) {
                             super.onClickBlank(url, *objects)
                             holder.getView<TextView>(R.id.tvVideoDuration).visible()
-                            NewDetailActivity.start(contextWeakReference.get() as Activity, VideoInfo(id, playUrl, title, description, category, library, consumption, cover, author!!, webUrl))
+                            VideoDetailActivity.start(contextWeakReference.get() as Activity, VideoInfo(id, playUrl, title, description, category, library, consumption, cover, author!!, webUrl))
                         }
                     })
                     holder.let {
@@ -81,8 +83,8 @@ class FollowAdapter(list: List<Follow.Item>, context: Context) : BaseAdapter3<Fo
                         {
                             when (this) {
                                 it.getView<GSYVideoPlayer>(R.id.videoPlayer).thumbImageView, it.itemView -> {
-                                    NewDetailActivity.start(
-                                            contextWeakReference.get(), VideoInfo(
+                                    VideoDetailActivity.start(
+                                            contextWeakReference.get() as Activity, VideoInfo(
                                             beanItem.data.content.data.id, playUrl, title, description, category, library, consumption, cover, author!!, webUrl
                                     ))
                                 }

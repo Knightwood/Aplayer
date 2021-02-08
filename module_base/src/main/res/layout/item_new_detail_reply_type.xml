@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_avatar_gray_76dp" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvNickName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         app:typeface="fzdb1Typeface"
         tools:text="香柠气泡" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvLikeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvReplyUser"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
         app:typeface="fzlLTypeface"
         tools:text="回复 @vipyinzhiwei" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
         app:layout_constraintTop_toTopOf="@id/groupReply"
         tools:src="@drawable/ic_avatar_gray_76dp" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvReplyNickName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
         app:typeface="fzdb1Typeface"
         tools:text="那么稻草" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvReplyMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
         app:layout_constraintStart_toStartOf="@id/groupReply"
         app:layout_constraintTop_toBottomOf="@id/tvReplyMessage" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvShowConversation"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -160,7 +160,7 @@
         app:layout_constraintTop_toTopOf="@id/tvReply"
         app:typeface="fzdb1Typeface" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvReply"
         android:layout_width="wrap_content"
         android:layout_height="22dp"
@@ -176,7 +176,7 @@
         app:layout_goneMarginTop="6dp"
         app:typeface="fzdb1Typeface" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="0dp"

@@ -21,12 +21,12 @@ import com.crystal.aplayer.R;
 import com.crystal.aplayer.all_module.home.daily.DailyAdapter;
 import com.crystal.aplayer.all_module.ugcdetail.UgcDetailActivity;
 import com.crystal.aplayer.all_module.util.CommonActionUrlUtil;
-import com.crystal.aplayer.all_module.util.TextViewKt;
-import com.crystal.aplayer.all_module.util.ToolsKt;
 import com.crystal.module_base.common.http.bean2.CommunityRecommend;
 import com.crystal.module_base.common.http.bean2.Label;
 import com.crystal.module_base.common.util.GlobalUtil;
-import com.crystal.module_base.common.util.viewholder.AllViewHolder;
+import com.crystal.module_base.common.util.TextViewKt;
+import com.crystal.module_base.common.util.ToolsKt;
+import com.crystal.module_base.common.util.viewholder.ViewHolderHelper;
 import com.crystal.module_base.common.util.viewholder.CommunityViewHolderTypes;
 import com.crystal.module_base.tools.LogUtil;
 import com.crystal.module_base.tools.SomeTools;
@@ -39,7 +39,7 @@ import com.zhpan.bannerview.BaseViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.crystal.aplayer.all_module.util.ToolsKt.calculateImageHeight;
+import static com.crystal.module_base.common.util.ToolsKt.calculateImageHeight;
 import static com.zhpan.bannerview.utils.BannerUtils.dp2px;
 
 /**
@@ -59,19 +59,19 @@ public class CommendAdapter extends BaseAdapter3<CommunityRecommend.Item, BaseHo
 
     @Override
     public int getItemViewType(int position) {
-        CommunityRecommend.Item data = list.get(position);
-        return AllViewHolder.parseCommunityViewHolderType(data.getData().getDataType());
+        CommunityRecommend.Item data = dataList.get(position);
+        return ViewHolderHelper.parseCommunityViewHolderType(data.getData().getDataType());
     }
 
     @NonNull
     @Override
     public BaseHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return AllViewHolder.getCommunityViewHolder(viewType, LayoutInflater.from(parent.getContext()), parent);
+        return ViewHolderHelper.getCommunityViewHolder(viewType, LayoutInflater.from(parent.getContext()), parent);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BaseHolder2 holder, int position) {
-        CommunityRecommend.Item beanItem = list.get(position);
+        CommunityRecommend.Item beanItem = dataList.get(position);
         LogUtil.d(tag, "item的样式" + beanItem.getType() + "|==|" + beanItem.getData().getDataType());
         switch ((CommunityViewHolderTypes) holder.getHolderTypeEnum()) {
             case HORIZONTAL_SCROLLCARD_ITEM_COLLECTION_TYPE:
@@ -152,8 +152,8 @@ public class CommendAdapter extends BaseAdapter3<CommunityRecommend.Item, BaseHo
 
     private void openUgcDetail(CommunityRecommend.Item item) {
         List<CommunityRecommend.Item> resultList = new ArrayList<>();
-        for (CommunityRecommend.Item it : list) {
-            if (it.getType().equals(CommunityViewHolderTypes.dataType.FollowCard.getType()) && it.getType().equals(CommunityViewHolderTypes.dataType.FollowCard.name()))
+        for (CommunityRecommend.Item it : dataList) {
+            if (it.getType().equals(CommunityViewHolderTypes.dataType.FollowCard.getType()) && it.getData().getDataType().equals(CommunityViewHolderTypes.dataType.FollowCard.name()))
                 resultList.add(it);
         }
         UgcDetailActivity.Companion.start((Activity) contextWeakReference.get(), resultList, item);
@@ -211,7 +211,7 @@ public class CommendAdapter extends BaseAdapter3<CommunityRecommend.Item, BaseHo
 
         @Override
         public void onBindViewHolder(@NonNull BaseHolder2 holder, int position) {
-            CommunityRecommend.ItemX item = list.get(position);
+            CommunityRecommend.ItemX item = dataList.get(position);
             ImageView imageView = holder.getView(R.id.ivBgPicture);
             imageView.getLayoutParams().width = ToolsKt.getMaxImageWidth();
             SomeTools.INSTANCES.loadImg(imageView, item.getData().getBgPicture(), 4f, null);

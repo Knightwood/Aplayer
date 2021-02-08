@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivMore" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvLoginTips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLoginTips" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvFavorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toTopOf="@+id/viewVerticalLine"
         app:typeface="fzlLTypeface" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvCache"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -109,39 +109,39 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvFollow"
                 style="@style/Eyepetizer.MineTextView"
                 android:paddingStart="13dp"
                 android:paddingEnd="13dp"
                 android:text="@string/my_follow" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvWatchRecord"
                 style="@style/Eyepetizer.MineTextView"
                 android:text="@string/watch_record" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvNotificationToggle"
                 style="@style/Eyepetizer.MineTextView"
                 android:text="@string/notification_toggle" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvMyBadge"
                 style="@style/Eyepetizer.MineTextView"
                 android:text="@string/my_badge" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvFeedback"
                 style="@style/Eyepetizer.MineTextView"
                 android:text="@string/feedback" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvContribute"
                 style="@style/Eyepetizer.MineTextView"
                 android:text="@string/want_contribute" />
 
-            <com.crystal.module_base.common.view.NTextView
+            <com.crystal.module_base.common.view.textview.NTextView
                 android:id="@+id/tvVersionNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

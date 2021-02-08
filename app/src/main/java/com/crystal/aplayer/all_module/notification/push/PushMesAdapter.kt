@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.crystal.aplayer.R
-import com.crystal.aplayer.all_module.util.load
 import com.crystal.aplayer.all_module.util.CommonActionUrlUtil
-import com.crystal.aplayer.all_module.util.getConvertedDate
 import com.crystal.module_base.common.http.bean2.PushMessage
+import com.crystal.module_base.common.util.DateUtil.getConvertedDate
+import com.crystal.module_base.common.util.load
 import com.crystal.module_base.tools.baseadapter2.BaseAdapter3
 import com.crystal.module_base.tools.baseadapter2.BaseHolder2
 
@@ -22,14 +22,14 @@ class PushMesAdapter(list: List<PushMessage.Message>, context: Context) : BaseAd
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder2 {
         val holder = BaseHolder2(LayoutInflater.from(parent.context).inflate(R.layout.item_notification_push, parent, false))
         holder.itemView.setOnClickListener {
-            val item = list[holder.adapterPosition]
+            val item = dataList[holder.adapterPosition]
             CommonActionUrlUtil.process(contextWeakReference.get(), item.actionUrl, item.title)
         }
         return holder
     }
 
     override fun onBindViewHolder(holder: BaseHolder2, position: Int) {
-        list[position].run {
+        dataList[position].run {
             holder.getView<ImageView>(R.id.ivAvatar).load(icon) { error(R.mipmap.ic_launcher) }
             holder.setText(R.id.tvTitle, title)
             holder.setText(R.id.tvTime,getConvertedDate(date))

@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.crystal.aplayer.all_module.util.inVisible
 import com.crystal.aplayer.all_module.notification.inbox.InboxFragment
 import com.crystal.aplayer.all_module.notification.interact.InteractionFragment
 import com.crystal.aplayer.all_module.notification.push.PushFragment
 import com.crystal.aplayer.databinding.SimpleFragmentContinerBinding
 import com.crystal.module_base.common.ui.BaseViewPagerFragment
+import com.crystal.module_base.common.util.inVisible
 import com.google.android.material.tabs.TabLayout
 import kotlin.collections.ArrayList
 

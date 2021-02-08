@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.crystal.aplayer.R;
 import com.crystal.module_base.common.http.bean2.Discovery;
@@ -33,7 +32,7 @@ class specialSquareCardCollectionAdapter extends BaseAdapter3<Discovery.ItemX,Ba
 
     @Override
     public void onBindViewHolder(@NonNull BaseHolder2 holder, int position) {
-        Discovery.ItemX item = list.get(position);
+        Discovery.ItemX item = dataList.get(position);
         SomeTools.INSTANCES.loadImg(holder.getView(R.id.ivPicture), item.getData().getImage(), 4f, null);
         holder.setText(R.id.tvTitle, item.getData().getTitle());
         holder.itemView.setOnClickListener(v->{

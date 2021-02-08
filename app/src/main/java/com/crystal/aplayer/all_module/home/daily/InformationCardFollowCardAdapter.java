@@ -42,7 +42,7 @@ public class InformationCardFollowCardAdapter extends BaseAdapter3<String, BaseH
 
     @Override
     public void onBindViewHolder(@NonNull BaseHolder2 holder, int position) {
-        String item = list.get(position) ;
+        String item = dataList.get(position) ;
         holder.setText(R.id.tvNews,item);
         holder.itemView.setOnClickListener(v->{
             CommonActionUrlUtil.process(context.get(), actionUrl,null);

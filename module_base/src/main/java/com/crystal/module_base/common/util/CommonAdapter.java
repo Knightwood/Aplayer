@@ -4,10 +4,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.crystal.module_base.common.http.bean2.Discovery;
-import com.crystal.module_base.common.util.viewholder.AllViewHolder;
+import com.crystal.module_base.common.util.viewholder.ViewHolderHelper;
 import com.crystal.module_base.tools.baseadapter2.BaseAdapter3;
 import com.crystal.module_base.tools.baseadapter2.BaseHolder2;
 
@@ -32,6 +30,6 @@ public abstract class CommonAdapter<T> extends BaseAdapter3<T, BaseHolder2> {
     @NonNull
     @Override
     public BaseHolder2 onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return AllViewHolder.getViewHolder(viewType, LayoutInflater.from(parent.getContext()), parent);
+        return ViewHolderHelper.getViewHolder(viewType, LayoutInflater.from(parent.getContext()), parent);
     }
 }

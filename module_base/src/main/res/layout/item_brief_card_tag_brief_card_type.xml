@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/ic_launcher_background" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         app:typeface="fzdb1Typeface"
         tools:text="我的宝藏书架" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
         app:typeface="fzlLTypeface"
         tools:text="你曾是少年的青春时代" />
 
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvFollow"
         style="@style/Eyepetizer.FollowTextView"
         app:layout_constraintBottom_toBottomOf="@id/ivPicture"

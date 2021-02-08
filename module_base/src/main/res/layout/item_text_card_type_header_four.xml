@@ -10,7 +10,7 @@
 
     tools:visibility="visible">
 <!--tools:context=".ui.newdetail.NewDetailActivity"-->
-    <com.crystal.module_base.common.view.NTextView
+    <com.crystal.module_base.common.view.textview.NTextView
         android:id="@+id/tvTitle4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,8 +1,6 @@
 package com.crystal.aplayer.all_module.ugcdetail
 
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
+import com.crystal.module_base.base.BaseLifeCycleObserver
 import com.shuyu.gsyvideoplayer.GSYVideoManager
 
 
@@ -12,31 +10,20 @@ import com.shuyu.gsyvideoplayer.GSYVideoManager
  *packageName：com.crystal.aplayer.all_module.ugcfetail
  *描述：
  */
-class UgcLifeObserver : LifecycleObserver {
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    fun onCreateActivity() {
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun onActivityStart() {
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    fun onActivityResume() {
+class UgcLifeObserver : BaseLifeCycleObserver() {
+    override fun onActivityResume() {
+        super.onActivityResume()
         GSYVideoManager.onResume()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    fun onActivityPause() {
+    override fun onActivityPause() {
+        super.onActivityPause()
         GSYVideoManager.onPause()
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-    fun onActivityStop() {
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onActivityDestroy() {
+    override fun onActivityDestroy() {
+        super.onActivityDestroy()
         GSYVideoManager.releaseAllVideos()
     }
+
 }
