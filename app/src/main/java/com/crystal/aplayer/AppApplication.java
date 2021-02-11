@@ -3,8 +3,8 @@ package com.crystal.aplayer;
 import android.content.Context;
 
 
-import com.crystal.module_base.base.BaseApplication;
-import com.crystal.module_base.tools.threadpool.SimpleThreadPool;
+import com.crystal.aplayer.module_base.base.BaseApplication;
+import com.crystal.aplayer.module_base.tools.threadpool.SimpleThreadPool;
 
 
 /**

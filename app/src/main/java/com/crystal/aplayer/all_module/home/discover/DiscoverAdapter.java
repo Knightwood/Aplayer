@@ -15,20 +15,21 @@ import com.crystal.aplayer.R;
 import com.crystal.aplayer.all_module.home.daily.DailyAdapter;
 import com.crystal.aplayer.all_module.login.LoginActivity;
 import com.crystal.aplayer.all_module.video_detail.VideoDetailActivity;
-import com.crystal.module_base.common.http.bean2.VideoInfo;
+import com.crystal.aplayer.module_base.common.http.bean2.VideoInfo;
 import com.crystal.aplayer.all_module.util.CommonActionUrlUtil;
-import com.crystal.module_base.common.http.bean2.Discovery;
-import com.crystal.module_base.common.http.bean2.FollowCard;
-import com.crystal.module_base.common.http.bean2.Label;
-import com.crystal.module_base.common.util.GlobalUtil;
-import com.crystal.module_base.common.util.ToolsKt;
-import com.crystal.module_base.common.util.viewholder.ViewHolderHelper;
-import com.crystal.module_base.common.util.viewholder.ViewHolderTypes;
-import com.crystal.module_base.common.view.SimpleGridItemDecoration;
-import com.crystal.module_base.tools.LogUtil;
-import com.crystal.module_base.tools.SomeTools;
-import com.crystal.module_base.tools.baseadapter2.BaseAdapter3;
-import com.crystal.module_base.tools.baseadapter2.BaseHolder2;
+import com.crystal.aplayer.module_base.common.http.bean2.Discovery;
+import com.crystal.aplayer.module_base.common.http.bean2.FollowCard;
+import com.crystal.aplayer.module_base.common.http.bean2.Label;
+import com.crystal.aplayer.module_base.common.util.GlobalUtil;
+import com.crystal.aplayer.module_base.common.util.ToolsKt;
+import com.crystal.aplayer.module_base.common.util.viewholder.ViewHolderHelper;
+import com.crystal.aplayer.module_base.common.util.viewholder.ViewHolderTypes;
+import com.crystal.aplayer.module_base.common.view.SimpleGridItemDecoration;
+import com.crystal.aplayer.module_base.common.view.videoplayer.AutoPlayerVideoPlayerKt;
+import com.crystal.aplayer.module_base.tools.LogUtil;
+import com.crystal.aplayer.module_base.tools.SomeTools;
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseAdapter3;
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseHolder2;
 import com.shuyu.gsyvideoplayer.GSYVideoADManager;
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack;
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer;
@@ -223,7 +224,7 @@ public class DiscoverAdapter extends BaseAdapter3<Discovery.Item, BaseHolder2> {
                 }
                 Discovery.AutoPlayVideoAdDetail detail2 = item.getData().getDetail();
                 if (detail2!=null){
-                    VideoPlayerToolsKt.startAutoPlay((Activity) contextWeakReference.get(),holder2.getView(R.id.videoPlayer),detail2.getPosition(),detail2.getUrl(),detail2.getImageUrl(),tag,new GSYSampleCallBack(){
+                    AutoPlayerVideoPlayerKt.startAutoPlay((Activity) contextWeakReference.get(),holder2.getView(R.id.videoPlayer),detail2.getPosition(),detail2.getUrl(),detail2.getImageUrl(),tag,new GSYSampleCallBack(){
                         @Override
                         public void onPrepared(String url, Object... objects) {
                             super.onPrepared(url, objects);

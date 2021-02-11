@@ -33,6 +33,7 @@
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
+        <activity android:name=".base.ui.activity.BaseActivity" />
         <activity android:name=".all_module.ugcdetail.UgcDetailActivity" />
         <activity android:name=".all_module.mine.setting.SettingActivity" />
         <activity android:name=".all_module.login.LoginActivity" />

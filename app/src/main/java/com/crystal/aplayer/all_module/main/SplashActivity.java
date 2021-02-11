@@ -10,14 +10,12 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
-import android.view.animation.Transformation;
 import android.widget.Toast;
 
 import com.crystal.aplayer.databinding.ModuleMainSplashActivityBinding;
-import com.crystal.module_base.base.mvvm.state.LoadDataState;
-import com.crystal.module_base.base.ui.activity.BaseActivity;
-import com.crystal.module_base.common.ui.CommonActivity;
-import com.crystal.module_base.tools.LogUtil;
+import com.crystal.aplayer.module_base.base.mvvm.state.LoadDataState;
+import com.crystal.aplayer.module_base.common.ui.CommonActivity;
+import com.crystal.aplayer.module_base.tools.LogUtil;
 import com.gyf.immersionbar.BarHide;
 import com.gyf.immersionbar.ImmersionBar;
 

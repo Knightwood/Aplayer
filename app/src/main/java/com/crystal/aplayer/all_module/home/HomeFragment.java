@@ -13,7 +13,7 @@ import com.crystal.aplayer.all_module.home.daily.DailyFragment;
 import com.crystal.aplayer.all_module.home.discover.DiscoverFragment;
 import com.crystal.aplayer.all_module.home.recommend.RecommendFragment;
 import com.crystal.aplayer.databinding.SimpleFragmentContinerBinding;
-import com.crystal.module_base.common.ui.BaseViewPagerFragment;
+import com.crystal.aplayer.module_base.common.ui.BaseViewPagerFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;

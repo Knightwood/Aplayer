@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.crystal.aplayer.R
 import com.crystal.aplayer.all_module.home.daily.DailyAdapter
 import com.crystal.aplayer.all_module.video_detail.VideoDetailActivity
-import com.crystal.module_base.common.http.bean2.VideoInfo
-import com.crystal.module_base.common.http.bean2.VideoRelated
-import com.crystal.module_base.common.util.conversionVideoDuration
-import com.crystal.module_base.common.util.gone
-import com.crystal.module_base.common.util.load
-import com.crystal.module_base.common.util.viewholder.ViewHolderHelper
-import com.crystal.module_base.common.util.viewholder.ViewHolderTypes
-import com.crystal.module_base.tools.LogUtil
-import com.crystal.module_base.tools.Weak
-import com.crystal.module_base.tools.baseadapter2.BaseHolder2
-import com.crystal.module_base.tools.baseadapter2.HolderType
+import com.crystal.aplayer.module_base.common.http.bean2.VideoInfo
+import com.crystal.aplayer.module_base.common.http.bean2.VideoRelated
+import com.crystal.aplayer.module_base.common.util.conversionVideoDuration
+import com.crystal.aplayer.module_base.common.util.gone
+import com.crystal.aplayer.module_base.common.util.load
+import com.crystal.aplayer.module_base.common.util.viewholder.ViewHolderHelper
+import com.crystal.aplayer.module_base.common.util.viewholder.ViewHolderTypes
+import com.crystal.aplayer.module_base.tools.LogUtil
+import com.crystal.aplayer.module_base.tools.Weak
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseHolder2
+import com.crystal.aplayer.module_base.tools.baseadapter2.HolderType
 
 
 class RelatedVideoAdapter(context: VideoDetailActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

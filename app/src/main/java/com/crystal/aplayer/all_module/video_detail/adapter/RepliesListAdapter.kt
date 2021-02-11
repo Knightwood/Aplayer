@@ -10,12 +10,12 @@ import androidx.constraintlayout.widget.Group
 import androidx.recyclerview.widget.RecyclerView
 import com.crystal.aplayer.R
 import com.crystal.aplayer.all_module.video_detail.VideoDetailActivity
-import com.crystal.module_base.common.http.bean2.VideoReplies
-import com.crystal.module_base.common.util.*
-import com.crystal.module_base.common.util.GlobalUtil.dp2px
-import com.crystal.module_base.common.util.viewholder.ViewHolderTypes
-import com.crystal.module_base.tools.baseadapter2.BaseHolder2
-import com.crystal.module_base.tools.Weak
+import com.crystal.aplayer.module_base.common.http.bean2.VideoReplies
+import com.crystal.aplayer.module_base.common.util.*
+import com.crystal.aplayer.module_base.common.util.GlobalUtil.dp2px
+import com.crystal.aplayer.module_base.common.util.viewholder.ViewHolderTypes
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseHolder2
+import com.crystal.aplayer.module_base.tools.Weak
 
 
 class RepliesListAdapter(context: VideoDetailActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

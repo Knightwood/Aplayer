@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.crystal.aplayer.R;
 import com.crystal.aplayer.all_module.util.CommonActionUrlUtil;
-import com.crystal.module_base.tools.baseadapter2.BaseAdapter3;
-import com.crystal.module_base.tools.baseadapter2.BaseHolder2;
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseAdapter3;
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseHolder2;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

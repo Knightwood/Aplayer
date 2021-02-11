@@ -2,17 +2,15 @@ package com.crystal.aplayer.all_module.community.commend;
 
 
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.View;
 
 import com.crystal.aplayer.databinding.ModuleHomeFragmentDiscoverBinding;
-import com.crystal.module_base.base.ui.fragments.LoadingRefreshFragment;
-import com.crystal.module_base.common.http.bean2.CommunityRecommend;
-import com.crystal.module_base.tools.LogUtil;
+import com.crystal.aplayer.module_base.base.ui.fragments.LoadingRefreshFragment;
+import com.crystal.aplayer.module_base.common.http.bean2.CommunityRecommend;
+import com.crystal.aplayer.module_base.tools.LogUtil;
 
 import java.util.List;
 

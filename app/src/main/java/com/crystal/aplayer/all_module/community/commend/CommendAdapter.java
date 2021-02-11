@@ -21,17 +21,17 @@ import com.crystal.aplayer.R;
 import com.crystal.aplayer.all_module.home.daily.DailyAdapter;
 import com.crystal.aplayer.all_module.ugcdetail.UgcDetailActivity;
 import com.crystal.aplayer.all_module.util.CommonActionUrlUtil;
-import com.crystal.module_base.common.http.bean2.CommunityRecommend;
-import com.crystal.module_base.common.http.bean2.Label;
-import com.crystal.module_base.common.util.GlobalUtil;
-import com.crystal.module_base.common.util.TextViewKt;
-import com.crystal.module_base.common.util.ToolsKt;
-import com.crystal.module_base.common.util.viewholder.ViewHolderHelper;
-import com.crystal.module_base.common.util.viewholder.CommunityViewHolderTypes;
-import com.crystal.module_base.tools.LogUtil;
-import com.crystal.module_base.tools.SomeTools;
-import com.crystal.module_base.tools.baseadapter2.BaseAdapter3;
-import com.crystal.module_base.tools.baseadapter2.BaseHolder2;
+import com.crystal.aplayer.module_base.common.http.bean2.CommunityRecommend;
+import com.crystal.aplayer.module_base.common.http.bean2.Label;
+import com.crystal.aplayer.module_base.common.util.GlobalUtil;
+import com.crystal.aplayer.module_base.common.util.TextViewKt;
+import com.crystal.aplayer.module_base.common.util.ToolsKt;
+import com.crystal.aplayer.module_base.common.util.viewholder.ViewHolderHelper;
+import com.crystal.aplayer.module_base.common.util.viewholder.CommunityViewHolderTypes;
+import com.crystal.aplayer.module_base.tools.LogUtil;
+import com.crystal.aplayer.module_base.tools.SomeTools;
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseAdapter3;
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseHolder2;
 import com.zhpan.bannerview.BannerViewPager;
 import com.zhpan.bannerview.BaseBannerAdapter;
 import com.zhpan.bannerview.BaseViewHolder;
@@ -39,7 +39,7 @@ import com.zhpan.bannerview.BaseViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.crystal.module_base.common.util.ToolsKt.calculateImageHeight;
+import static com.crystal.aplayer.module_base.common.util.ToolsKt.calculateImageHeight;
 import static com.zhpan.bannerview.utils.BannerUtils.dp2px;
 
 /**

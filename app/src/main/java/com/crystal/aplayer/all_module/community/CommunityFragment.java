@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.crystal.aplayer.all_module.community.commend.CommendFragment;
 import com.crystal.aplayer.all_module.community.follow.FollowFragment;
 import com.crystal.aplayer.databinding.SimpleFragmentContinerBinding;
-import com.crystal.module_base.common.ui.BaseViewPagerFragment;
+import com.crystal.aplayer.module_base.common.ui.BaseViewPagerFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;

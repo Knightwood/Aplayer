@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.crystal.aplayer.all_module.login.LoginActivity;
-import com.crystal.module_base.common.util.ToolsKt;
-import com.crystal.module_base.tools.SomeTools;
+import com.crystal.aplayer.module_base.common.util.ToolsKt;
+import com.crystal.aplayer.module_base.tools.SomeTools;
 
 import org.jetbrains.annotations.NotNull;
 

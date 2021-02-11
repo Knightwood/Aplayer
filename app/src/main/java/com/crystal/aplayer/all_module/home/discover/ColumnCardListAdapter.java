@@ -6,10 +6,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 
 import com.crystal.aplayer.R;
-import com.crystal.module_base.common.http.bean2.Discovery;
-import com.crystal.module_base.tools.SomeTools;
-import com.crystal.module_base.tools.baseadapter2.BaseAdapter3;
-import com.crystal.module_base.tools.baseadapter2.BaseHolder2;
+import com.crystal.aplayer.module_base.common.http.bean2.Discovery;
+import com.crystal.aplayer.module_base.tools.SomeTools;
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseAdapter3;
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseHolder2;
 
 import java.util.List;
 

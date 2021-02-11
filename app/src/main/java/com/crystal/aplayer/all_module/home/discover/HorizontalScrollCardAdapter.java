@@ -8,9 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.crystal.aplayer.R;
-import com.crystal.module_base.common.http.bean2.Discovery;
-import com.crystal.module_base.common.http.bean2.Label;
-import com.crystal.module_base.tools.SomeTools;
+import com.crystal.aplayer.module_base.common.http.bean2.Discovery;
+import com.crystal.aplayer.module_base.common.http.bean2.Label;
+import com.crystal.aplayer.module_base.tools.SomeTools;
 import com.zhpan.bannerview.BaseBannerAdapter;
 import com.zhpan.bannerview.BaseViewHolder;
 

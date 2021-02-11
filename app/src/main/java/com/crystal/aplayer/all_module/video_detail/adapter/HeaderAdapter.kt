@@ -12,14 +12,14 @@ import androidx.constraintlayout.widget.Group
 import androidx.recyclerview.widget.RecyclerView
 import com.crystal.aplayer.R
 import com.crystal.aplayer.all_module.video_detail.VideoDetailActivity
-import com.crystal.module_base.common.http.bean2.VideoInfo
-import com.crystal.module_base.common.util.gone
-import com.crystal.module_base.common.util.load
-import com.crystal.module_base.common.util.setOnClickListener1
-import com.crystal.module_base.common.util.visible
-import com.crystal.module_base.common.view.textview.CollapseTextView
-import com.crystal.module_base.tools.LogUtil
-import com.crystal.module_base.tools.circleiv.CircleImageView2
+import com.crystal.aplayer.module_base.common.http.bean2.VideoInfo
+import com.crystal.aplayer.module_base.common.util.gone
+import com.crystal.aplayer.module_base.common.util.load
+import com.crystal.aplayer.module_base.common.util.setOnClickListener1
+import com.crystal.aplayer.module_base.common.util.visible
+import com.crystal.aplayer.module_base.common.view.textview.CollapseTextView
+import com.crystal.aplayer.module_base.tools.LogUtil
+import com.crystal.aplayer.module_base.tools.circleiv.CircleImageView2
 import kotlin.jvm.internal.Intrinsics
 
 

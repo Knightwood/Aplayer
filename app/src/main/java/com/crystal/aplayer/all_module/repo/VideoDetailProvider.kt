@@ -1,18 +1,16 @@
 package com.crystal.aplayer.all_module.repo
 
 import com.crystal.aplayer.AppApplication
-import com.crystal.module_base.base.http.retrofit.ParseIntercept
-import com.crystal.module_base.base.http.retrofit.RetrofitConfig
-import com.crystal.module_base.base.mvvm.repo.BaseDataProvider
-import com.crystal.module_base.base.mvvm.viewmodel.StateViewModel
-import com.crystal.module_base.common.http.AllApiConfig
-import com.crystal.module_base.common.http.api.VideoApiService
-import com.crystal.module_base.common.http.bean2.VideoBeanForClient
-import com.crystal.module_base.common.http.bean2.VideoRelated
-import com.crystal.module_base.common.http.bean2.VideoReplies
+import com.crystal.aplayer.module_base.base.http.retrofit.ParseIntercept
+import com.crystal.aplayer.module_base.base.http.retrofit.RetrofitConfig
+import com.crystal.aplayer.module_base.base.mvvm.repo.BaseDataProvider
+import com.crystal.aplayer.module_base.base.mvvm.viewmodel.StateViewModel
+import com.crystal.aplayer.module_base.common.http.AllApiConfig
+import com.crystal.aplayer.module_base.common.http.api.VideoApiService
+import com.crystal.aplayer.module_base.common.http.bean2.VideoBeanForClient
+import com.crystal.aplayer.module_base.common.http.bean2.VideoRelated
+import com.crystal.aplayer.module_base.common.http.bean2.VideoReplies
 import retrofit2.http.Url
-import tv.danmaku.ijk.media.player.IjkMediaPlayer
-import kotlin.jvm.internal.Intrinsics
 
 
 class VideoDetailProvider : BaseDataProvider<VideoApiService, StateViewModel<*>>() {

@@ -1,9 +1,9 @@
 package com.crystal.aplayer.all_module.ugcdetail
 
 import androidx.lifecycle.ViewModel
-import com.crystal.module_base.common.http.bean2.CommunityRecommend
-import com.crystal.module_base.common.http.bean2.VideoList
-import com.crystal.module_base.tools.LogUtil
+import com.crystal.aplayer.module_base.common.http.bean2.CommunityRecommend
+import com.crystal.aplayer.module_base.common.http.bean2.VideoList
+import com.crystal.aplayer.module_base.tools.LogUtil
 
 
 /**

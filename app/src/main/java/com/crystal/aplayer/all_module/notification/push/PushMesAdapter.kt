@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.crystal.aplayer.R
 import com.crystal.aplayer.all_module.util.CommonActionUrlUtil
-import com.crystal.module_base.common.http.bean2.PushMessage
-import com.crystal.module_base.common.util.DateUtil.getConvertedDate
-import com.crystal.module_base.common.util.load
-import com.crystal.module_base.tools.baseadapter2.BaseAdapter3
-import com.crystal.module_base.tools.baseadapter2.BaseHolder2
+import com.crystal.aplayer.module_base.common.http.bean2.PushMessage
+import com.crystal.aplayer.module_base.common.util.DateUtil.getConvertedDate
+import com.crystal.aplayer.module_base.common.util.load
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseAdapter3
+import com.crystal.aplayer.module_base.tools.baseadapter2.BaseHolder2
 
 /**
  *创建者 kiylx

@@ -9,9 +9,9 @@ import android.view.View;
 
 import com.crystal.aplayer.all_module.home.recommend.adapter.RecommendAdapter;
 import com.crystal.aplayer.databinding.ModuleHomeFragmentDiscoverBinding;
-import com.crystal.module_base.base.ui.fragments.LoadingRefreshFragment;
-import com.crystal.module_base.common.http.bean2.HomePageRecommend;
-import com.crystal.module_base.tools.LogUtil;
+import com.crystal.aplayer.module_base.base.ui.fragments.LoadingRefreshFragment;
+import com.crystal.aplayer.module_base.common.http.bean2.HomePageRecommend;
+import com.crystal.aplayer.module_base.tools.LogUtil;
 
 import java.util.List;
 

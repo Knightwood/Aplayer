@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.crystal.aplayer.databinding.ModuleHomeFragmentDiscoverBinding;
-import com.crystal.module_base.base.ui.fragments.LoadingRefreshFragment;
-import com.crystal.module_base.common.http.bean2.Discovery;
-import com.crystal.module_base.tools.LogUtil;
+import com.crystal.aplayer.module_base.base.ui.fragments.LoadingRefreshFragment;
+import com.crystal.aplayer.module_base.common.http.bean2.Discovery;
+import com.crystal.aplayer.module_base.tools.LogUtil;
 
 import java.util.List;
 

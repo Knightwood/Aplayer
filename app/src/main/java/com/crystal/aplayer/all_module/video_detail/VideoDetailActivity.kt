@@ -18,10 +18,10 @@ import com.crystal.aplayer.all_module.video_detail.adapter.HeaderAdapter
 import com.crystal.aplayer.all_module.video_detail.adapter.RelatedVideoAdapter
 import com.crystal.aplayer.all_module.video_detail.adapter.RepliesListAdapter
 import com.crystal.aplayer.databinding.ActivityVideoDetailBinding
-import com.crystal.module_base.common.http.bean2.VideoInfo
-import com.crystal.module_base.common.ui.CommonActivityKt
-import com.crystal.module_base.common.util.*
-import com.crystal.module_base.common.view.JustTextFooter
+import com.crystal.aplayer.module_base.common.http.bean2.VideoInfo
+import com.crystal.aplayer.module_base.common.ui.CommonActivityKt
+import com.crystal.aplayer.module_base.common.util.*
+import com.crystal.aplayer.module_base.common.view.JustTextFooter
 import com.shuyu.gsyvideoplayer.GSYVideoADManager
 import com.shuyu.gsyvideoplayer.GSYVideoManager
 import com.shuyu.gsyvideoplayer.listener.GSYSampleCallBack

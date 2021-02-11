@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.crystal.aplayer.databinding.ModuleHomeFragmentDiscoverBinding
-import com.crystal.module_base.base.http.retrofit.ResponseMes
-import com.crystal.module_base.base.ui.fragments.LoadingRefreshFragment
-import com.crystal.module_base.common.http.bean2.PushMessage
-import com.crystal.module_base.tools.LogUtil
+import com.crystal.aplayer.module_base.base.http.retrofit.ResponseMes
+import com.crystal.aplayer.module_base.base.ui.fragments.LoadingRefreshFragment
+import com.crystal.aplayer.module_base.common.http.bean2.PushMessage
+import com.crystal.aplayer.module_base.tools.LogUtil
 
 
 class PushFragment : LoadingRefreshFragment<PushViewModel>() {

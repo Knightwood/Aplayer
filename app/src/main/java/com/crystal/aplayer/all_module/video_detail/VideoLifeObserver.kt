@@ -1,6 +1,6 @@
 package com.crystal.aplayer.all_module.video_detail
 
-import com.crystal.module_base.base.BaseLifeCycleObserver
+import com.crystal.aplayer.module_base.base.BaseLifeCycleObserver
 import com.shuyu.gsyvideoplayer.GSYVideoManager
 
 

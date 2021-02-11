@@ -24,7 +24,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="50dp" />
 
-    <com.crystal.module_base.common.view.videoplayer.VideoDetail_VideoPlayer
+    <com.crystal.aplayer.module_base.common.view.videoplayer.VideoDetail_VideoPlayer
         android:id="@+id/videoPlayer"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible" />
 
-    <com.crystal.module_base.tools.circleiv.CircleImageView2
+    <com.crystal.aplayer.module_base.tools.circleiv.CircleImageView2
         android:id="@+id/ivPullDown"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -176,7 +176,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/begin">
 
-        <com.crystal.module_base.common.view.textview.NTextView
+        <com.crystal.aplayer.module_base.common.view.textview.NTextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="bottom|center_horizontal"
@@ -213,7 +213,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/end" />
 
-    <com.crystal.module_base.tools.circleiv.CircleImageView2
+    <com.crystal.aplayer.module_base.tools.circleiv.CircleImageView2
         android:id="@+id/ivAvatar"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -228,7 +228,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/end" />
 
-    <com.crystal.module_base.common.view.textview.NEditText
+    <com.crystal.aplayer.module_base.common.view.textview.NEditText
         android:id="@+id/etComment"
         android:layout_width="0dp"
         android:layout_height="40dp"
@@ -258,7 +258,7 @@
         app:layout_constraintStart_toEndOf="@id/etComment"
         app:layout_constraintTop_toBottomOf="@id/end" />
 
-    <com.crystal.module_base.common.view.textview.NTextView
+    <com.crystal.aplayer.module_base.common.view.textview.NTextView
         android:id="@+id/tvReplyCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

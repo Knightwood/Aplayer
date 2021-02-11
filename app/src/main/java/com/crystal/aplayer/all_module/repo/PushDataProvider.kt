@@ -1,12 +1,12 @@
 package com.crystal.aplayer.all_module.repo
 
 import com.crystal.aplayer.AppApplication
-import com.crystal.module_base.base.http.retrofit.RetrofitConfig
-import com.crystal.module_base.base.mvvm.repo.BaseDataProvider
-import com.crystal.module_base.base.mvvm.viewmodel.base.BaseViewModel
-import com.crystal.module_base.common.http.AllApiConfig
-import com.crystal.module_base.common.http.api.NotifyMesService
-import com.crystal.module_base.common.http.bean2.PushMessage
+import com.crystal.aplayer.module_base.base.http.retrofit.RetrofitConfig
+import com.crystal.aplayer.module_base.base.mvvm.repo.BaseDataProvider
+import com.crystal.aplayer.module_base.base.mvvm.viewmodel.base.BaseViewModel
+import com.crystal.aplayer.module_base.common.http.AllApiConfig
+import com.crystal.aplayer.module_base.common.http.api.NotifyMesService
+import com.crystal.aplayer.module_base.common.http.bean2.PushMessage
 import retrofit2.http.Url
 
 /**

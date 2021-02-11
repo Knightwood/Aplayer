@@ -1,25 +1,15 @@
 package com.crystal.aplayer.all_module.home.daily;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
-import com.crystal.aplayer.R;
-import com.crystal.aplayer.all_module.home.discover.DiscoverAdapter;
-import com.crystal.aplayer.all_module.home.discover.DiscoverViewModel;
 import com.crystal.aplayer.databinding.ModuleHomeFragmentDiscoverBinding;
-import com.crystal.module_base.base.ui.fragments.LoadingRefreshFragment;
-import com.crystal.module_base.common.http.bean2.Daily;
-import com.crystal.module_base.common.http.bean2.Discovery;
-import com.crystal.module_base.tools.LogUtil;
+import com.crystal.aplayer.module_base.base.ui.fragments.LoadingRefreshFragment;
+import com.crystal.aplayer.module_base.common.http.bean2.Daily;
+import com.crystal.aplayer.module_base.tools.LogUtil;
 
 import java.util.List;
 

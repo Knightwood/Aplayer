@@ -2,12 +2,12 @@ package com.crystal.aplayer.all_module.video_detail
 
 import androidx.lifecycle.MutableLiveData
 import com.crystal.aplayer.all_module.repo.VideoDetailProvider
-import com.crystal.module_base.base.http.retrofit.ParseIntercept
-import com.crystal.module_base.base.http.retrofit.ResponseMes
-import com.crystal.module_base.base.mvvm.viewmodel.StateViewModel
-import com.crystal.module_base.common.http.api.VideoApiService
-import com.crystal.module_base.common.http.bean2.*
-import com.crystal.module_base.tools.LogUtil
+import com.crystal.aplayer.module_base.base.http.retrofit.ParseIntercept
+import com.crystal.aplayer.module_base.base.http.retrofit.ResponseMes
+import com.crystal.aplayer.module_base.base.mvvm.viewmodel.StateViewModel
+import com.crystal.aplayer.module_base.common.http.api.VideoApiService
+import com.crystal.aplayer.module_base.common.http.bean2.*
+import com.crystal.aplayer.module_base.tools.LogUtil
 import kotlin.jvm.internal.Intrinsics
 
 

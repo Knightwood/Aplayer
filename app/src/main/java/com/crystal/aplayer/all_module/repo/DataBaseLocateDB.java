@@ -1,7 +1,7 @@
 package com.crystal.aplayer.all_module.repo;
 
-import com.crystal.module_base.base.mvvm.repo.BaseLocateDB;
-import com.crystal.module_base.common.http.bean2.Discovery;
+import com.crystal.aplayer.module_base.base.mvvm.repo.BaseLocateDB;
+import com.crystal.aplayer.module_base.common.http.bean2.Discovery;
 
 /**
  * 创建者 kiylx

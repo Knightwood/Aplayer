@@ -8,13 +8,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.crystal.aplayer.AppApplication
 import com.crystal.aplayer.R
-import com.crystal.module_base.common.util.callback.ViewPagerChangeListener
-import com.crystal.module_base.common.http.bean2.CommunityRecommend
-import com.crystal.module_base.common.http.bean2.VideoList
-import com.crystal.module_base.common.ui.CommonActivity
-import com.crystal.module_base.tools.LogUtil
-import com.crystal.module_base.tools.live_data_bus.DataBus
-import com.crystal.module_base.tools.live_data_bus.core.OstensibleObserver
+import com.crystal.aplayer.module_base.common.util.callback.ViewPagerChangeListener
+import com.crystal.aplayer.module_base.common.http.bean2.CommunityRecommend
+import com.crystal.aplayer.module_base.common.http.bean2.VideoList
+import com.crystal.aplayer.module_base.common.ui.CommonActivity
+import com.crystal.aplayer.module_base.tools.LogUtil
+import com.crystal.aplayer.module_base.tools.live_data_bus.DataBus
+import com.crystal.aplayer.module_base.tools.live_data_bus.core.OstensibleObserver
 
 /**
  * 社区-推荐详情页。
