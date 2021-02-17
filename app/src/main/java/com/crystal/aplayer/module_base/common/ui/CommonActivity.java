@@ -1,9 +1,12 @@
 package com.crystal.aplayer.module_base.common.ui;
 
+import android.graphics.Color;
 import android.view.View;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 
+import com.crystal.aplayer.R;
 import com.crystal.aplayer.module_base.base.ui.activity.BaseActivity;
 import com.gyf.immersionbar.ImmersionBar;
 
@@ -28,7 +31,6 @@ public class CommonActivity extends BaseActivity {
     }
 
     protected void setContentViewAfter() {
-
     }
 
     /**
@@ -41,6 +43,4 @@ public class CommonActivity extends BaseActivity {
                 .fitsSystemWindows(true)
                 .init();
     }
-
-
 }

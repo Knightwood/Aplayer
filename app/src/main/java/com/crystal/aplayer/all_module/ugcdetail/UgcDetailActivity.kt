@@ -22,7 +22,7 @@ import com.crystal.aplayer.module_base.tools.live_data_bus.core.OstensibleObserv
 class UgcDetailActivity : CommonActivity() {
     private val viewModel by lazy { ViewModelProvider(this).get(UgcViewModel::class.java) }
     private lateinit var rootView: ViewPager2
-    private var adapter: UgcDetailAdapter? = null
+    private var detailAdapter: UgcDetailAdapter? = null
     private var dataObserver: Observer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,13 +34,20 @@ class UgcDetailActivity : CommonActivity() {
         DataBus.with<VideoList>(VIDEO_LIST).observeSticky(this, dataObserver!!)
     }
 
+    override fun setContentViewAfter() {
+        setStatusBarBackground(R.color.black)
+    }
+
     private fun setAdapter() {
         if (viewModel.dataList == null) {
+            finish()
             return
         } else {
-            adapter = adapter ?: UgcDetailAdapter(viewModel.dataList!!, this)
+            if (detailAdapter==null){
+                detailAdapter=UgcDetailAdapter(viewModel.dataList!!, this)
+            }
             rootView.run {
-                adapter = adapter
+                adapter = detailAdapter
                 orientation = ViewPager2.ORIENTATION_VERTICAL
                 offscreenPageLimit = 1
                 registerOnPageChangeCallback(ViewPagerChangeListener(this, viewModel.itemPosition, R.id.videoPlayer))
@@ -58,8 +65,7 @@ class UgcDetailActivity : CommonActivity() {
 
     inner class Observer : OstensibleObserver<VideoList>() {
         override fun onChanged(t: VideoList?) {
-            val toast = Toast.makeText(AppApplication.getContext(), t?.currentItem?.type + "databus", Toast.LENGTH_LONG)
-            toast.show()
+            LogUtil.d(TAG,t?.currentItem?.type + "  bus:数据发送成功")
             viewModel.setData(t)
             setAdapter();
         }

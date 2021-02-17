@@ -56,7 +56,7 @@ class VideoDetailActivity : CommonActivityKt() {
 
     override fun setContentViewAfter() {
         if (initArguments()) {
-            setStatusBarBackground(R.color.black);
+            setStatusBarBackground(R.color.black)
             prepareData();
         }
     }
