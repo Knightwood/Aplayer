@@ -15,16 +15,16 @@ public class ResponseMes {
         this.mes = mes;
     }
 
-    public ErrorContent getError() {
-        return null;
+    public String getError() {
+        return mes;
     }
 
     public boolean hasError() {
-        return false;
+        return code != 200;
     }
 
     public static class ErrorContent {
-
+public static final int ConnectFailed=999;
     }
 
 }

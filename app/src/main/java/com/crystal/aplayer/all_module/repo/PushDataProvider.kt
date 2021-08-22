@@ -1,6 +1,7 @@
 package com.crystal.aplayer.all_module.repo
 
 import com.crystal.aplayer.AppApplication
+import com.crystal.aplayer.module_base.base.http.retrofit.ParseIntercept
 import com.crystal.aplayer.module_base.base.http.retrofit.RetrofitConfig
 import com.crystal.aplayer.module_base.base.mvvm.repo.BaseDataProvider
 import com.crystal.aplayer.module_base.base.mvvm.viewmodel.base.BaseViewModel
@@ -26,8 +27,8 @@ import retrofit2.http.Url
         TODO("Not yet implemented")
     }
 
-    fun getPushMes(@Url url: String) {
-        retrofitConfig.parsingCallgetData(apiService.getPushMes(url), PushMessage::class.java, this)
+    fun getPushMes(@Url url: String,parseIntercept: ParseIntercept) {
+        retrofitConfig.parsingCallgetData(apiService.getPushMes(url), PushMessage::class.java, parseIntercept)
     }
 
     companion object {

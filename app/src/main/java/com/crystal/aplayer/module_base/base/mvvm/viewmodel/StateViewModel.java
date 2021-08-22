@@ -17,6 +17,7 @@ public abstract class StateViewModel<D extends BaseDataProvider> extends BaseVie
 
     @Override
     protected void whenUpdate(Object[] arg) {
+
     }
 
 }

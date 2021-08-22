@@ -3,6 +3,7 @@ package com.crystal.aplayer.all_module.home.discover;
 import androidx.lifecycle.MutableLiveData;
 
 import com.crystal.aplayer.all_module.repo.HomeDataProvider;
+import com.crystal.aplayer.module_base.base.http.retrofit.ParseIntercept;
 import com.crystal.aplayer.module_base.base.http.retrofit.ResponseMes;
 import com.crystal.aplayer.module_base.base.mvvm.model.StateModel;
 import com.crystal.aplayer.module_base.base.mvvm.repo.BaseLocateDB;
@@ -25,36 +26,13 @@ public class DiscoverViewModel extends CommonStateViewModel<HomeDataProvider> {
     private static final String tag = "DiscoverFragment";
     private MutableLiveData<Discovery> discoveryBeanMutableLiveData;
     public MutableLiveData<List<Discovery.Item>> dataLists;
-
-    public DiscoverViewModel() {
-        super();
-        discoveryBeanMutableLiveData = new MutableLiveData<>();
-        dataLists = new MutableLiveData<>();
-    }
-
-    @Override
-    protected HomeDataProvider setDataProvider() {
-        return HomeDataProvider.getInstance();
-    }
-
-    /**
-     * @param arg
-     */
-    @Override
-    protected void whenUpdate(Object[] arg) {
-        Discovery discovery;
-        ResponseMes responseMes;
-        if (arg[0] != null && arg[1] != null) {
-            if (arg[0] instanceof Discovery && arg[1] instanceof ResponseMes) {
-                discovery = (Discovery) arg[0];//拿到数据
-                responseMes = (ResponseMes) arg[1];
-                discoveryBeanMutableLiveData.postValue(discovery);
-            } else {
-                //todo 获得的数据类型不对，可能是其他viewmodel所需的数据，中止处理
-                return;
-            }
-            LogUtil.d(tag, "执行的获取数据的动作" + stateModel.nowBehavior.name());
+    private final ParseIntercept intercept=new ParseIntercept() {
+        @Override
+        public void intercept(Object... args) {
+            Discovery discovery= (Discovery) args[0];//拿到数据;
+            ResponseMes responseMes= (ResponseMes) args[1];;
             if (!responseMes.hasError()) {
+                discoveryBeanMutableLiveData.postValue(discovery);
                 // 获取数据没问题，根据不同的动作（nowBehavior）执行不同的数据解析
                 if (stateModel.nowBehavior == StateModel.NowBehavior.Refreshing) {//下拉刷新
                     dataLists.postValue(discovery.getItemList());
@@ -68,7 +46,6 @@ public class DiscoverViewModel extends CommonStateViewModel<HomeDataProvider> {
                 }
                 nextPage.postValue(discovery.getNextPageUrl());
                 LogUtil.d(tag, "下一页地址： " + discovery.getNextPageUrl() + "数量： " + discovery.getCount());
-                nowResponseMes.postValue(responseMes);//发送数据后的情况消息
             } else {
                 // 获取数据不成功，出错
                 if (stateModel.nowBehavior == StateModel.NowBehavior.InitLoad) {
@@ -80,31 +57,40 @@ public class DiscoverViewModel extends CommonStateViewModel<HomeDataProvider> {
                     } else {
                         // TODO: 2020/11/16 从数据库获取数据失败，标记加载过程失败
                         stateModel.setLoadDataState(LoadDataState.LOAD_FAILED, true);
-                        return;
                     }
                 }
-                nowResponseMes.postValue(responseMes);
             }
-
+            nowResponseMes.postValue(responseMes);//发送数据后的情况消息
         }
+    };
+
+    public DiscoverViewModel() {
+        super();
+        discoveryBeanMutableLiveData = new MutableLiveData<>();
+        dataLists = new MutableLiveData<>();
+    }
+
+    @Override
+    protected HomeDataProvider setDataProvider() {
+        return HomeDataProvider.getInstance();
     }
 
     @Override
     public void firstLoadData() {
         super.firstLoadData();
-        dataProvider.getDiscovery(AllApiConfig.BASE_URL + AllApiConfig.DISCOVERY);
+        dataProvider.getDiscovery(AllApiConfig.BASE_URL + AllApiConfig.DISCOVERY,intercept);
     }
 
     @Override
     public void freshData() {
         super.freshData();
         LogUtil.d(tag, "viewmodel获取数据更新");
-        dataProvider.getDiscovery(AllApiConfig.BASE_URL + AllApiConfig.DISCOVERY);
+        dataProvider.getDiscovery(AllApiConfig.BASE_URL + AllApiConfig.DISCOVERY,intercept);
     }
 
     @Override
     public void loadMore() {
         super.loadMore();
-        dataProvider.getDiscovery(nextPage.getValue());
+        dataProvider.getDiscovery(nextPage.getValue(),intercept);
     }
 }

@@ -1,11 +1,18 @@
 package com.crystal.aplayer.module_base.base.http.retrofit;
 
 
+import static android.util.Log.VERBOSE;
+
+import static com.crystal.aplayer.module_base.tools.SomeTools.isNetworkConnected;
+
+import com.crystal.aplayer.AppApplication;
 import com.crystal.aplayer.module_base.base.http.okhttp.interceptor.BasicParamsInterceptor;
 import com.crystal.aplayer.module_base.base.http.okhttp.interceptor.HeaderInterceptor;
-import com.crystal.aplayer.module_base.base.http.okhttp.interceptor.LoggingInterceptor;
+import com.crystal.aplayer.module_base.base.http.okhttp.interceptor.LoggingInterceptor1;
 import com.crystal.aplayer.module_base.tools.LogUtil;
 import com.crystal.aplayer.module_base.tools.observable.Observable;
+import com.ihsanbal.logging.Level;
+import com.ihsanbal.logging.LoggingInterceptor;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -75,9 +82,15 @@ public class RetrofitConfig {
     private RetrofitConfig() {
         okHttpClient = new OkHttpClient
                 .Builder()
-                .addInterceptor(new LoggingInterceptor())
+                .addInterceptor(new LoggingInterceptor1())
                 .addInterceptor(new HeaderInterceptor())
                 .addInterceptor(new BasicParamsInterceptor())
+                .addInterceptor(new LoggingInterceptor.Builder()
+                        .setLevel(Level.BASIC)
+                        .log(VERBOSE)
+                        .addHeader("cityCode","53")
+                        .addQueryParam("moonStatus", "crescent")
+                        .build())
                 .build();
         retrofitHashMap = new HashMap<>();
     }
@@ -135,6 +148,11 @@ public class RetrofitConfig {
      * @return 返回call得到的responsebody
      */
     public <T> void parsingCallgetData(@NotNull Call<T> call, @NotNull Class beanClazz, Observable host) {
+        if (!isNetworkConnected(AppApplication.getInstance())) {
+            LogUtil.d("Error", "无网络");
+            host.notifyObservers(null, new ResponseMes(999, "无网络"));
+            return;
+        }
         call.enqueue(new Callback<T>() {
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
@@ -160,6 +178,7 @@ public class RetrofitConfig {
             @Override
             public void onFailure(Call<T> call, Throwable t) {
                 LogUtil.d("Error", t.getMessage());
+                host.notifyObservers(null,new ResponseMes(999, "error"));
             }
         });
 
@@ -173,6 +192,11 @@ public class RetrofitConfig {
      * @return 返回call得到的responsebody
      */
     public <T> void parsingCallgetData(@NotNull Call<T> call, @NotNull Class beanClazz, final ParseIntercept intercept) {
+        if (!isNetworkConnected(AppApplication.getInstance())) {
+            LogUtil.d("Error", "无网络");
+            intercept.intercept(null, new ResponseMes(999, "无网络"));
+            return;
+        }
         call.enqueue(new Callback<T>() {
             @Override
             public void onResponse(Call<T> call, Response<T> response) {
@@ -180,24 +204,24 @@ public class RetrofitConfig {
                     LogUtil.d(tag, "解析response所需线程池不存在");
                     return;
                 }
+
                 executorService.execute(() -> {
                     LogUtil.d(tag, "解析response:  ");
                     ResponseMes mes = new ResponseMes(response.code(), response.message());
                     if (response.isSuccessful()) {
                         LogUtil.d(RetrofitConfig.tag, "解析response: 成功 ");
                         intercept.intercept(beanClazz.cast(response.body()), mes);
-                        return;
+                    }else{
+                        LogUtil.d(RetrofitConfig.tag, "解析response: 失败 ");
+                        intercept.intercept(null, mes);
                     }
-                    LogUtil.d(RetrofitConfig.tag, "解析response: 失败 ");
-                    intercept.intercept(null, mes);
-
-
                 });
             }
 
             @Override
             public void onFailure(Call<T> call, Throwable t) {
                 LogUtil.d("Error", t.getMessage());
+                intercept.intercept(null, new ResponseMes(999, "error"));
             }
         });
 

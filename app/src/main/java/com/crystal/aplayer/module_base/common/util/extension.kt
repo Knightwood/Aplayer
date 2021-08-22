@@ -1,10 +1,17 @@
 package com.crystal.aplayer.module_base.common.util
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.crystal.aplayer.module_base.base.BaseApplication
+import android.net.NetworkInfo
+
+import android.net.ConnectivityManager
+
+
+
 
 /**
  * 弹出Toast提示。
@@ -51,4 +58,16 @@ fun Int.conversionVideoDuration(): String {
  */
 fun CharSequence.showToast(duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(BaseApplication.getContext(), this, duration).show()
+}
+
+fun isNetworkConnected(context: Context?): Boolean {
+    if (context != null) {
+        val mConnectivityManager = context
+            .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val mNetworkInfo = mConnectivityManager.activeNetworkInfo
+        if (mNetworkInfo != null) {
+            return mNetworkInfo.isAvailable
+        }
+    }
+    return false
 }

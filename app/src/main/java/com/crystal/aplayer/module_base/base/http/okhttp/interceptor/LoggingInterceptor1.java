@@ -16,7 +16,7 @@ import okhttp3.Response;
  * packageName：com.crystal.aplayer.module_base.base.http.okhttp
  * 描述：
  */
-public class LoggingInterceptor implements Interceptor {
+public class LoggingInterceptor1 implements Interceptor {
     private static final String tag="LoggingInterceptor_logs";
     @NotNull
     @Override public Response intercept(Interceptor.Chain chain) throws IOException {

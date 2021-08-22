@@ -1,5 +1,6 @@
 package com.crystal.aplayer.all_module.main;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -25,8 +26,10 @@ public class MainActivity extends CommonActivity {
     private ModuleMainActivityMainBinding mainBinding;
     private BottomNavigationView bottomNavigationView;
 
-    private  SparseArray<Fragment> fragments;
+    private SparseArray<Fragment> fragments;
     private FragmentManager fragmentManager;
+    private int currentFragmentKey=0;
+    private final static String home_current_key = "home_current_key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +47,26 @@ public class MainActivity extends CommonActivity {
         bottomNavigationView = mainBinding.mainBottomNavigationView;
         bottomNavigationView.setItemIconTintList(null);//禁止自动变色
         setClickEvent(bottomNavigationView);
-        addDefaultFragment();
+        if (savedInstanceState == null)
+            addDefaultFragment();
         /*navController= Navigation.findNavController(ModuleMain_MainActivity.this,R.id.navs_host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView,navController);*/
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        currentFragmentKey=savedInstanceState.getInt(home_current_key);
+        for (int k:KeyRes.fragmentsKeys) {
+            Fragment f=getSupportFragmentManager().findFragmentByTag(String.valueOf(k));
+            fragments.put(k,f);
+        }
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putInt(home_current_key,currentFragmentKey);
+        super.onSaveInstanceState(outState);
     }
 
     /**
@@ -59,7 +79,7 @@ public class MainActivity extends CommonActivity {
             switch (item.getItemId()) {
                 case R.id.app_homefragment:
                     if (fragments.get(KeyRes.home_fragment) == null) {
-                        addFragment(KeyRes.home_fragment, HomeFragment.newInstance(),transaction);
+                        addFragment(KeyRes.home_fragment, HomeFragment.newInstance(), transaction);
                     } else {
                         transaction.show(fragments.get(KeyRes.home_fragment));
                         LogUtil.d(tag, "替换fragment");
@@ -67,21 +87,21 @@ public class MainActivity extends CommonActivity {
                     break;
                 case R.id.app_communityfragment:
                     if (fragments.get(KeyRes.community_fragment) == null) {
-                        addFragment(KeyRes.community_fragment, CommunityFragment.newInstance(),transaction);
+                        addFragment(KeyRes.community_fragment, CommunityFragment.newInstance(), transaction);
                     } else {
                         transaction.show(fragments.get(KeyRes.community_fragment));
                     }
                     break;
                 case R.id.app_messagefragment:
                     if (fragments.get(KeyRes.notification_fragment) == null) {
-                        addFragment(KeyRes.notification_fragment, NotificationFragment.newInstance(),transaction);
+                        addFragment(KeyRes.notification_fragment, NotificationFragment.newInstance(), transaction);
                     } else {
                         transaction.show(fragments.get(KeyRes.notification_fragment));
                     }
                     break;
                 case R.id.app_minefragment:
                     if (fragments.get(KeyRes.mine_fragment) == null) {
-                        addFragment(KeyRes.mine_fragment, MineFragment.newInstance(),transaction);
+                        addFragment(KeyRes.mine_fragment, MineFragment.newInstance(), transaction);
                     } else {
                         transaction.show(fragments.get(KeyRes.mine_fragment));
                     }
@@ -103,19 +123,20 @@ public class MainActivity extends CommonActivity {
     }
 
     private void addDefaultFragment() {
-        addFragment(KeyRes.home_fragment, HomeFragment.newInstance(),fragmentManager.beginTransaction()).commit();
+        addFragment(KeyRes.home_fragment, HomeFragment.newInstance(), fragmentManager.beginTransaction()).commit();
     }
 
     /**
      * 将<key,fragment>加入sparseArray，并添加到transaction。
-     * @param key fragment对应的key
-     * @param fragment 要添加到布局的fragment
+     *
+     * @param key         fragment对应的key
+     * @param fragment    要添加到布局的fragment
      * @param transaction
      * @return 返回传入的transaction
      */
     private <F extends Fragment> FragmentTransaction addFragment(int key, F fragment, FragmentTransaction transaction) {
         fragments.put(key, fragment);
-        transaction.add(R.id.fragment_container_view, fragment);
+        transaction.add(R.id.fragment_container_view, fragment,String.valueOf(key));
         return transaction;
     }
 

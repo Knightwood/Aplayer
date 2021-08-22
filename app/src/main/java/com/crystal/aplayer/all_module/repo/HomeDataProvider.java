@@ -1,6 +1,7 @@
 package com.crystal.aplayer.all_module.repo;
 
 import com.crystal.aplayer.AppApplication;
+import com.crystal.aplayer.module_base.base.http.retrofit.ParseIntercept;
 import com.crystal.aplayer.module_base.common.http.api.MainPageApiService;
 import com.crystal.aplayer.module_base.base.http.retrofit.RetrofitConfig;
 import com.crystal.aplayer.module_base.base.mvvm.repo.BaseDataProvider;
@@ -58,28 +59,28 @@ public class HomeDataProvider extends BaseDataProvider<MainPageApiService, BaseV
     }
 
     //发现
-    public void getDiscovery(@Url String url) {
+    public void getDiscovery(@Url String url, ParseIntercept intercept) {
         LogUtil.d(tag, "获取Discovery方法被调用");
-        retrofitConfig.parsingCallgetData(apiService.getDiscovery(url), Discovery.class, this);
+        retrofitConfig.parsingCallgetData(apiService.getDiscovery(url), Discovery.class, intercept);
     }
 
     //推荐
-    public void getRecommend(@Url String url) {
-        retrofitConfig.parsingCallgetData(apiService.getRecommend(url), HomePageRecommend.class, this);
+    public void getRecommend(@Url String url, ParseIntercept intercept) {
+        retrofitConfig.parsingCallgetData(apiService.getRecommend(url), HomePageRecommend.class, intercept);
     }
 
     //日常
-    public void getDailyFeed(@Url String url) {
-        retrofitConfig.parsingCallgetData(apiService.getDailyFeed(url), Daily.class, this);
+    public void getDailyFeed(@Url String url, ParseIntercept intercept) {
+        retrofitConfig.parsingCallgetData(apiService.getDailyFeed(url), Daily.class, intercept);
     }
 
     //社区推荐
-    public void getCommunityRec(@Url String url) {
-        retrofitConfig.parsingCallgetData(apiService.getCommunityRec(url), CommunityRecommend.class, this);
+    public void getCommunityRec(@Url String url, ParseIntercept intercept) {
+        retrofitConfig.parsingCallgetData(apiService.getCommunityRec(url), CommunityRecommend.class, intercept);
     }
 
     //社区关注
-    public void getCommunityFollow(@Url String url) {
-        retrofitConfig.parsingCallgetData(apiService.getCommunityFollow(url), Follow.class, this);
+    public void getCommunityFollow(@Url String url, ParseIntercept intercept) {
+        retrofitConfig.parsingCallgetData(apiService.getCommunityFollow(url), Follow.class, intercept);
     }
 }

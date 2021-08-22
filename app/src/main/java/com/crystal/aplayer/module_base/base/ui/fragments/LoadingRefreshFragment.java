@@ -204,6 +204,7 @@ public abstract class LoadingRefreshFragment<VM extends CommonStateViewModel> ex
         defaultRefreshLayout.setOnRefreshListener(refreshLayout -> {
             LogUtil.d(tag, "触发下拉刷新");
             viewModel.freshData();
+            defaultRefreshLayout.finishLoadMore(2000,true,false);
 
         });
         defaultRefreshLayout.setOnLoadMoreListener(refreshLayout -> {

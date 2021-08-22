@@ -93,10 +93,13 @@ class VideoDetailActivity : CommonActivityKt() {
                 setTextTitleSize(16f)
             })
             setOnRefreshListener {
-                it.finishRefresh()
+                it.finishRefresh(true)
                 finish()
             }
-            setOnLoadMoreListener { viewModel.loadMore() }
+            setOnLoadMoreListener {
+                if (!it.isRefreshing)
+                    viewModel.loadMore()
+            }
         }
         binding.run {
             setOnClickListener2(

@@ -38,11 +38,11 @@ class RepliesListAdapter(context: VideoDetailActivity) : RecyclerView.Adapter<Re
     }
 
     override fun getItemViewType(position: Int): Int {
-        val item: VideoReplies.Item = dataList[position] ?: return -1
-        if (item.type == "reply" && item.data.dataType == "ReplyBeanForClient")
-            return 1
-        if (item.type == "textCard" && item.data.type == "header4")
-            return 2
+            val item: VideoReplies.Item = dataList[position] ?: return -1
+            if (item.type == "reply" && item.data.dataType == "ReplyBeanForClient")
+                return 1
+            if (item.type == "textCard" && item.data.type == "header4")
+                return 2
         return -1
     }
 

@@ -3,6 +3,7 @@ package com.crystal.aplayer.all_module.community.follow;
 import androidx.lifecycle.MutableLiveData;
 
 import com.crystal.aplayer.all_module.repo.HomeDataProvider;
+import com.crystal.aplayer.module_base.base.http.retrofit.ParseIntercept;
 import com.crystal.aplayer.module_base.base.http.retrofit.ResponseMes;
 import com.crystal.aplayer.module_base.base.mvvm.model.StateModel;
 import com.crystal.aplayer.module_base.base.mvvm.repo.BaseLocateDB;
@@ -26,36 +27,14 @@ public class FollowViewModel extends CommonStateViewModel<HomeDataProvider> {
 
     public MutableLiveData<Follow> followBeanMutableLiveData;
     public MutableLiveData<List<Follow.Item>> dataLists;
+    private final ParseIntercept intercept=new ParseIntercept(){
 
-    public FollowViewModel() {
-        super();
-        followBeanMutableLiveData = new MutableLiveData<>();
-        dataLists = new MutableLiveData<>();
-    }
-
-    @Override
-    protected HomeDataProvider setDataProvider() {
-        return HomeDataProvider.getInstance();
-    }
-
-    /**
-     * @param arg
-     */
-    @Override
-    protected void whenUpdate(Object[] arg) {
-        Follow follow;
-        ResponseMes responseMes;
-        if (arg[0] != null && arg[1] != null) {
-            if (arg[0] instanceof Follow && arg[1] instanceof ResponseMes) {
-                follow = (Follow) arg[0];//拿到数据
-                responseMes = (ResponseMes) arg[1];
-                followBeanMutableLiveData.postValue(follow);
-            } else {
-                //todo 获得的数据类型不对，可能是其他viewmodel所需的数据，中止处理
-                return;
-            }
+        @Override
+        public void intercept(Object... args) {
+            Follow follow= (Follow) args[0];//拿到数据;
+            ResponseMes responseMes= (ResponseMes) args[1];;
             LogUtil.d(tag, "执行的获取数据的动作" + stateModel.nowBehavior.name());
-            if (!responseMes.hasError()) {
+            if (!responseMes.hasError()) {followBeanMutableLiveData.postValue(follow);
                 // 获取数据没问题，根据不同的动作（nowBehavior）执行不同的数据解析
                 if (stateModel.nowBehavior == StateModel.NowBehavior.Refreshing) {//下拉刷新
                     dataLists.postValue(follow.getItemList());
@@ -69,7 +48,6 @@ public class FollowViewModel extends CommonStateViewModel<HomeDataProvider> {
                 }
                 nextPage.postValue(follow.getNextPageUrl());
                 LogUtil.d(tag, "下一页地址： " + follow.getNextPageUrl() + "数量： " + follow.getCount());
-                nowResponseMes.postValue(responseMes);//发送数据后的情况消息
             } else {
                 // 获取数据不成功，出错
                 if (stateModel.nowBehavior == StateModel.NowBehavior.InitLoad) {
@@ -81,31 +59,40 @@ public class FollowViewModel extends CommonStateViewModel<HomeDataProvider> {
                     } else {
                         // TODO: 2020/11/16 从数据库获取数据失败，标记加载过程失败
                         stateModel.setLoadDataState(LoadDataState.LOAD_FAILED, true);
-                        return;
                     }
                 }
-                nowResponseMes.postValue(responseMes);
             }
-
+            nowResponseMes.postValue(responseMes);//发送数据后的情况消息
         }
+    };
+
+    public FollowViewModel() {
+        super();
+        followBeanMutableLiveData = new MutableLiveData<>();
+        dataLists = new MutableLiveData<>();
+    }
+
+    @Override
+    protected HomeDataProvider setDataProvider() {
+        return HomeDataProvider.getInstance();
     }
 
     @Override
     public void firstLoadData() {
         super.firstLoadData();
-        dataProvider.getCommunityFollow(AllApiConfig.BASE_URL + AllApiConfig.COMMUNITY_FOLLOW);
+        dataProvider.getCommunityFollow(AllApiConfig.BASE_URL + AllApiConfig.COMMUNITY_FOLLOW,intercept);
     }
 
     @Override
     public void freshData() {
         super.freshData();
         LogUtil.d(tag, "viewmodel获取数据更新");
-        dataProvider.getCommunityFollow(AllApiConfig.BASE_URL + AllApiConfig.COMMUNITY_FOLLOW);
+        dataProvider.getCommunityFollow(AllApiConfig.BASE_URL + AllApiConfig.COMMUNITY_FOLLOW,intercept);
     }
 
     @Override
     public void loadMore() {
         super.loadMore();
-        dataProvider.getCommunityFollow(nextPage.getValue());
+        dataProvider.getCommunityFollow(nextPage.getValue(),intercept);
     }
 }
